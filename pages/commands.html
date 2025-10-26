@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine — Commands</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <a class="active" href="commands.html">Commands</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>Command Reference</h1>
+      <p><strong>Status:</strong> Early development — this list reflects current commands detected in the repo. <strong>Developer:</strong> David Cody.</p>
+      <p>Chronos CLI commands in concise form. Arguments in <code><angle brackets></code> are required; items in <code>[square brackets]</code> are optional.</p>
+
+      <div class="cmd-grid">
+        <div class="cmd">
+          <code>add &lt;item&gt; to &lt;target&gt; [position:&lt;number&gt;]</code>
+          <p>Adds an item to a template’s sub‑items.</p>
+        </div>
+        <div class="cmd">
+          <code>append &lt;type&gt; &lt;name&gt; "text"</code>
+          <p>Appends text to an item’s content.</p>
+        </div>
+        <div class="cmd">
+          <code>change &lt;name&gt; &lt;HH:MM&gt;</code>
+          <p>Changes an item’s start time in today’s schedule.</p>
+        </div>
+        <div class="cmd">
+          <code>cls</code>
+          <p>Clears the terminal screen.</p>
+        </div>
+        <div class="cmd">
+          <code>cmd &lt;command&gt;</code>
+          <p>Executes a command‑line command.</p>
+        </div>
+        <div class="cmd">
+          <code>complete</code>
+          <p>Completes items based on context (when enabled).</p>
+        </div>
+        <div class="cmd">
+          <code>copy &lt;type&gt; &lt;source&gt; [new]</code>
+          <p>Duplicates an existing item.</p>
+        </div>
+        <div class="cmd">
+          <code>count &lt;type&gt; [prop:value ...]</code>
+          <p>Counts items, optionally filtered.</p>
+        </div>
+        <div class="cmd">
+          <code>create|new &lt;type&gt; &lt;name&gt; [prop:value ...]</code>
+          <p>Creates a new item.</p>
+        </div>
+        <div class="cmd">
+          <code>cut &lt;name&gt;</code>
+          <p>Removes an item from today’s schedule.</p>
+        </div>
+        <div class="cmd">
+          <code>dashboard</code>
+          <p>Opens the Chronos web dashboard.</p>
+        </div>
+        <div class="cmd">
+          <code>delete [-f|--force] &lt;type&gt; &lt;name&gt;</code>
+          <p>Deletes an item.</p>
+        </div>
+        <div class="cmd">
+          <code>dismiss|skip|snooze &lt;alarm_name&gt;</code>
+          <p>Manages alarms for the current day.</p>
+        </div>
+        <div class="cmd">
+          <code>echo "text"</code>
+          <p>Prints text to the console.</p>
+        </div>
+        <div class="cmd">
+          <code>edit &lt;type&gt; &lt;name&gt; [editor:&lt;name&gt;]</code>
+          <p>Opens an item in an editor.</p>
+        </div>
+        <div class="cmd">
+          <code>export</code>
+          <p>Exports data (when configured).</p>
+        </div>
+        <div class="cmd">
+          <code>filter &lt;type&gt; [prop:value ...] | filter all | filter off</code>
+          <p>Sets or clears the active item filter.</p>
+        </div>
+        <div class="cmd">
+          <code>find &lt;type&gt; &lt;keyword&gt; [prop:value ...]</code>
+          <p>Searches for items.</p>
+        </div>
+        <div class="cmd">
+          <code>get &lt;type&gt; &lt;name&gt; &lt;property&gt;</code>
+          <p>Retrieves a specific property value.</p>
+        </div>
+        <div class="cmd">
+          <code>get &lt;type&gt; &lt;name&gt; &lt;property&gt;</code>
+          <p>Retrieves a specific property value.</p>
+        </div>
+        <div class="cmd">
+          <code>help [command]</code>
+          <p>Shows help for the CLI or a specific command.</p>
+        </div>
+        <div class="cmd">
+          <code>import</code>
+          <p>Imports data/items (when configured).</p>
+        </div>
+        <div class="cmd">
+          <code>list &lt;type&gt; [sort_by:&lt;key&gt;] [reverse_sort:True|False]</code>
+          <p>Lists items with sorting options.</p>
+        </div>
+        <div class="cmd">
+          <code>mark &lt;name&gt;:&lt;status&gt;</code>
+          <p>Marks an item in the daily schedule with a status.</p>
+        </div>
+        <div class="cmd">
+          <code>mark_norm</code>
+          <p>Normalizes marks/status for items where supported.</p>
+        </div>
+        <div class="cmd">
+          <code>miss</code>
+          <p>Manages or lists missed alarms/slots (when available).</p>
+        </div>
+        <div class="cmd">
+          <code>move &lt;src_type&gt; &lt;src_name&gt; [new] [type:&lt;dst_type&gt;]</code>
+          <p>Moves and/or renames an item.</p>
+        </div>
+        <div class="cmd">
+          <code>pause [message]</code>
+          <p>Pauses script execution.</p>
+        </div>
+        <div class="cmd">
+          <code>powershell &lt;code&gt;</code>
+          <p>Runs PowerShell code.</p>
+        </div>
+        <div class="cmd">
+          <code>remove &lt;type&gt; &lt;name&gt; &lt;property&gt;</code>
+          <p>Removes a property from an item.</p>
+        </div>
+        <div class="cmd">
+          <code>rename &lt;type&gt; &lt;old&gt; &lt;new&gt;</code>
+          <p>Renames an item.</p>
+        </div>
+        <div class="cmd">
+          <code>set &lt;type&gt; &lt;name&gt; &lt;key&gt;:&lt;value&gt; [...]</code>
+          <p>Sets one or more properties.</p>
+        </div>
+        <div class="cmd">
+          <code>settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;</code>
+          <p>Modifies a setting.</p>
+        </div>
+        <div class="cmd">
+          <code>status [type:value]</code>
+          <p>Views or sets status variables.</p>
+        </div>
+        <div class="cmd">
+          <code>today [reschedule]</code>
+          <p>Displays or regenerates today’s schedule.</p>
+        </div>
+        <div class="cmd">
+          <code>track</code>
+          <p>Starts/stops tracking utilities (where available).</p>
+        </div>
+        <div class="cmd">
+          <code>trim &lt;name&gt; &lt;minutes&gt;</code>
+          <p>Reduces an item’s duration today.</p>
+        </div>
+        <div class="cmd">
+          <code>view &lt;type&gt; &lt;name&gt;</code>
+          <p>Displays an item’s content and properties.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Chronos Engine — Built by David Cody — Early Development</div>
+        <div class="footer-links">
+          <a href="/Website/pages/docs.html">Docs</a>
+          <a href="/Website/pages/commands.html">Commands</a>
+          <a href="/Website/pages/setup.html">Setup</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>

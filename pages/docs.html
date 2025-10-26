@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine — Docs</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a class="active" href="docs.html">Docs</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>Documentation</h1>
+      <p><strong>Status:</strong> Early development — features and commands may change. <strong>Developer:</strong> David Cody.</p>
+
+      <h2>Introduction</h2>
+      <p>Chronos Engine is an intelligent life management system. It lets you compose your life as a hierarchy of items and uses a status‑aware scheduler to build optimal daily plans.</p>
+
+      <h2>Core Concepts</h2>
+      <ul>
+        <li><strong>Items:</strong> Atomic units like <code>task</code>, <code>note</code>, <code>goal</code>, <code>routine</code>, and more. Stored as YAML.</li>
+        <li><strong>Fractal Structure:</strong> Templates nest logically (week → day → routine → subroutine → microroutine).</li>
+        <li><strong>User Status:</strong> Variables like <code>emotion</code>, <code>energy</code>, and <code>focus</code> guide the scheduler.</li>
+        <li><strong>Templates:</strong> Reusable blueprints for days, weeks, and routines.</li>
+        <li><strong>Reminders:</strong> Time‑based notifications handled by the Listener module.</li>
+      </ul>
+
+      <h2>Today Scheduler</h2>
+      <p>The <code>today</code> command is the daily driver.</p>
+      <ul>
+        <li><code>today</code>: Loads and displays the persisted schedule for today.</li>
+        <li><code>today reschedule</code>: Regenerates today’s schedule, applies manual edits, resolves conflicts (shift/trim/cut), and saves the result.</li>
+      </ul>
+
+      <h2>Status</h2>
+      <p>Set your status to inform scheduling decisions. Example: <code>status energy:high focus:good</code>. Chronos can widen buffers, reduce high‑energy tasks, or prioritize critical items based on these values.</p>
+
+      <h2>Data Model</h2>
+      <p>Everything is YAML. Items live in the <code>User/</code> directory. Templates reference sub‑items to form a navigable graph (e.g., a Day template references Routine items, which reference Subroutines, and so on).</p>
+
+      <h2>Dashboard</h2>
+      <p>The <code>dashboard</code> command opens a web dashboard for a quick, visual overview of time, notes, status, and today’s schedule. It complements the CLI-focused workflow.</p>
+
+      <h2>Philosophy</h2>
+      <p>Chronos favors clarity, portability, and automation: human‑readable files, smart scheduling, and a concise CLI. Keep your system simple; iterate with templates; trust the engine’s context to fill in gaps.</p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Chronos Engine — Built by David Cody — Early Development</div>
+        <div class="footer-links">
+          <a href="/Website/pages/docs.html">Docs</a>
+          <a href="/Website/pages/commands.html">Commands</a>
+          <a href="/Website/pages/setup.html">Setup</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>
