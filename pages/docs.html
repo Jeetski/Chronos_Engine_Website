@@ -78,6 +78,31 @@
 
       <h2>Philosophy</h2>
       <p>Chronos favors clarity, portability, and automation: human-readable files, smart scheduling, and a concise CLI. Keep your system simple; iterate with templates; trust the engine's context to fill in gaps.</p>
+
+      <h2>Open Source & Extensibility</h2>
+      <p>Chronos Engine is open-source on GitHub. Everything is plain Python and YAML, so you can extend it in many ways:</p>
+      <ul>
+        <li><strong>CLI wrappers:</strong> Call the CLI behind the scenes from your app or script. Drive Chronos without exposing commands to end-users.</li>
+        <li><strong>Plug-in commands:</strong> Drop new Python files into <code>Commands/</code> or new item modules into <code>Modules/</code> to add functionality.</li>
+        <li><strong>Dashboard widgets/views:</strong> Add UI blocks that read YAML and present custom visualizations.</li>
+        <li><strong>YAML-first data:</strong> Build visualizers, dashboards, or games by reading the item graph directly.</li>
+      </ul>
+      <p>Examples:</p>
+      <pre><code># 1) Wrap the CLI from Python (Windows)
+import subprocess
+subprocess.run([r"Console_Launcher.bat", "new", "task", "Write README", "priority:high"]) 
+
+# 2) Minimal custom command (Commands/hello.py)
+def run(args, props):
+    name = args[0] if args else "world"
+    print(f"Hello, {name} from Chronos!")
+
+# 3) New item type (Modules/Widget/main.py)
+ITEM_TYPE = "widget"
+def handle_new(name, props):
+    # Use ItemManager utilities to persist YAML
+    pass
+</code></pre>
     </main>
 
     <footer class="site-footer">
@@ -88,6 +113,7 @@
           <a href="/Website/pages/agents.html">Agents</a>
           <a href="/Website/pages/commands.html">Commands</a>
           <a href="/Website/pages/setup.html">Setup</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
