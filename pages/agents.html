@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine - Agents</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <a class="active" href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>AI Agents</h1>
+      <p>Chronos works great with an AI assistant that translates natural language into Chronos CLI commands and helps you work faster.</p>
+
+      <h2>NLP Interface</h2>
+      <p>Speak in plain English; the agent emits precise commands.</p>
+      <pre><code>"Add a task to my morning routine to stretch for 5 minutes"
+-> new task "Stretch" duration:5m
+-> add "Stretch" to "Morning Routine"
+
+"I feel fried. Trim low-priority tasks and rebuild today"
+-> status energy:low
+-> today reschedule
+
+"Start a project with two initial tasks"
+-> new project "Website Refresh"
+-> new task "Audit pages" project:"Website Refresh"
+-> new task "Fix broken links" project:"Website Refresh"</code></pre>
+
+      <h2>Developer Agents</h2>
+      <p>Dev agents can read modules, modify commands, and keep structure consistent using the shared ItemManager/Scheduler utilities.</p>
+      <ul>
+        <li>Understand module boundaries and item defaults.</li>
+        <li>Use ItemManager for file ops and property edits.</li>
+        <li>Follow template hierarchy when adding items.</li>
+      </ul>
+      <p>See <code>agents.dev.md</code> for a deeper architecture and workflow overview.</p>
+
+      <h2>Agent Persona</h2>
+      <p>The Chronos Warp Drive AI persona is designed to be proactive and helpful.</p>
+      <ul>
+        <li>Translate natural language into Chronos commands.</li>
+        <li>Suggest <code>today reschedule</code> when overloaded.</li>
+        <li>Encourage templates for repeatable routines.</li>
+      </ul>
+      <p>See <code>agents.md</code> for tone, best practices, and command list.</p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody &mdash; Early Development</div>
+        <div class="footer-links">
+          <a href="/Website/pages/docs.html">Docs</a>
+          <a href="/Website/pages/agents.html">Agents</a>
+          <a href="/Website/pages/commands.html">Commands</a>
+          <a href="/Website/pages/setup.html">Setup</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>
+

@@ -15,6 +15,7 @@
         <nav class="nav" id="siteNav">
           <a href="../index.html#features">Features</a>
           <a class="active" href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
           <a href="commands.html">Commands</a>
           <a href="setup.html" class="cta">Get Started</a>
         </nav>
@@ -45,6 +46,27 @@
         <li><code>today reschedule</code>: Regenerates today's schedule, applies manual edits, resolves conflicts (shift/trim/cut), and saves the result.</li>
       </ul>
 
+      <h2>AI Agents and NLP Interface</h2>
+      <p>Chronos supports an AI-assisted workflow where a helper agent translates natural language into Chronos CLI commands.</p>
+      <ul>
+        <li><strong>NLP interface:</strong> Speak intentions (e.g., “add a task to my morning routine”), the agent emits precise commands (<code>new task ...</code>, <code>add ... to ...</code>).</li>
+        <li><strong>Status-aware suggestions:</strong> When overloaded, the agent can suggest <code>today reschedule</code> or adjust buffers via <code>status</code>.</li>
+        <li><strong>Developer agents:</strong> Agents can read modules, propose edits, and automate maintenance. See <code>agents.dev.md</code>.</li>
+        <li><strong>Agent guide:</strong> See <code>agents.md</code> for the Chronos Warp Drive AI persona and best practices.</li>
+      </ul>
+      <p>Examples the agent can translate:</p>
+      <pre><code>"Create a weekly review routine and add it to Sunday"
+-> new routine "Weekly Review"
+-> add "Weekly Review" to "Sunday"
+
+"I'm low energy, lighten my afternoon tasks"
+-> status energy:low
+-> today reschedule
+
+"Track a new goal and a first milestone"
+-> new goal "Ship MVP" priority:high
+-> new milestone "Beta Ready" goal:"Ship MVP"</code></pre>
+
       <h2>Status</h2>
       <p>Set your status to inform scheduling decisions. Example: <code>status energy:high focus:good</code>. Chronos can widen buffers, reduce high-energy tasks, or prioritize critical items based on these values.</p>
 
@@ -63,6 +85,7 @@
         <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody &mdash; Early Development</div>
         <div class="footer-links">
           <a href="/Website/pages/docs.html">Docs</a>
+          <a href="/Website/pages/agents.html">Agents</a>
           <a href="/Website/pages/commands.html">Commands</a>
           <a href="/Website/pages/setup.html">Setup</a>
         </div>
@@ -71,4 +94,3 @@
     <script src="../script.js"></script>
   </body>
   </html>
-
