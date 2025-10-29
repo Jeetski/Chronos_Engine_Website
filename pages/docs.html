@@ -77,6 +77,16 @@
       <h2>Dashboard</h2>
       <p>The <code>dashboard</code> command opens a web dashboard for a quick, visual overview of time, notes, status, and today's schedule. It complements the CLI-focused workflow.</p>
 
+      <h2>Scripting &amp; Variables</h2>
+      <p>Chronos supports simple <code>.chs</code> scripts and session variables:</p>
+      <ul>
+        <li><strong>Variables:</strong> <code>set var name:World</code>, then use <code>@name</code> or <code>@{name}</code> in any command; escape with <code>@@</code>.</li>
+        <li><strong>Properties:</strong> <code>key:value</code> tokens (e.g., <code>priority:high</code>) are parsed into command properties.</li>
+        <li><strong>Conditionals:</strong> Single-line <code>if ... then ... [else ...]</code> and block form in scripts with operators <code>= != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches</code> and logic <code>and or xor nor not !</code>. Parentheses supported.</li>
+        <li><strong>Existence checks:</strong> <code>exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]]</code>, <code>exists file:&lt;path&gt;</code>, <code>exists dir:&lt;path&gt;</code>, <code>exists env:&lt;NAME&gt;</code>.</li>
+      </ul>
+      <p>See more detailed guides:</p><ul><li><a href="chs-scripting.html">CHS Scripting Guide</a></li><li><a href="conditions-cookbook.html">Conditions Cookbook</a></li></ul>
+
       <h2>Philosophy</h2>
       <p>Chronos favors clarity, portability, and automation: human-readable files, smart scheduling, and a concise CLI. Keep your system simple; iterate with templates; trust the engine's context to fill in gaps.</p>
 
@@ -121,3 +131,4 @@ def handle_new(name, props):
     <script src="../script.js"></script>
   </body>
   </html>
+

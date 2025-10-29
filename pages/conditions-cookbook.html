@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine - Conditions Cookbook</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a class="active" href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>Conditions Cookbook</h1>
+      <p>Practical <code>if</code> patterns for Chronos scripts.</p>
+
+      <h2>Basics</h2>
+      <ul>
+        <li>Status: <code>if status:energy lt 30 then echo LOW_ENERGY</code></li>
+        <li>Focus: <code>if status:focus ge 70 then echo FOCUSED</code></li>
+        <li>Variables + items: <code>set var target:Alice</code>, then <code>if note:&quot;Daily Log @target&quot;:category eq work then echo WORK_LOG</code></li>
+      </ul>
+
+      <h2>Existence Checks</h2>
+      <ul>
+        <li>Item exists: <code>if exists task:Morning_Run then echo CONSISTENCY</code></li>
+        <li>Property exists: <code>if exists task:Morning_Run:duration then echo TIMED</code></li>
+        <li>Any type exists: <code>if exists task then echo THERE_IS_WORK</code></li>
+        <li>Filesystem/env: <code>if exists file:README.md</code>, <code>if exists dir:User/Notes</code>, <code>if exists env:PATH</code></li>
+      </ul>
+
+      <h2>Regex Matching</h2>
+      <ul>
+        <li>Priority starts with h: <code>if task:&quot;Deep Work&quot;:priority matches ^h.* then echo HIGH</code></li>
+        <li>Contains keyword: <code>if note:&quot;Idea 2025&quot;:name matches 2025 then echo TAGGED_2025</code></li>
+      </ul>
+
+      <h2>Combining Logic</h2>
+      <ul>
+        <li>Parentheses &amp; precedence: <code>if ( status:energy gt 50 and status:focus gt 50 ) or status:emotion eq happy then echo GREEN_LIGHT</code></li>
+        <li>XOR/NOR: <code>if status:energy eq high xor status:emotion eq sad then echo MIXED_STATE</code></li>
+        <li>NOR example: <code>if status:energy eq high nor status:emotion eq happy then echo NOT_READY else echo READY</code></li>
+        <li>Negation: <code>if not exists note:&quot;Reflection&quot; then echo CREATE_REFLECTION</code>, <code>if ! ( status:focus lt 30 ) then echo FOCUS_OK</code></li>
+      </ul>
+
+      <h2>Tips</h2>
+      <ul>
+        <li>Quote names with spaces: <code>task:&quot;Deep Work&quot;</code></li>
+        <li>Use <code>@{var}</code> for clarity when adjacent to letters/digits.</li>
+        <li>Prefer block <code>if</code> for multiple commands; single-line is great for one-offs.</li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
+        <div class="footer-links">
+          <a href="/Website/pages/docs.html">Docs</a>
+          <a href="/Website/pages/agents.html">Agents</a>
+          <a href="/Website/pages/commands.html">Commands</a>
+          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine_Website" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>
+

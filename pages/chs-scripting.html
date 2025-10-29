@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine - CHS Scripting Guide</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a class="active" href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>CHS Scripting Guide</h1>
+      <p>Chronos executes <code>.chs</code> scripts with one command per line. Lines support quoted arguments, <code>key:value</code> properties, and variable expansion.</p>
+
+      <h2>Variables</h2>
+      <ul>
+        <li>Set: <code>set var name:World</code></li>
+        <li>Use anywhere: <code>@name</code> or <code>@{name}</code></li>
+        <li>Escape <code>@</code>: write <code>@@</code> to print a literal <code>@</code></li>
+        <li>Scope: Variables persist for the current console session or script run</li>
+        <li>Inspect/remove: <code>vars</code>, <code>vars name:myvar</code>, <code>unset var myvar</code></li>
+      </ul>
+
+      <h2>Properties (key:value)</h2>
+      <ul>
+        <li>Tokens like <code>priority:high</code> are parsed into command properties.</li>
+        <li>Quote values with spaces: <code>category:&quot;deep work&quot;</code>.</li>
+      </ul>
+
+      <h2>Conditionals: if</h2>
+      <p>Two forms are supported:</p>
+      <ul>
+        <li>Single-line: <code>if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [args...] [else &lt;command&gt; ...]</code></li>
+      </ul>
+      <pre><code>if status:energy eq high then echo READY else echo REST</code></pre>
+      <ul>
+        <li>Block (.chs):</li>
+      </ul>
+<pre><code>if &lt;left&gt; &lt;op&gt; &lt;right&gt; then
+  &lt;command&gt;
+elseif &lt;left&gt; &lt;op&gt; &lt;right&gt; then
+  &lt;command&gt;
+else
+  &lt;command&gt;
+end</code></pre>
+
+      <h3>Operators and Logic</h3>
+      <ul>
+        <li>Operators: <code>= != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches</code> (regex)</li>
+        <li>Logic: <code>and or xor nor not !</code></li>
+        <li>Parentheses for grouping: <code>( ... )</code></li>
+        <li>Precedence: <code>not/!</code> &gt; <code>and</code> &gt; <code>or/xor/nor</code></li>
+      </ul>
+
+      <h3>Sources</h3>
+      <ul>
+        <li>Status: <code>status:&lt;key&gt;</code> from <code>User/current_status.yml</code></li>
+        <li>Items: <code>&lt;type&gt;:&lt;name&gt;:&lt;property&gt;</code> (e.g., <code>task:&quot;Deep Work&quot;:priority</code>)</li>
+        <li>Existence: <code>exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]]</code>, <code>exists file:&lt;path&gt;</code>, <code>exists dir:&lt;path&gt;</code>, <code>exists env:&lt;NAME&gt;</code></li>
+        <li>Literals and <code>@vars</code></li>
+      </ul>
+
+      <h3>Examples</h3>
+<pre><code>set var who:Alice
+create note &quot;IF Note @who&quot; category:work priority:high
+
+if exists note:&quot;IF Note @who&quot; then echo FOUND else echo MISSING
+if status:energy eq high and exists env:PATH then echo READY
+if note:&quot;IF Note @who&quot;:priority matches ^h.* then echo STARTS_WITH_H
+if ( status:energy eq high and exists note:&quot;IF Note @who&quot; ) or status:emotion ne sad then echo OK
+
+if status:energy eq high then
+  echo Outer TRUE
+  if exists note:&quot;IF Note @who&quot; then
+    echo Nested FOUND
+  else
+    echo Nested MISSING
+  end
+else
+  echo Outer FALSE
+end</code></pre>
+
+      <h2>Errors</h2>
+      <ul>
+        <li>Single-line and block <code>if</code> report concise parse errors.</li>
+        <li>In <code>.chs</code> files, errors include the line number for easier debugging.</li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
+        <div class="footer-links">
+          <a href="/Website/pages/docs.html">Docs</a>
+          <a href="/Website/pages/agents.html">Agents</a>
+          <a href="/Website/pages/commands.html">Commands</a>
+          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine_Website" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>
+

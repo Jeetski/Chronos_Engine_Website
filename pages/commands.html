@@ -151,8 +151,20 @@
           <p>Renames an item.</p>
         </div>
         <div class="cmd">
+          <code>if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [else &lt;command&gt;]</code>
+          <p>Conditional execution. Operators: = != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches; Logic: and or xor nor not !; Supports <code>exists</code> for items, <code>file:</code>, <code>dir:</code>, <code>env:</code>.</p>
+        </div>
+        <div class="cmd">
           <code>set &lt;type&gt; &lt;name&gt; &lt;key&gt;:&lt;value&gt; [...]</code>
           <p>Sets one or more properties.</p>
+        </div>
+        <div class="cmd">
+          <code>vars [name:&lt;var&gt;]</code>
+          <p>Lists current script variables (see <code>set var</code>). Use <code>@name</code> to interpolate in commands.</p>
+        </div>
+        <div class="cmd">
+          <code>unset var &lt;name&gt;</code>
+          <p>Removes a script variable from the current session.</p>
         </div>
         <div class="cmd">
           <code>settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;</code>
