@@ -92,7 +92,7 @@
         </div>
         <div class="cmd">
           <code>export</code>
-          <p>Exports data (when configured).</p>
+          <p>Exports data. Use <code>export all [filename.zip]</code> to zip the entire <code>User/</code> folder into <code>User/Exports/</code>. Or <code>export &lt;file.yml&gt; list &lt;type&gt; [props...]</code> to save a table as YAML.</p>
         </div>
         <div class="cmd">
           <code>filter &lt;type&gt; [prop:value ...] | filter all | filter off</code>
@@ -112,7 +112,7 @@
         </div>
         <div class="cmd">
           <code>import</code>
-          <p>Imports data/items (when configured).</p>
+          <p>Imports data. If the path ends with <code>.zip</code>, extracts a full backup into <code>User/</code> (<code>overwrite:true</code> to replace). If it's a YAML list, creates items (skips existing).</p>
         </div>
         <div class="cmd">
           <code>list &lt;type&gt; [sort_by:&lt;key&gt;] [reverse_sort:True|False]</code>
@@ -177,6 +177,14 @@
         <div class="cmd">
           <code>today [reschedule]</code>
           <p>Displays or regenerates today's schedule.</p>
+        </div>
+        <div class="cmd">
+          <code>theme list|current|set &lt;name&gt; | set-colors background:&lt;name|#hex&gt; text:&lt;name|#hex&gt;</code>
+          <p>Manages console theme. Themes live in <code>User/Settings/theme_settings.yml</code>; profile overrides in <code>User/profile.yml</code>. On Windows, applies via <code>color</code>.</p>
+        </div>
+        <div class="cmd">
+          <code>commitments [check]</code>
+          <p>Evaluates commitment rules and fires triggers. Supports frequency goals (times per day/week/month) and <em>never</em> rules with <code>forbidden_items</code>. Triggers can create <code>achievement</code>/<code>reward</code> items or run scripts.</p>
         </div>
         <div class="cmd">
           <code>track</code>

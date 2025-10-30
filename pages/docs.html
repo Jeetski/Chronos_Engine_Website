@@ -77,6 +77,55 @@
       <h2>Dashboard</h2>
       <p>The <code>dashboard</code> command opens a web dashboard for a quick, visual overview of time, notes, status, and today's schedule. It complements the CLI-focused workflow.</p>
 
+      <h2>Themes & Console</h2>
+      <p>Chronos supports console themes via <code>theme</code> command and <code>User/Settings/theme_settings.yml</code> presets. <code>User/profile.yml</code> can set <code>theme</code> and explicit <code>background</code>/<code{text</code> overrides. On Windows, colors apply via the <code>color</code> command.</p>
+      <pre><code>theme list
+theme current
+theme set hacker
+theme set-colors background:#002b36 text:#93a1a1</code></pre>
+
+      <h2>Commitments, Achievements, Rewards</h2>
+      <p>Commitments encode behavioral rules and fire triggers when conditions are met.</p>
+      <ul>
+        <li><strong>Frequency:</strong> <code>frequency: { times: N, period: day|week|month }</code> with <code>associated_items</code>.</li>
+        <li><strong>Never:</strong> <code>never: true</code> with <code>forbidden_items</code> (fires on incident).</li>
+        <li><strong>Triggers:</strong> <code>on_met</code> / <code>on_violation</code> can create <code>achievement</code>/<code>reward</code> items or run <code>.chs</code> scripts.</li>
+      </ul>
+      <pre><code># Example: Exercise twice a week
+name: Exercise Twice Weekly
+type: commitment
+frequency: { times: 2, period: week }
+associated_items:
+  - { type: habit, name: Exercise }
+triggers:
+  on_met:
+    - { type: achievement, name: Exercise streak! }
+
+# Example: Never smoke
+name: Never Smoke
+type: commitment
+never: true
+forbidden_items:
+  - { type: habit, name: Smoke }
+triggers:
+  on_violation:
+    - { type: reward, name: Reflection Needed }</code></pre>
+
+      <h2>Habits: Good vs Bad</h2>
+      <p>Habits support <code>polarity: good|bad</code>. Good habits track positive streaks; bad habits record <code>incident_dates</code> and compute clean streaks (days without incidents). The <code>track</code> command shows appropriate summaries.</p>
+
+      <h2>Export & Import</h2>
+      <p>Two modes:</p>
+      <ul>
+        <li><strong>Full backup:</strong> <code>export all [filename.zip]</code> zips the entire <code>User/</code> directory into <code>User/Exports/</code>.</li>
+        <li><strong>Table export:</strong> <code>export my_tasks.yml list tasks status:pending</code> saves a table as YAML.</li>
+      </ul>
+      <p>Restore with <code>import</code>:</p>
+      <ul>
+        <li><strong>Zip:</strong> <code>import User/Exports/backup.zip overwrite:true</code> extracts into <code>User/</code>.</li>
+        <li><strong>YAML list:</strong> <code>import User/Exports/items.yml</code> creates items (skips existing).</li>
+      </ul>
+
       <h2>Scripting &amp; Variables</h2>
       <p>Chronos supports simple <code>.chs</code> scripts and session variables:</p>
       <ul>
