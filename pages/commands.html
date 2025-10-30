@@ -199,9 +199,9 @@
           <p>Displays an item's content and properties.</p>
         </div>
       </div>
-    </main>
+  </main>
 
-    <footer class="site-footer">
+  <footer class="site-footer">
       <div class="container footer-inner">
         <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
         <div class="footer-links">
@@ -214,5 +214,18 @@
       </div>
     </footer>
     <script src="../script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.querySelector('.cmd-grid');
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll('.cmd'));
+        cards.sort((a, b) => {
+          const ta = (a.querySelector('code')?.textContent || '').trim().toLowerCase();
+          const tb = (b.querySelector('code')?.textContent || '').trim().toLowerCase();
+          return ta.localeCompare(tb);
+        });
+        cards.forEach(c => grid.appendChild(c));
+      });
+    </script>
   </body>
   </html>
