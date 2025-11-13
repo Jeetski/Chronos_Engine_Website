@@ -26,33 +26,60 @@
 
     <main class="container doc">
       <h1>Common Workflows</h1>
-      <p>Practical, repeatable ways to use Chronos — for humans and agents. A few highlights:</p>
+      <p>Practical, repeatable ways to use Chronos — for humans and agents.</p>
 
       <h2>Capture & Organize</h2>
       <pre><code>new task "Buy milk" priority:medium
 append note "Idea: Morning pages" "Try 3 pages after coffee."
 new project "Home Gym"
 new task "Order dumbbells" project:"Home Gym"</code></pre>
+      <ul>
+        <li>Defaults: add <code>task_defaults.yml</code> to set <code>default_priority</code>/<code>default_status</code>.</li>
+        <li>View/edit: <code>view task "Buy milk"</code>, <code>edit task "Buy milk"</code>.</li>
+      </ul>
 
       <h2>Templates & Routines</h2>
       <pre><code>new routine "Morning"
 add "Have coffee" to "Morning"
 add "Read 10 min" to "Morning"</code></pre>
+      <ul>
+        <li>Nesting: use subroutines and microroutines for structure.</li>
+        <li>Clone: <code>copy routine "Morning" "Morning (travel)"</code>.</li>
+      </ul>
 
       <h2>Plan the Day</h2>
       <pre><code>status energy:high focus:good
 today reschedule
 trim "Read 10 min" 5
 change "Have coffee" 07:45</code></pre>
+      <ul>
+        <li>Mark: <code>mark "Have coffee":completed</code>.</li>
+        <li>Dependencies: add <code>depends_on</code> in item YAML to hint order.</li>
+      </ul>
 
       <h2>Alarms & Reminders</h2>
       <pre><code>new reminder "Stand up" time:15:00 recurrence:[daily] enabled:true</code></pre>
+      <ul>
+        <li>Target actions: set <code>target: { type, name, action, properties }</code> in the YAML.</li>
+        <li>Snooze/dismiss: <code>snooze "Stand up"</code>, <code>dismiss "Stand up"</code>.</li>
+      </ul>
 
       <h2>Goals & Habits</h2>
       <pre><code>new goal "Publish v1" priority:high due_date:2026-02-01
 new milestone "Docs complete" goal:"Publish v1" weight:2</code></pre>
+      <ul>
+        <li>Milestone criteria: count or checklist (see Dashboard → Goals widget).</li>
+        <li>Habits: <code>completion_dates</code> vs <code>incident_dates</code> for good/bad habits.</li>
+      </ul>
 
-      <p>See the full guide in the repository <code>Docs/common_workflows.md</code>.</p>
+      <h2>Scripts</h2>
+      <pre><code># morning.chs
+status energy:high focus:good
+today reschedule
+if exists task:"Deep Work" then
+  append note Prep "Outline goals for the block"
+end</code></pre>
+      <p>See the full guide in the repo: <code>Docs/common_workflows.md</code>.</p>
     </main>
 
     <footer class="site-footer">
