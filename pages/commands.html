@@ -25,243 +25,495 @@
     </header>
 
     <main class="container doc">
-      <h1>Command Reference</h1>
-      <p><strong>Status:</strong> Early development &mdash; this list reflects current commands detected in the repo. <strong>Developer:</strong> David Cody (Hivemind Studio).</p>
-      <p>Chronos CLI commands in concise form. Arguments in <code>&lt;angle brackets&gt;</code> are required; items in <code>[square brackets]</code> are optional.</p>
+      <h1>Commands (Alphabetical)</h1>
+      <p>Usage and descriptions pulled from the CLI help.</p>
+      <ul>
+        <li><a href="#cmd-add">add</a></li>
+        <li><a href="#cmd-append">append</a></li>
+        <li><a href="#cmd-change">change</a></li>
+        <li><a href="#cmd-cls">cls</a></li>
+        <li><a href="#cmd-cmd">cmd</a></li>
+        <li><a href="#cmd-commitments">commitments</a></li>
+        <li><a href="#cmd-complete">complete</a></li>
+        <li><a href="#cmd-copy">copy</a></li>
+        <li><a href="#cmd-count">count</a></li>
+        <li><a href="#cmd-create">create</a></li>
+        <li><a href="#cmd-cut">cut</a></li>
+        <li><a href="#cmd-dashboard">dashboard</a></li>
+        <li><a href="#cmd-delete">delete</a></li>
+        <li><a href="#cmd-dismiss">dismiss</a></li>
+        <li><a href="#cmd-echo">echo</a></li>
+        <li><a href="#cmd-edit">edit</a></li>
+        <li><a href="#cmd-export">export</a></li>
+        <li><a href="#cmd-filter">filter</a></li>
+        <li><a href="#cmd-find">find</a></li>
+        <li><a href="#cmd-get">get</a></li>
+        <li><a href="#cmd-help">help</a></li>
+        <li><a href="#cmd-if">if</a></li>
+        <li><a href="#cmd-import">import</a></li>
+        <li><a href="#cmd-list">list</a></li>
+        <li><a href="#cmd-mark">mark</a></li>
+        <li><a href="#cmd-mark_norm">mark_norm</a></li>
+        <li><a href="#cmd-miss">miss</a></li>
+        <li><a href="#cmd-move">move</a></li>
+        <li><a href="#cmd-new">new</a></li>
+        <li><a href="#cmd-pause">pause</a></li>
+        <li><a href="#cmd-points">points</a></li>
+        <li><a href="#cmd-powershell">powershell</a></li>
+        <li><a href="#cmd-profile">profile</a></li>
+        <li><a href="#cmd-redeem">redeem</a></li>
+        <li><a href="#cmd-remove">remove</a></li>
+        <li><a href="#cmd-rename">rename</a></li>
+        <li><a href="#cmd-review">review</a></li>
+        <li><a href="#cmd-set">set</a></li>
+        <li><a href="#cmd-settings">settings</a></li>
+        <li><a href="#cmd-skip">skip</a></li>
+        <li><a href="#cmd-snooze">snooze</a></li>
+        <li><a href="#cmd-status">status</a></li>
+        <li><a href="#cmd-theme">theme</a></li>
+        <li><a href="#cmd-timer">timer</a></li>
+        <li><a href="#cmd-today">today</a></li>
+        <li><a href="#cmd-track">track</a></li>
+        <li><a href="#cmd-trim">trim</a></li>
+        <li><a href="#cmd-unset">unset</a></li>
+        <li><a href="#cmd-vars">vars</a></li>
+        <li><a href="#cmd-view">view</a></li>
+      </ul>
+      <h2 id="cmd-add">add</h2>
+      <pre>
+Usage: add &lt;item_to_add&gt; to &lt;target_template&gt; [position:&lt;number&gt;]
+Description: Adds an item to a template, intelligently resolving ambiguity.
+Example: add "My Subroutine" to "My Routine" position:1
+      </pre>
+      <h2 id="cmd-append">append</h2>
+      <pre>
+Usage: append &lt;item_type&gt; &lt;item_name&gt; "&lt;text_to_append&gt;" [property_key:property_value ...]
+Description: Appends text to the content of an existing item.
+Example: append note MyMeetingNotes "- Discuss Q3 results"
+      </pre>
+      <h2 id="cmd-change">change</h2>
+      <pre>
+Usage: change &lt;item_name&gt; &lt;new_start_time_HH:MM&gt;
+Description: Changes the start time of an item in the current day's schedule.
+Example: change "Morning Routine" 08:30
+      </pre>
+      <h2 id="cmd-cls">cls</h2>
+      <pre>
+Usage: cls
+Description: Clears the terminal screen.
+Example: cls
+      </pre>
+      <h2 id="cmd-cmd">cmd</h2>
+      <pre>
+Usage: cmd &lt;command&gt;
+Description: Executes the provided command-line (CMD) command.
+Example: cmd dir
+Example: cmd echo Hello from CMD!
+      </pre>
+      <h2 id="cmd-commitments">commitments</h2>
+      <pre>
+Usage: commitments [check]
+Description: Evaluates all commitments and fires triggers.
 
-      <div class="cmd-grid">
-        <div class="cmd">
-          <code>add &lt;item&gt; to &lt;target&gt; [position:&lt;number&gt;]</code>
-          <p>Adds an item to a template's sub-items.</p>
-        </div>
-        <div class="cmd">
-          <code>append &lt;type&gt; &lt;name&gt; "text"</code>
-          <p>Appends text to an item's content.</p>
-        </div>
-        <div class="cmd">
-          <code>change &lt;name&gt; &lt;HH:MM&gt;</code>
-          <p>Changes an item's start time in today's schedule.</p>
-        </div>
-        <div class="cmd">
-          <code>cls</code>
-          <p>Clears the terminal screen.</p>
-        </div>
-        <div class="cmd">
-          <code>cmd &lt;command&gt;</code>
-          <p>Executes a command-line command.</p>
-        </div>
-        <div class="cmd">
-          <code>complete</code>
-          <p>Completes items based on context (when enabled).</p>
-        </div>
-        <div class="cmd">
-          <code>copy &lt;type&gt; &lt;source&gt; [new]</code>
-          <p>Duplicates an existing item.</p>
-        </div>
-        <div class="cmd">
-          <code>count &lt;type&gt; [prop:value ...]</code>
-          <p>Counts items, optionally filtered.</p>
-        </div>
-        <div class="cmd">
-          <code>create|new &lt;type&gt; &lt;name&gt; [prop:value ...]</code>
-          <p>Creates a new item.</p>
-        </div>
-        <div class="cmd">
-          <code>cut &lt;name&gt;</code>
-          <p>Removes an item from today's schedule.</p>
-        </div>
-        <div class="cmd">
-          <code>dashboard</code>
-          <p>Opens the Chronos web dashboard.</p>
-        </div>
-        <div class="cmd">
-          <code>delete [-f|--force] &lt;type&gt; &lt;name&gt;</code>
-          <p>Deletes an item.</p>
-        </div>
-        <div class="cmd">
-          <code>dismiss|skip|snooze &lt;alarm_name&gt;</code>
-          <p>Manages alarms for the current day.</p>
-        </div>
-        <div class="cmd">
-          <code>echo "text"</code>
-          <p>Prints text to the console.</p>
-        </div>
-        <div class="cmd">
-          <code>edit &lt;type&gt; &lt;name&gt; [editor:&lt;name&gt;]</code>
-          <p>Opens an item in an editor.</p>
-        </div>
-        <div class="cmd">
-          <code>export</code>
-          <p>Exports data. Use <code>export all [filename.zip]</code> to zip the entire <code>User/</code> folder into <code>User/Exports/</code>. Or <code>export &lt;file.yml&gt; list &lt;type&gt; [props...]</code> to save a table as YAML.</p>
-        </div>
-        <div class="cmd">
-          <code>filter &lt;type&gt; [prop:value ...] | filter all | filter off</code>
-          <p>Sets or clears the active item filter.</p>
-        </div>
-        <div class="cmd">
-          <code>find &lt;type&gt; &lt;keyword&gt; [prop:value ...]</code>
-          <p>Searches for items.</p>
-        </div>
-        <div class="cmd">
-          <code>get &lt;type&gt; &lt;name&gt; &lt;property&gt;</code>
-          <p>Retrieves a specific property value.</p>
-        </div>
-        <div class="cmd">
-          <code>help [command]</code>
-          <p>Shows help for the CLI or a specific command.</p>
-        </div>
-        <div class="cmd">
-          <code>import</code>
-          <p>Imports data. If the path ends with <code>.zip</code>, extracts a full backup into <code>User/</code> (<code>overwrite:true</code> to replace). If it's a YAML list, creates items (skips existing).</p>
-        </div>
-        <div class="cmd">
-          <code>list &lt;type&gt; [sort_by:&lt;key&gt;] [reverse_sort:True|False]</code>
-          <p>Lists items with sorting options.</p>
-        </div>
-        <div class="cmd">
-          <code>mark &lt;name&gt;:&lt;status&gt;</code>
-          <p>Marks an item in the daily schedule with a status.</p>
-        </div>
-        <div class="cmd">
-          <code>mark_norm</code>
-          <p>Normalizes marks/status for items where supported.</p>
-        </div>
-        <div class="cmd">
-          <code>miss</code>
-          <p>Manages or lists missed alarms/slots (when available).</p>
-        </div>
-        <div class="cmd">
-          <code>move &lt;src_type&gt; &lt;src_name&gt; [new] [type:&lt;dst_type&gt;]</code>
-          <p>Moves and/or renames an item.</p>
-        </div>
-        <div class="cmd">
-          <code>pause [message]</code>
-          <p>Pauses script execution.</p>
-        </div>
-        <div class="cmd">
-          <code>powershell &lt;code&gt;</code>
-          <p>Runs PowerShell code.</p>
-        </div>
-        <div class="cmd">
-          <code>profile show|get|set|set-line</code>
-          <p>Shows or updates <code>User/profile.yml</code>. Supports <code>nickname</code> and a <code>welcome</code> block with <code>line1</code>/<code>line2</code>/<code>line3</code>. Use <code>set-line &lt;1|2|3&gt; &lt;text...&gt;</code> for values with spaces/emojis. Variables like <code>@nickname</code> expand in lines.</p>
-        </div>
-        <div class="cmd">
-          <code>remove &lt;type&gt; &lt;name&gt; &lt;property&gt;</code>
-          <p>Removes a property from an item.</p>
-        </div>
-        <div class="cmd">
-          <code>rename &lt;type&gt; &lt;old&gt; &lt;new&gt;</code>
-          <p>Renames an item.</p>
-        </div>
-        <div class="cmd">
-          <code>if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [else &lt;command&gt;]</code>
-          <p>Conditional execution. Operators: = != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches; Logic: and or xor nor not !; Supports <code>exists</code> for items, <code>file:</code>, <code>dir:</code>, <code>env:</code>.</p>
-        </div>
-        <div class="cmd">
-          <code>set &lt;type&gt; &lt;name&gt; &lt;key&gt;:&lt;value&gt; [...]</code>
-          <p>Sets one or more properties.</p>
-        </div>
-        <div class="cmd">
-          <code>vars [name:&lt;var&gt;]</code>
-          <p>Lists current script variables (see <code>set var</code>). Use <code>@name</code> to interpolate in commands.</p>
-        </div>
-        <div class="cmd">
-          <code>unset var &lt;name&gt;</code>
-          <p>Removes a script variable from the current session.</p>
-        </div>
-        <div class="cmd">
-          <code>settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;</code>
-          <p>Modifies a setting.</p>
-        </div>
-        <div class="cmd">
-          <code>status [type:value]</code>
-          <p>Views or sets status variables.</p>
-        </div>
-        <div class="cmd">
-          <code>today [reschedule]</code>
-          <p>Displays or regenerates today's schedule.</p>
-        </div>
-        <div class="cmd">
-          <code>theme list|current|set &lt;name&gt; | set-colors background:&lt;name|#hex&gt; text:&lt;name|#hex&gt;</code>
-          <p>Manages console theme. Themes live in <code>User/Settings/theme_settings.yml</code>; profile overrides in <code>User/profile.yml</code>. On Windows, applies via <code>color</code>.</p>
-        </div>
-        <div class="cmd">
-          <code>commitments [check]</code>
-          <p>Evaluates commitment rules and fires triggers. Supports frequency goals (times per day/week/month) and <em>never</em> rules with <code>forbidden_items</code>. Triggers can create <code>achievement</code>/<code>reward</code> items or run scripts.</p>
-        </div>
-        <div class="cmd">
-          <code>track</code>
-          <p>Starts/stops tracking utilities (where available).</p>
-        </div>
-        <div class="cmd">
-          <code>trim &lt;name&gt; &lt;minutes&gt;</code>
-          <p>Reduces an item's duration today.</p>
-        </div>
-        <div class="cmd">
-          <code>view &lt;type&gt; &lt;name&gt;</code>
-          <p>Displays an item's content and properties.</p>
-        </div>
-      </div>
-      <h2>All Commands (A–Z)</h2>
-      <p>Alphabetical list of commands detected from the current build.</p>
-      <div class="grid">
-        <div class="card"><strong>add</strong></div>
-        <div class="card"><strong>append</strong></div>
-        <div class="card"><strong>change</strong></div>
-        <div class="card"><strong>cls</strong></div>
-        <div class="card"><strong>cmd</strong></div>
-        <div class="card"><strong>commitments</strong></div>
-        <div class="card"><strong>complete</strong></div>
-        <div class="card"><strong>copy</strong></div>
-        <div class="card"><strong>count</strong></div>
-        <div class="card"><strong>create</strong></div>
-        <div class="card"><strong>cut</strong></div>
-        <div class="card"><strong>dashboard</strong></div>
-        <div class="card"><strong>delete</strong></div>
-        <div class="card"><strong>dismiss</strong></div>
-        <div class="card"><strong>echo</strong></div>
-        <div class="card"><strong>edit</strong></div>
-        <div class="card"><strong>export</strong></div>
-        <div class="card"><strong>filter</strong></div>
-        <div class="card"><strong>find</strong></div>
-        <div class="card"><strong>get</strong></div>
-        <div class="card"><strong>help</strong></div>
-        <div class="card"><strong>if</strong></div>
-        <div class="card"><strong>import</strong></div>
-        <div class="card"><strong>list</strong></div>
-        <div class="card"><strong>mark</strong></div>
-        <div class="card"><strong>mark_norm</strong></div>
-        <div class="card"><strong>miss</strong></div>
-        <div class="card"><strong>move</strong></div>
-        <div class="card"><strong>new</strong></div>
-        <div class="card"><strong>pause</strong></div>
-        <div class="card"><strong>points</strong></div>
-        <div class="card"><strong>powershell</strong></div>
-        <div class="card"><strong>profile</strong></div>
-        <div class="card"><strong>redeem</strong></div>
-        <div class="card"><strong>remove</strong></div>
-        <div class="card"><strong>rename</strong></div>
-        <div class="card"><strong>review</strong></div>
-        <div class="card"><strong>set</strong></div>
-        <div class="card"><strong>settings</strong></div>
-        <div class="card"><strong>skip</strong></div>
-        <div class="card"><strong>snooze</strong></div>
-        <div class="card"><strong>status</strong></div>
-        <div class="card"><strong>theme</strong></div>
-        <div class="card"><strong>timer</strong></div>
-        <div class="card"><strong>today</strong></div>
-        <div class="card"><strong>track</strong></div>
-        <div class="card"><strong>trim</strong></div>
-        <div class="card"><strong>unset</strong></div>
-        <div class="card"><strong>vars</strong></div>
-        <div class="card"><strong>view</strong></div>
-      </div>
+Commitment YAML fields (examples):
+
+  name: Exercise Twice Weekly
+  type: commitment
+  frequency: { times: 2, period: week }
+  associated_items:
+    - { type: habit, name: Exercise }
+    - { type: task, name: Morning Run }
+  triggers:
+    on_met:
+      - { type: achievement, name: Exercise streak! }
+      - { type: script, path: Scripts/congrats.chs }
+
+  name: Never Smoke
+  type: commitment
+  never: true
+  forbidden_items:
+    - { type: habit, name: Smoke }
+  triggers:
+    on_violation:
+      - { type: reward, name: Reflection Needed, properties: { category: Health } }
+      </pre>
+      <h2 id="cmd-complete">complete</h2>
+      <pre>
+Usage: complete &lt;item_type&gt; &lt;item_name&gt;
+Description: Marks an item as complete for today and updates tracking (streaks, sessions).
+Examples:
+  complete task "Deep Work" minutes:50
+  complete routine "Morning Routine"
+  complete appointment "Dentist" attended:true
+  complete appointment "Dentist" no_show:true  (records a session but does NOT count as completion)
+      </pre>
+      <h2 id="cmd-copy">copy</h2>
+      <pre>
+Usage: copy &lt;item_type&gt; &lt;source_item_name&gt; [new_item_name] [property_key:property_value ...]
+Description: Creates a duplicate of an existing item, optionally with a new name and modified properties.
+Example: copy note MyMeetingNotes MyMeetingNotes_Copy
+Example: copy task "Old Task" "New Task" status:pending priority:high
+      </pre>
+      <h2 id="cmd-count">count</h2>
+      <pre>
+Usage: count &lt;item_type&gt; [property_key:property_value ...]
+Description: Counts items of a specific type, optionally filtered by properties.
+Example: count note category:work
+Example: count task status:pending priority:high
+      </pre>
+      <h2 id="cmd-create">create</h2>
+      <pre>
+Usage: create &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
+Description: Creates a new item of the specified type with the given name and properties.
+Example: create note MyMeetingNotes category:work priority:high
+
+Note: For 'alarm' and 'reminder' item types, you can add a 'script' property to execute a .chs file when triggered.
+Example: create alarm MyAlarm time:08:00 script:Scripts/my_script.chs
+
+Linking alarms/reminders to items:
+- Add a 'target' object to the YAML (via properties or by editing the file) to execute an action on trigger.
+  target:
+    type: task
+    name: "Deep Work"
+    action: complete   # or: open | set_status
+    status: completed  # required only when action == set_status
+    properties: { minutes: 25 }  # optional extra args for the action
+      </pre>
+      <h2 id="cmd-cut">cut</h2>
+      <pre>
+Usage: cut &lt;item_name&gt;
+Description: Removes an item from the current day's schedule.
+Example: cut "Morning Routine"
+      </pre>
+      <h2 id="cmd-dashboard">dashboard</h2>
+      <pre>
+Usage: dashboard
+Description: Opens the Chronos dashboard UI in your default browser.
+Also pre-bundles User/Settings YAML into generated/settings_bundle.js for the UI to consume.
+      </pre>
+      <h2 id="cmd-delete">delete</h2>
+      <pre>
+Usage: delete [-f|--force] &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
+Description: Deletes an item of the specified type. Use -f or --force to skip confirmation.
+Example: delete note MyOldNote --force
+      </pre>
+      <h2 id="cmd-dismiss">dismiss</h2>
+      <pre>
+Usage: dismiss &lt;alarm_name&gt;
+Description: Dismisses a specified alarm for the remainder of the current day.
+Example: dismiss "Morning Alarm"
+      </pre>
+      <h2 id="cmd-echo">echo</h2>
+      <pre>
+Usage: echo &lt;text_to_print&gt;
+Description: Prints the provided text to the console.
+Example: echo Hello, World!
+      </pre>
+      <h2 id="cmd-edit">edit</h2>
+      <pre>
+Usage: edit &lt;item_type&gt; &lt;item_name&gt; [editor:&lt;editor_name&gt;] [property_key:property_value ...]
+Description: Opens an item in a text editor for modification.
+Example: edit note MyMeetingNotes editor:nvim
+      </pre>
+      <h2 id="cmd-export">export</h2>
+      <pre>
+Usage:
+  export all [filename.zip]
+  export &lt;filename&gt; &lt;command&gt; [args...]
+
+Description:
+  export all: Zips the entire User/ directory into User/Exports/[filename].zip.
+  export filename: Executes a command and saves its table output to YAML in User/Exports/.
+
+Example:
+  export all chronos_backup.zip
+  export my_tasks.yml list tasks priority:high
+      </pre>
+      <h2 id="cmd-filter">filter</h2>
+      <pre>
+Usage: filter &lt;item_type&gt; [property:value ...] | filter all | filter off
+Description: Sets or clears the active filter for Chronos items.
+Example: filter note category:work
+Example: filter all
+Example: filter off
+      </pre>
+      <h2 id="cmd-find">find</h2>
+      <pre>
+Usage: find &lt;item_type&gt; &lt;keyword&gt; [property_key:property_value ...]
+Description: Searches for items of the specified type based on a keyword and optional properties.
+Example: find note meeting category:work
+      </pre>
+      <h2 id="cmd-get">get</h2>
+      <pre>
+Usage: get &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt; [variable_name:&lt;var_name&gt;] [property_key:property_value ...]
+Description: Retrieves the value of a specific property from an item.
+Example: get note MyMeetingNotes category variable_name:my_category
+      </pre>
+      <h2 id="cmd-help">help</h2>
+      <pre>
+Usage: help
+Description: Displays this help message, listing all available commands and their usage.
+      </pre>
+      <h2 id="cmd-if">if</h2>
+      <pre>
+Usage: if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [args...] [else &lt;command&gt; ...]
+       if exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]] then &lt;command&gt; [else &lt;command&gt; ...]
+       if exists file:&lt;path&gt; | dir:&lt;path&gt; | env:&lt;NAME&gt; then &lt;command&gt; [else ...]
+Operators: =, !=, &gt;, &lt;, &gt;=, &lt;=, eq, ne, gt, lt, ge, le, matches
+Logic: and, or, not/! , parentheses ( ... )
+Left/Right forms:
+  - status:&lt;key&gt;
+  - &lt;type&gt;:&lt;name&gt;:&lt;property&gt;
+  - literals (after @var expansion)
+Examples:
+  if status:energy eq high and exists note:"Journal" then echo "rest"
+  if task:Morning_Run:duration &gt; 20 then trim "Morning Run" 5 else echo ok
+  if note:"IF Note":priority matches ^h.* then echo HIGH
+  if exists note:Journal then echo "journal exists"
+  if exists file:README.md then echo HAVE_README
+  if exists dir:User/Notes then echo NOTES_DIR
+  if exists env:PATH then echo HAS_PATH
+      </pre>
+      <h2 id="cmd-import">import</h2>
+      <pre>
+Usage:
+  import &lt;file_path&gt;
+
+Description:
+  - If &lt;file_path&gt; ends with .zip, extracts the backup into the User/ directory.
+    Use property overwrite:true or mode:overwrite to overwrite existing files.
+  - If &lt;file_path&gt; is a YAML list, imports items (skips if already exist).
+
+Example:
+  import User/Exports/my_tasks.yml
+  import User/Exports/chronos_backup.zip overwrite:true
+      </pre>
+      <h2 id="cmd-list">list</h2>
+      <pre>
+Usage: list &lt;item_type&gt; [sort_by:&lt;property_key&gt;] [reverse_sort:True/False] [property_key:property_value ...]
+       list &lt;item_type&gt; [list_properties...] then &lt;command&gt; [command_args...]
+
+Description:
+  Lists items of the specified type, optionally filtered and sorted by a property.
+  Can also pipe the listed items to another command for bulk operations.
+
+Examples:
+  list note sort_by:priority reverse_sort:True
+  list tasks status:pending then set status:in-progress
+  list tasks priority:high then delete
+      </pre>
+      <h2 id="cmd-mark">mark</h2>
+      <pre>
+Usage: mark &lt;item_name&gt;:&lt;status&gt;
+Description: Marks an item in the daily schedule with a new status.
+Example: mark "Morning Routine":completed
+      </pre>
+      <h2 id="cmd-mark_norm">mark_norm</h2>
+      <pre>
+Usage: mark &lt;item_name&gt;:&lt;status&gt;
+Description: Marks an item in the daily schedule with a new status.
+Example: mark "Morning Routine":completed
+      </pre>
+      <h2 id="cmd-miss">miss</h2>
+      <pre>
+Usage: miss &lt;item_type&gt; &lt;item_name&gt;
+Description: Records a missed occurrence (does not count as completion). Helpful for commitments and appointment no-shows.
+Examples:
+  miss commitment "Daily Promise"
+  miss appointment "Dentist"            (equivalent to no_show)
+  miss appointment "Dentist" outcome:no_show
+      </pre>
+      <h2 id="cmd-move">move</h2>
+      <pre>
+Usage: move &lt;source_item_type&gt; &lt;source_item_name&gt; [new_item_name] [type:&lt;target_item_type&gt;] [name:&lt;new_item_name&gt;] [property_key:property_value ...]
+Description: Moves an item to a new item type, renames it, or both.
+Example: move note MyOldNote MyNewNote
+Example: move note MyNote type:task
+Example: move note MyNote MyTask type:task
+      </pre>
+      <h2 id="cmd-new">new</h2>
+      <pre>
+Usage: new &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
+Description: Creates a new item of the specified type with the given name and properties.
+Example: new note MyMeetingNotes category:work priority:high
+
+Note: For 'alarm' and 'reminder' item types, you can add a 'script' property to execute a .chs file when triggered.
+Example: new alarm MyAlarm time:08:00 script:Scripts/my_script.chs
+      </pre>
+      <h2 id="cmd-pause">pause</h2>
+      <pre>
+Usage: pause [message]
+Description: Pauses script execution until a key is pressed. Displays an optional message.
+Example: pause
+Example: pause Script paused. Press Enter to proceed.
+      </pre>
+      <h2 id="cmd-points">points</h2>
+      <pre>
+Usage:
+  points balance
+  points add &lt;n&gt; [reason:&lt;text&gt;]
+  points subtract &lt;n&gt; [reason:&lt;text&gt;]
+  points history [&lt;last_N&gt;]
+      </pre>
+      <h2 id="cmd-powershell">powershell</h2>
+      <pre>
+Usage: powershell &lt;powershell_code&gt;
+Description: Executes the provided PowerShell code.
+Example: powershell Get-Process | Select-Object -First 3
+Example: powershell Write-Host "Hello from PowerShell!"
+      </pre>
+      <h2 id="cmd-profile">profile</h2>
+      <pre>
+Usage: profile show
+       profile get &lt;nickname|line1|line2|line3&gt;
+       profile set [nickname:&lt;value&gt;] [line1:"..."] [line2:"..."] [line3:"..."]
+       profile set-line &lt;1|2|3&gt; &lt;text...&gt;
+
+Description:
+  Views or updates profile details stored in User/profile.yml. Supports a welcome block with line1/line2/line3.
+  Variables like @nickname expand in the welcome lines.
+
+Examples:
+  profile show
+  profile set nickname:Alice
+  profile set line2:"🚀 Welcome, @nickname" line3:"🌌 Navigate your reality"
+  profile set-line 2 🚀 Welcome, @nickname
+      </pre>
+      <h2 id="cmd-redeem">redeem</h2>
+      <pre>
+Usage: redeem reward &lt;name&gt;
+Description: Redeems a reward, deducting points and delivering its target.
+Examples:
+  redeem reward "Game Break"
+      </pre>
+      <h2 id="cmd-remove">remove</h2>
+      <pre>
+Usage: remove &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt;
+Description: Removes a specified property from an item.
+Example: remove note MyMeetingNotes category
+      </pre>
+      <h2 id="cmd-rename">rename</h2>
+      <pre>
+Usage: rename &lt;item_type&gt; &lt;old_name&gt; &lt;new_name&gt; [properties]
+Description: Renames an existing item.
+Example: rename note MyOldNote MyNewNote
+      </pre>
+      <h2 id="cmd-review">review</h2>
+      <pre>
+Usage:
+  review daily [YYYY-MM-DD]
+  review weekly [YYYY-WW]
+  review monthly [YYYY-MM]
+  review export &lt;daily|weekly|monthly&gt; &lt;period&gt;
+  review open &lt;daily|weekly|monthly&gt; &lt;period&gt;
+      </pre>
+      <h2 id="cmd-set">set</h2>
+      <pre>
+Usage: set &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt;:&lt;value&gt; [...]
+       set var &lt;variable_name&gt;:&lt;value&gt;
+Description: Sets properties of an item or defines a script variable.
+Example: set note MyMeetingNotes priority:high category:work
+Example: set var my_variable:some_value
+
+Special (goals):
+  set goal "&lt;name&gt;" template:true      # mark goal as a template
+  set goal "&lt;name&gt;" apply:true         # instantiate milestones from template
+      </pre>
+      <h2 id="cmd-settings">settings</h2>
+      <pre>
+Usage: settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;
+Description: Modifies a setting in a specified settings file.
+Arguments:
+  &lt;file_shortcut&gt;: A shorthand for the settings file name (e.g., 'buffer' for 'Buffer_Settings.yml').
+  &lt;property&gt;: The name of the property to modify. Use dot notation for nested properties (e.g., 'global_dynamic_buffer.buffer_interval_minutes').
+  &lt;value&gt;: The new value for the property.
+      </pre>
+      <h2 id="cmd-skip">skip</h2>
+      <pre>
+Usage: skip &lt;alarm_name&gt;
+Description: Skips a specified alarm for the remainder of the current day.
+Example: skip "Morning Alarm"
+      </pre>
+      <h2 id="cmd-snooze">snooze</h2>
+      <pre>
+Usage: snooze &lt;alarm_name&gt;
+Description: Snoozes a specified alarm for its configured snooze duration.
+Example: snooze "Morning Alarm"
+      </pre>
+      <h2 id="cmd-status">status</h2>
+      <pre>
+Views or sets user status variables.
+
+Usage: status &lt;indicator&gt;:&lt;value&gt;
+       status (to view current status)
+
+Examples:
+  status emotion:happy
+  status energy:low
+      </pre>
+      <h2 id="cmd-theme">theme</h2>
+      <pre>
+Usage: theme &lt;subcommand&gt;
+Subcommands:
+  list                 List available themes
+  current              Show current theme/background/text
+  set &lt;name&gt;           Set theme by name (from theme_settings.yml)
+  set-colors [background:&lt;name|#hex&gt;] [text:&lt;name|#hex&gt;]
+                       Set explicit console colors (overrides theme)
+Notes:
+- Themes come from User/Settings/theme_settings.yml (themes: { name: { background, text } }).
+- Current selection is stored in User/profile.yml under 'theme' or 'console: { theme }'.
+- Explicit 'background'/'text' in profile override the theme.
+      </pre>
+      <h2 id="cmd-timer">timer</h2>
+      <pre>
+Usage:
+  timer start &lt;profile&gt; [type:&lt;item_type&gt; name:&lt;item_name&gt;] [cycles:N] [auto_advance:true|false]
+  timer pause | resume | stop | status
+  timer profiles list | view &lt;name&gt; | save &lt;name&gt; [k:v ...] | delete &lt;name&gt;
+      </pre>
+      <h2 id="cmd-today">today</h2>
+      <pre>
+Description: No help message available.
+      </pre>
+      <h2 id="cmd-track">track</h2>
+      <pre>
+Usage: track &lt;item_type&gt; &lt;item_name&gt;
+Description: Displays tracking data for a specific item (streaks, sessions, minutes, history).
+Examples:
+  track task "Deep Work"
+  track routine "Morning Routine"
+      </pre>
+      <h2 id="cmd-trim">trim</h2>
+      <pre>
+Usage: trim &lt;item_name&gt; &lt;amount_in_minutes&gt;
+Description: Reduces the duration of an item in the current day's schedule.
+Example: trim "Morning Routine" 10
+      </pre>
+      <h2 id="cmd-unset">unset</h2>
+      <pre>
+Usage: unset var &lt;name&gt;
+Description: Removes a script variable from the current session.
+Example: unset var project
+      </pre>
+      <h2 id="cmd-vars">vars</h2>
+      <pre>
+Usage: vars [name:&lt;varname&gt;]
+Description: Lists current script variables or a single variable by name.
+Example: vars
+Example: vars name:project
+      </pre>
+      <h2 id="cmd-view">view</h2>
+      <pre>
+Usage: view &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
+Description: Displays the content and properties of a specific item.
+Example: view note MyMeetingNotes
+      </pre>
     </main>
 
-  <footer class="site-footer">
+    <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
           <a href="/Website/pages/docs.html">Docs</a>
           <a href="/Website/pages/agents.html">Agents</a>
@@ -272,18 +524,5 @@
       </div>
     </footer>
     <script src="../script.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const grid = document.querySelector('.cmd-grid');
-        if (!grid) return;
-        const cards = Array.from(grid.querySelectorAll('.cmd'));
-        cards.sort((a, b) => {
-          const ta = (a.querySelector('code')?.textContent || '').trim().toLowerCase();
-          const tb = (b.querySelector('code')?.textContent || '').trim().toLowerCase();
-          return ta.localeCompare(tb);
-        });
-        cards.forEach(c => grid.appendChild(c));
-      });
-    </script>
   </body>
-  </html>
+</html>
