@@ -30,11 +30,34 @@
 
       <h2>Conventions</h2>
       <ul>
-        <li><code>points_settings.yml</code></li>
-        <li><code>achievement_defaults.yml</code></li>
-        <li><code>&lt;item&gt;_defaults.yml</code> (e.g., <code>task_defaults.yml</code>)</li>
-        <li>Timer: <code>Timer_Settings.yml</code>, profiles in <code>Timer_Profiles.yml</code></li>
+        <li><code>points_settings.yml</code> — points earn rules</li>
+        <li><code>achievement_defaults.yml</code> — default fields for new achievements</li>
+        <li><code>&lt;item&gt;_defaults.yml</code> — defaults per item type (e.g., <code>task_defaults.yml</code>)</li>
+        <li>Timer: <code>Timer_Settings.yml</code> and <code>Timer_Profiles.yml</code></li>
+        <li>Theme: <code>theme_settings.yml</code>; profile selects theme</li>
       </ul>
+
+      <h2>Examples</h2>
+      <h3>Points</h3>
+      <pre><code>earn:
+  task: 10
+  routine: 5
+  subroutine: 4
+  microroutine: 2
+  habit: 5</code></pre>
+
+      <h3>Task defaults</h3>
+      <pre><code>default_priority: medium
+default_status: pending
+default_category: personal</code></pre>
+
+      <h3>Theme</h3>
+      <pre><code>themes:
+  hacker: { background: black, text: neon_green }
+  calm:   { background: dark_blue, text: white }</code></pre>
+      <p>Select via <code>User/profile.yml</code>:</p>
+      <pre><code>nickname: Pilot
+theme: calm</code></pre>
 
       <h2>Edit</h2>
       <ul>
