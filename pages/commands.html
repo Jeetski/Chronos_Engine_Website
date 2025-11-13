@@ -92,7 +92,7 @@
         </div>
         <div class="cmd">
           <code>export</code>
-          <p>Exports data (when configured).</p>
+          <p>Exports data. Use <code>export all [filename.zip]</code> to zip the entire <code>User/</code> folder into <code>User/Exports/</code>. Or <code>export &lt;file.yml&gt; list &lt;type&gt; [props...]</code> to save a table as YAML.</p>
         </div>
         <div class="cmd">
           <code>filter &lt;type&gt; [prop:value ...] | filter all | filter off</code>
@@ -112,7 +112,7 @@
         </div>
         <div class="cmd">
           <code>import</code>
-          <p>Imports data/items (when configured).</p>
+          <p>Imports data. If the path ends with <code>.zip</code>, extracts a full backup into <code>User/</code> (<code>overwrite:true</code> to replace). If it's a YAML list, creates items (skips existing).</p>
         </div>
         <div class="cmd">
           <code>list &lt;type&gt; [sort_by:&lt;key&gt;] [reverse_sort:True|False]</code>
@@ -143,6 +143,10 @@
           <p>Runs PowerShell code.</p>
         </div>
         <div class="cmd">
+          <code>profile show|get|set|set-line</code>
+          <p>Shows or updates <code>User/profile.yml</code>. Supports <code>nickname</code> and a <code>welcome</code> block with <code>line1</code>/<code>line2</code>/<code>line3</code>. Use <code>set-line &lt;1|2|3&gt; &lt;text...&gt;</code> for values with spaces/emojis. Variables like <code>@nickname</code> expand in lines.</p>
+        </div>
+        <div class="cmd">
           <code>remove &lt;type&gt; &lt;name&gt; &lt;property&gt;</code>
           <p>Removes a property from an item.</p>
         </div>
@@ -151,8 +155,20 @@
           <p>Renames an item.</p>
         </div>
         <div class="cmd">
+          <code>if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [else &lt;command&gt;]</code>
+          <p>Conditional execution. Operators: = != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches; Logic: and or xor nor not !; Supports <code>exists</code> for items, <code>file:</code>, <code>dir:</code>, <code>env:</code>.</p>
+        </div>
+        <div class="cmd">
           <code>set &lt;type&gt; &lt;name&gt; &lt;key&gt;:&lt;value&gt; [...]</code>
           <p>Sets one or more properties.</p>
+        </div>
+        <div class="cmd">
+          <code>vars [name:&lt;var&gt;]</code>
+          <p>Lists current script variables (see <code>set var</code>). Use <code>@name</code> to interpolate in commands.</p>
+        </div>
+        <div class="cmd">
+          <code>unset var &lt;name&gt;</code>
+          <p>Removes a script variable from the current session.</p>
         </div>
         <div class="cmd">
           <code>settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;</code>
@@ -167,6 +183,14 @@
           <p>Displays or regenerates today's schedule.</p>
         </div>
         <div class="cmd">
+          <code>theme list|current|set &lt;name&gt; | set-colors background:&lt;name|#hex&gt; text:&lt;name|#hex&gt;</code>
+          <p>Manages console theme. Themes live in <code>User/Settings/theme_settings.yml</code>; profile overrides in <code>User/profile.yml</code>. On Windows, applies via <code>color</code>.</p>
+        </div>
+        <div class="cmd">
+          <code>commitments [check]</code>
+          <p>Evaluates commitment rules and fires triggers. Supports frequency goals (times per day/week/month) and <em>never</em> rules with <code>forbidden_items</code>. Triggers can create <code>achievement</code>/<code>reward</code> items or run scripts.</p>
+        </div>
+        <div class="cmd">
           <code>track</code>
           <p>Starts/stops tracking utilities (where available).</p>
         </div>
@@ -179,9 +203,9 @@
           <p>Displays an item's content and properties.</p>
         </div>
       </div>
-    </main>
+  </main>
 
-    <footer class="site-footer">
+  <footer class="site-footer">
       <div class="container footer-inner">
         <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
         <div class="footer-links">
@@ -189,10 +213,23 @@
           <a href="/Website/pages/agents.html">Agents</a>
           <a href="/Website/pages/commands.html">Commands</a>
           <a href="/Website/pages/setup.html">Setup</a>
-          <a href="https://github.com/Jeetski/Chronos_Engine_Website" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const grid = document.querySelector('.cmd-grid');
+        if (!grid) return;
+        const cards = Array.from(grid.querySelectorAll('.cmd'));
+        cards.sort((a, b) => {
+          const ta = (a.querySelector('code')?.textContent || '').trim().toLowerCase();
+          const tb = (b.querySelector('code')?.textContent || '').trim().toLowerCase();
+          return ta.localeCompare(tb);
+        });
+        cards.forEach(c => grid.appendChild(c));
+      });
+    </script>
   </body>
   </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - License</title>
+    <title>Chronos Engine - Dashboard Guide</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -14,10 +14,10 @@
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
           <a href="../index.html#features">Features</a>
-          <a href="docs.html">Docs</a>
+          <a class="active" href="docs.html">Docs</a>
           <a href="agents.html">Agents</a>
           <a href="commands.html">Commands</a>
-          <a class="active" href="license.html">License</a>
+          <a href="license.html">License</a>
           <a href="setup.html" class="cta">Get Started</a>
         </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
@@ -25,34 +25,42 @@
     </header>
 
     <main class="container doc">
-      <h1>Licensing</h1>
-      <p><strong>Feast if you build in the open. If you profit while keeping changes closed, you need a Commercial License.</strong></p>
+      <h1>Dashboard Guide</h1>
+      <p>How to run and use the Chronos Dashboard: views, widgets, and API endpoints.</p>
 
-      <h2>Core License</h2>
-      <p>Chronos Core is licensed under <strong>AGPL-3.0-or-later</strong>. You can use, modify, sell, or host Chronos under AGPL compliance. If you modify or embed the Core and distribute/host it, you must publish your changes.</p>
-      <p><a href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank" rel="noopener">Read the full AGPL v3 license</a>.</p>
+      <h2>Run</h2>
+      <ol>
+        <li>Start the server: <code>python Utilities/Dashboard/server.py</code></li>
+        <li>Open <code>Utilities/Dashboard/dashboard.html</code> in your browser</li>
+      </ol>
 
-      <h2>Commercial License</h2>
-      <p>If you need to keep modifications, embedded use, or in-process plugins proprietary, obtain a Commercial License.</p>
-      <p>Contact: <a href="mailto:licensing@chronosengine.online">licensing@chronosengine.online</a></p>
-      <p>See the plain-language terms: <a href="commercial-license.html">Commercial License</a></p>
-
-      <h2>Marketplace & Trademarks</h2>
+      <h2>Views & Widgets</h2>
       <ul>
-        <li><a href="marketplace-terms.html">Chronos Marketplace Terms</a> (paid listings and the “Chronos Certified” badge)</li>
-        <li><a href="trademark-policy.html">Trademark Policy</a> (using the Chronos name and branding)</li>
+        <li><strong>Calendar</strong>: Year/Month/Week/Day; select a block to target edits</li>
+        <li><strong>Today</strong>: Trim −5/−10/custom; Change; Cut; Mark; Reschedule</li>
+        <li><strong>Notes, Status, Timer, HabitTracker, GoalTracker, ItemManager, DebugConsole</strong></li>
+        <li><strong>Settings</strong>: edit <code>User/Settings/*.yml</code> with validation</li>
+      </ul>
+
+      <h2>API (selected)</h2>
+      <ul>
+        <li><code>POST /api/cli</code> — run commands</li>
+        <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
+        <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
+        <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
+        <li><code>GET /api/timer/status|profiles|settings</code>, <code>POST /api/timer/*</code></li>
+        <li><code>GET/POST /api/settings</code> — list/read/write settings files</li>
       </ul>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio) - Early Development</div>
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
           <a href="/Website/pages/docs.html">Docs</a>
           <a href="/Website/pages/agents.html">Agents</a>
           <a href="/Website/pages/commands.html">Commands</a>
           <a href="/Website/pages/setup.html">Setup</a>
-          <a href="/Website/pages/license.html">License</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -60,3 +68,4 @@
     <script src="../script.js"></script>
   </body>
   </html>
+
