@@ -32,6 +32,14 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .nav .cta{padding:8px 12px;background:transparent;color:var(--text);border:1px solid var(--accent);border-radius:6px;font-weight:700;box-shadow:0 0 10px rgba(0,255,102,.15) inset}
 .nav-toggle{display:none;margin-left:auto;font-size:22px;background:transparent;color:var(--text);border:1px solid var(--accent);border-radius:6px;padding:4px 10px}
 
+/* Dropdown */
+.dropdown{position:relative}
+.dropdown > a{display:inline-flex;align-items:center;gap:6px}
+.dropdown-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);min-width:220px;background:#000;border:1px solid var(--accent);border-radius:8px;box-shadow:0 0 16px rgba(0,255,102,.12);padding:8px;z-index:12}
+.dropdown.open .dropdown-menu{display:block}
+.dropdown-menu a{display:block;padding:6px 8px;border-radius:6px}
+.dropdown-menu a:hover{background:#020;}
+
 .hero{padding:72px 0 56px;background:#000}
 .hero h1{font-size:40px;line-height:1.1;margin:0 0 12px;text-shadow:0 0 10px rgba(0,255,102,.6)}
 .tagline{color:var(--muted);margin:0 0 20px}

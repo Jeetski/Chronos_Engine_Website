@@ -23,3 +23,34 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// Inject Guides dropdown into navbar
+(function(){
+  const nav = document.getElementById('siteNav');
+  if (!nav) return;
+  // Avoid duplicate injection
+  if (document.getElementById('guidesDropdown')) return;
+  const dd = document.createElement('div');
+  dd.className = 'dropdown';
+  dd.id = 'guidesDropdown';
+  dd.innerHTML = `
+    <a href="#">Guides ▾</a>
+    <div class="dropdown-menu">
+      <a href="architecture.html">Architecture</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="settings.html">Settings</a>
+      <a href="workflows.html">Common Workflows</a>
+      <a href="chs-scripting.html">CHS Scripting</a>
+      <a href="conditions-cookbook.html">Conditions Cookbook</a>
+    </div>
+  `;
+  nav.insertBefore(dd, nav.querySelector('.cta'));
+  // Toggle on click for mobile
+  dd.addEventListener('click', (e)=>{
+    // If clicking a link, let it navigate
+    if (e.target && e.target.tagName === 'A' && e.target.getAttribute('href') !== '#') return;
+    e.preventDefault(); e.stopPropagation();
+    dd.classList.toggle('open');
+  });
+  // Close when clicking elsewhere
+  document.addEventListener('click', ()=> dd.classList.remove('open'));
+})();
