@@ -33,14 +33,34 @@
         <li>Start the server: <code>python Utilities/Dashboard/server.py</code></li>
         <li>Open <code>Utilities/Dashboard/dashboard.html</code> in your browser</li>
       </ol>
+      <h3>Notes</h3>
+      <ul>
+        <li>When opened via <code>file://</code>, assets/APIs default to <code>http://127.0.0.1:7357</code>.</li>
+        <li>CORS is permissive for localhost development; avoid exposing publicly without auth.</li>
+      </ul>
 
       <h2>Views & Widgets</h2>
       <ul>
-        <li><strong>Calendar</strong>: Year/Month/Week/Day; select a block to target edits</li>
-        <li><strong>Today</strong>: Trim −5/−10/custom; Change; Cut; Mark; Reschedule</li>
+        <li><strong>Calendar</strong>: Year/Month/Week/Day; select a block to target edits; overlay controls for zoom and level.</li>
+        <li><strong>Today</strong>: Trim −5/−10/custom; Change; Cut; Mark; Reschedule. Actions run via <code>POST /api/cli</code>.</li>
         <li><strong>Notes, Status, Timer, HabitTracker, GoalTracker, ItemManager, DebugConsole</strong></li>
         <li><strong>Settings</strong>: edit <code>User/Settings/*.yml</code> with validation</li>
       </ul>
+
+      <h3>Examples</h3>
+      <pre><code># Today → Reschedule
+POST /api/today/reschedule
+Content-Type: text/yaml
+
+reschedule: true</code></pre>
+      <pre><code># CLI proxy: trim selected block by 5 minutes
+POST /api/cli
+Content-Type: text/yaml
+
+command: trim
+args:
+  - "Have coffee"
+  - "5"</code></pre>
 
       <h2>API (selected)</h2>
       <ul>
