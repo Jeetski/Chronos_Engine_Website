@@ -30,16 +30,16 @@
 
       <h2>Runtime Overview</h2>
       <ul>
-        <li><strong>CLI Entrypoint</strong>: <code>Modules/Console.py</code> loads commands and scripts, sets UTFâ€‘8, and dispatches to modules.</li>
+        <li><strong>CLI Entrypoint</strong>: <code>Modules/Console.py</code> loads commands and scripts, sets UTF'8, and dispatches to modules.</li>
         <li><strong>Item System</strong>: <code>Modules/ItemManager.py</code> reads/writes YAML items in <code>User/</code> and applies defaults.</li>
         <li><strong>Conditions</strong>: <code>Modules/Conditions.py</code> provides <code>if</code> logic with parentheses and <code>exists</code>/<code>matches</code>.</li>
-        <li><strong>Scheduler</strong>: <code>Modules/Scheduler.py</code> + <code>Commands/Today.py</code> build and refine the day plan (trim/change/cut/mark â†’ reschedule pipeline).</li>
+        <li><strong>Scheduler</strong>: <code>Modules/Scheduler.py</code> + <code>Commands/Today.py</code> build and refine the day plan (trim/change/cut/mark ' reschedule pipeline).</li>
         <li><strong>Listener</strong>: <code>Modules/Listener/Listener.py</code> handles alarms/reminders/timer in the background.</li>
-        <li><strong>Dashboard</strong>: <code>Utilities/Dashboard</code> serves APIs and mounts vanillaâ€‘JS widgets.</li>
+        <li><strong>Dashboard</strong>: <code>Utilities/Dashboard</code> serves APIs and mounts vanilla'JS widgets.</li>
       </ul>
 
       <h2>Data Model</h2>
-      <p>Items are YAML files with <code>name</code>, <code>type</code>, and properties. Many items nest children to form a fractal hierarchy (routines â†’ subroutines â†’ microroutines â†’ items).</p>
+      <p>Items are YAML files with <code>name</code>, <code>type</code>, and properties. Many items nest children to form a fractal hierarchy (routines ' subroutines ' microroutines ' items).</p>
 
       <h2>Settings</h2>
       <p>Settings live under <code>User/Settings/</code> and prefer lowercase filenames (e.g., <code>points_settings.yml</code>, <code>&lt;item&gt;_defaults.yml</code>). The Settings widget allows direct editing with validation.</p>
@@ -52,11 +52,11 @@
 
       <h2>Dashboard API (selected)</h2>
       <ul>
-        <li><code>POST /api/cli</code> â€” run commands</li>
+        <li><code>POST /api/cli</code> " run commands</li>
         <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
         <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
         <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
-        <li><code>GET/POST /api/settings</code> â€” list/read/write settings files</li>
+        <li><code>GET/POST /api/settings</code> " list/read/write settings files</li>
       </ul>
 
       <h2>Extending Chronos</h2>
@@ -79,7 +79,7 @@
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
       <h3>Execution flow (CLI)</h3>
       <ol>
-        <li><strong>Parse</strong>: user input â†’ tokens via <code>shlex</code>, variables expanded (e.g., <code>@nickname</code>).</li>
+        <li><strong>Parse</strong>: user input ' tokens via <code>shlex</code>, variables expanded (e.g., <code>@nickname</code>).</li>
         <li><strong>Dispatch</strong>: find <code>Commands/&lt;Name&gt;.py</code> and call <code>run(args, properties)</code>.</li>
         <li><strong>Modules</strong>: item verbs distributed to <code>Modules/&lt;Item&gt;/main.py</code> handlers.</li>
         <li><strong>Persist</strong>: YAML updated in <code>User/</code>; schedule written/read under <code>User/Schedules/</code>.</li>
@@ -87,10 +87,10 @@
 
       <h3>Data paths</h3>
       <ul>
-        <li><code>User/&lt;type_plural&gt;/*.yml</code> â€” items (e.g., <code>User/tasks/</code>, <code>User/notes/</code>)</li>
-        <li><code>User/Schedules/today_schedule.yml</code> â€” current day plan</li>
-        <li><code>User/Schedules/completions/*.yml</code> â€” completion records (by day)</li>
-        <li><code>User/Settings/*.yml</code> â€” configuration (prefer lowercase filenames)</li>
+        <li><code>User/&lt;type_plural&gt;/*.yml</code> " items (e.g., <code>User/tasks/</code>, <code>User/notes/</code>)</li>
+        <li><code>User/Schedules/today_schedule.yml</code> " current day plan</li>
+        <li><code>User/Schedules/completions/*.yml</code> " completion records (by day)</li>
+        <li><code>User/Settings/*.yml</code> " configuration (prefer lowercase filenames)</li>
       </ul>
         </div>
       </div>
@@ -98,5 +98,6 @@
     <script src="../script.js"></script>
   </body>
   </html>
+
 
 
