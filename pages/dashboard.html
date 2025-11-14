@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -45,13 +45,13 @@
       <h2>Views & Widgets</h2>
       <ul>
         <li><strong>Calendar</strong>: Year/Month/Week/Day; select a block to target edits; overlay controls for zoom and level.</li>
-        <li><strong>Today</strong>: Trim −5/−10/custom; Change; Cut; Mark; Reschedule. Actions run via <code>POST /api/cli</code>.</li>
+        <li><strong>Today</strong>: Trim âˆ’5/âˆ’10/custom; Change; Cut; Mark; Reschedule. Actions run via <code>POST /api/cli</code>.</li>
         <li><strong>Notes, Status, Timer, HabitTracker, GoalTracker, ItemManager, DebugConsole</strong></li>
         <li><strong>Settings</strong>: edit <code>User/Settings/*.yml</code> with validation</li>
       </ul>
 
       <h3>Examples</h3>
-      <pre><code># Today → Reschedule
+      <pre><code># Today â†’ Reschedule
 POST /api/today/reschedule
 Content-Type: text/yaml
 
@@ -67,12 +67,12 @@ args:
 
       <h2>API (selected)</h2>
       <ul>
-        <li><code>POST /api/cli</code> — run commands</li>
+        <li><code>POST /api/cli</code> â€” run commands</li>
         <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
         <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
         <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
         <li><code>GET /api/timer/status|profiles|settings</code>, <code>POST /api/timer/*</code></li>
-        <li><code>GET/POST /api/settings</code> — list/read/write settings files</li>
+        <li><code>GET/POST /api/settings</code> â€” list/read/write settings files</li>
       </ul>
     </main>
 
@@ -91,3 +91,4 @@ args:
     <script src="../script.js"></script>
   </body>
   </html>
+
