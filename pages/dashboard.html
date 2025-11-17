@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -26,7 +26,7 @@
 
     <main class="container doc">
       <h1>Dashboard Guide</h1>
-      <p>How to run and use the Chronos Dashboard: views, widgets, and API endpoints.</p>
+      <p>The Dashboard is a GUI for operating Chronos visually. It provides high-level views (Calendar: year/month/week/day; Today) and interactive widgets (Item Manager, Variables, Terminal, Habit/Goal trackers, Timer, Settings) so you can browse, edit, and run actions without typing commands.</p>
 
       <h2>Run</h2>
       <ol>
@@ -37,19 +37,19 @@
       <h2>Views & Widgets</h2>
       <ul>
         <li><strong>Calendar</strong>: Year/Month/Week/Day; select a block to target edits</li>
-        <li><strong>Today</strong>: Trim −5/−10/custom; Change; Cut; Mark; Reschedule</li>
+        <li><strong>Today</strong>: Trim âˆ’5/âˆ’10/custom; Change; Cut; Mark; Reschedule</li>
         <li><strong>Notes, Status, Timer, HabitTracker, GoalTracker, ItemManager, DebugConsole</strong></li>
         <li><strong>Settings</strong>: edit <code>User/Settings/*.yml</code> with validation</li>
       </ul>
 
       <h2>API (selected)</h2>
       <ul>
-        <li><code>POST /api/cli</code> — run commands</li>
+        <li><code>POST /api/cli</code> â€” run commands</li>
         <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
         <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
         <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
         <li><code>GET /api/timer/status|profiles|settings</code>, <code>POST /api/timer/*</code></li>
-        <li><code>GET/POST /api/settings</code> — list/read/write settings files</li>
+        <li><code>GET/POST /api/settings</code> â€” list/read/write settings files</li>
       </ul>
     </main>
 
