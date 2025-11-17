@@ -82,5 +82,5 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .nav .menu a{display:block;padding:8px 10px;text-decoration:none;opacity:.95}
 .nav .menu a:hover{opacity:1;background:rgba(0,255,102,.08)}
 
-.nav .dropdown:hover .menu{display:block}
+
 
