@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -14,11 +14,11 @@
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
           <a href="../index.html#features">Features</a>
-          <a class="active" href="docs.html">Docs</a>
-          <a href="agents.html">Agents</a>
-          <a href="commands.html">Commands</a>
-          <a href="license.html">License</a>
-          <a href="setup.html" class="cta">Get Started</a>
+          <a class="active" href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/license.html">License</a>
+          <a href="/pages/setup.html" class="cta">Get Started</a>
         </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
@@ -26,10 +26,10 @@
 
     <main class="container doc">
       <h1>Documentation</h1>
-      <p><strong>Status:</strong> Early development &mdash; features and commands may change. <strong>Developer:</strong> David Cody (Hivemind Studio).</p>
+      <p><strong>Status:</strong> Active development. <strong>Developer:</strong> David Cody (Hivemind Studio).</p>
 
       <h2>Introduction</h2>
-      <p>Chronos Engine is an intelligent life management system. It lets you compose your life as a hierarchy of items and uses a status-aware scheduler to build optimal daily plans.</p>
+      <p>Chronos Engine is a YAML'first life management engine with a scriptable CLI, a background listener (alarms, reminders, timer), and a lightweight dashboard. Build your day from templates, adapt to your status, and automate with simple scripts.</p>
 
       <h2>Core Concepts</h2>
       <ul>
@@ -50,7 +50,7 @@
       <h2>AI Agents and NLP Interface</h2>
       <p>Chronos supports an AI-assisted workflow where a helper agent translates natural language into Chronos CLI commands.</p>
       <ul>
-        <li><strong>NLP interface:</strong> Speak intentions (e.g., “add a task to my morning routine”), the agent emits precise commands (<code>new task ...</code>, <code>add ... to ...</code>).</li>
+        <li><strong>NLP interface:</strong> Speak intentions (e.g., add a task to my morning routine), the agent emits precise commands (<code>new task ...</code>, <code>add ... to ...</code>).</li>
         <li><strong>Status-aware suggestions:</strong> When overloaded, the agent can suggest <code>today reschedule</code> or adjust buffers via <code>status</code>.</li>
         <li><strong>Developer agents:</strong> Agents can read modules, propose edits, and automate maintenance. See <code>agents.dev.md</code>.</li>
         <li><strong>Agent guide:</strong> See <code>agents.md</code> for the Chronos Warp Drive AI persona and best practices.</li>
@@ -75,7 +75,32 @@
       <p>Everything is YAML. Items live in the <code>User/</code> directory. Templates reference sub-items to form a navigable graph (e.g., a Day template references Routine items, which reference Subroutines, and so on).</p>
 
       <h2>Dashboard</h2>
-      <p>The <code>dashboard</code> command opens a web dashboard for a quick, visual overview of time, notes, status, and today's schedule. It complements the CLI-focused workflow.</p>
+      <p>Open the Dashboard for a quick, visual overview of time, notes, status, and today's schedule. The new Settings widget lets you edit <code>User/Settings/*.yml</code> directly with YAML validation.</p>
+
+      <h2>Guides</h2>\n      <ul>\n        <li><a href="/pages/architecture.html">Architecture</a> — how Chronos fits together and how to extend it</li>\n        <li><a href="/pages/dashboard.html">Dashboard Guide</a> — overlay controls, Template Builder, Item Manager, Variables & Terminal, Focus timer</li>\n        <li><a href="/pages/template-builder.html">Template Builder</a> — build week/day/routine/subroutine/microroutine templates</li>\n        <li><a href="/pages/chs-scripting.html">CHS Scripting</a> — scripts, variables, conditionals</li>\n        <li><a href="/pages/conditions-cookbook.html">Conditions Cookbook</a> — examples of <code>exists</code>, comparisons, and logic</li>\n        <li><a href="/pages/macros.html">Macros</a> — BEFORE/AFTER hooks for CLI & Dashboard</li>\n      </ul>\n\n      <h2>Themes & Console</h2>\n      <p>Chronos supports themes via <code>User/Settings/theme_settings.yml</code> and console personalization via <code>User/Profile/profile.yml</code>.</p>\n      <ul>\n        <li><strong>Themes</strong> — define named themes in <code>theme_settings.yml</code> (background/text). The Dashboard can resolve <em>background_hex/text_hex</em> for terminals.</li>\n        <li><strong>Profile theme</strong> — set <code>theme: &lt;name&gt;</code> or <code>console.theme</code> to apply a theme in console/Terminal.</li>\n        <li><strong>Console colors</strong> — optional <code>console.background</code>/<code>console.text</code> overrides.</li>\n        <li><strong>Greeting</strong> — <code>welcome</code>/<code>welcome_message</code> as string, array, or map with <code>line1..</code>. Variables (e.g., <code>@nickname</code>) expand.</li>\n        <li><strong>Goodbye</strong> — <code>exit_message</code>/<code>goodbye_message</code> accept the same forms.</li>\n        <li><strong>Variables</strong> — seed via <code>User/Settings/vars.yml</code>; shared between CLI and Dashboard (see Variables widget).</li>\n      </ul>\n\n      <h2>Preferences</h2>\n      <p>Customize user preferences in <code>User/Profile/profile.yml</code> and <code>User/Settings/*.yml</code>:</p>\n      <ul>\n        <li><code>nickname</code> — default persona shown in greetings and Terminal prompt</li>\n        <li><code>theme</code> / <code>console.theme</code> — theme name to apply</li>\n        <li><code>console.background</code>, <code>console.text</code> — specific colors</li>\n        <li><code>welcome</code> / <code>greeting</code> / <code>welcome_message</code> — greeting lines</li>\n        <li><code>exit_message</code> / <code>goodbye_message</code> — farewell lines</li>\n      </ul>\n\n      <h2>Habits: Good vs Bad</h2>
+      <p>Habits support <code>polarity: good|bad</code>. Good habits track positive streaks; bad habits record <code>incident_dates</code> and compute clean streaks (days without incidents). The <code>track</code> command shows appropriate summaries.</p>
+
+      <h2>Export & Import</h2>
+      <p>Two modes:</p>
+      <ul>
+        <li><strong>Full backup:</strong> <code>export all [filename.zip]</code> zips the entire <code>User/</code> directory into <code>User/Exports/</code>.</li>
+        <li><strong>Table export:</strong> <code>export my_tasks.yml list tasks status:pending</code> saves a table as YAML.</li>
+      </ul>
+      <p>Restore with <code>import</code>:</p>
+      <ul>
+        <li><strong>Zip:</strong> <code>import User/Exports/backup.zip overwrite:true</code> extracts into <code>User/</code>.</li>
+        <li><strong>YAML list:</strong> <code>import User/Exports/items.yml</code> creates items (skips existing).</li>
+      </ul>
+
+      <h2>Scripting &amp; Variables</h2>
+      <p>Chronos supports simple <code>.chs</code> scripts and session variables:</p>
+      <ul>
+        <li><strong>Variables:</strong> <code>set var name:World</code>, then use <code>@name</code> or <code>@{name}</code> in any command; escape with <code>@@</code>.</li>
+        <li><strong>Properties:</strong> <code>key:value</code> tokens (e.g., <code>priority:high</code>) are parsed into command properties.</li>
+        <li><strong>Conditionals:</strong> Single-line <code>if ... then ... [else ...]</code> and block form in scripts with operators <code>= != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches</code> and logic <code>and or xor nor not !</code>. Parentheses supported.</li>
+        <li><strong>Existence checks:</strong> <code>exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]]</code>, <code>exists file:&lt;path&gt;</code>, <code>exists dir:&lt;path&gt;</code>, <code>exists env:&lt;NAME&gt;</code>.</li>
+      </ul>
+      <p>See more detailed guides:</p><ul><li><a href="/pages/chs-scripting.html">CHS Scripting Guide</a></li><li><a href="/pages/conditions-cookbook.html">Conditions Cookbook</a></li></ul>
 
       <h2>Themes & Console</h2>
       <p>Chronos supports console themes via <code>theme</code> command and <code>User/Settings/theme_settings.yml</code> presets. <code>User/profile.yml</code> can set <code>theme</code> and explicit <code>background</code>/<code{text</code> overrides. On Windows, colors apply via the <code>color</code> command.</p>
@@ -88,9 +113,9 @@ theme set-colors background:#002b36 text:#93a1a1</code></pre>
       <p>Customize the console's welcome banner via <code>User/profile.yml</code>. Define a <code>welcome</code> (or <code>welcome_message</code>) block with <code>line1</code>/<code>line2</code>/<code>line3</code>. Variables like <code>@nickname</code> are expanded.</p>
       <pre><code>nickname: "Pilot"
 welcome:
-  line1: "⌛ Chronos Engine v1"
-  line2: "🚀 Welcome, @nickname"
-  line3: "🌌 You are the navigator of your reality."</code></pre>
+  line1: " Chronos Engine v1"
+  line2: " Welcome, @nickname"
+  line3: " You are the navigator of your reality."</code></pre>
 
       <h2>Commitments, Achievements, Rewards</h2>
       <p>Commitments encode behavioral rules and fire triggers when conditions are met.</p>
@@ -142,7 +167,7 @@ triggers:
         <li><strong>Conditionals:</strong> Single-line <code>if ... then ... [else ...]</code> and block form in scripts with operators <code>= != &gt; &lt; &gt;= &lt;= eq ne gt lt ge le matches</code> and logic <code>and or xor nor not !</code>. Parentheses supported.</li>
         <li><strong>Existence checks:</strong> <code>exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]]</code>, <code>exists file:&lt;path&gt;</code>, <code>exists dir:&lt;path&gt;</code>, <code>exists env:&lt;NAME&gt;</code>.</li>
       </ul>
-      <p>See more detailed guides:</p><ul><li><a href="chs-scripting.html">CHS Scripting Guide</a></li><li><a href="conditions-cookbook.html">Conditions Cookbook</a></li></ul>
+      <p>See more detailed guides:</p><ul><li><a href="/pages/chs-scripting.html">CHS Scripting Guide</a></li><li><a href="/pages/conditions-cookbook.html">Conditions Cookbook</a></li></ul>
 
       <h2>Philosophy</h2>
       <p>Chronos favors clarity, portability, and automation: human-readable files, smart scheduling, and a concise CLI. Keep your system simple; iterate with templates; trust the engine's context to fill in gaps.</p>
@@ -171,16 +196,18 @@ def handle_new(name, props):
     # Use ItemManager utilities to persist YAML
     pass
 </code></pre>
+      <h2>Template Builder</h2>
+      <p>Use the <a href="/pages/template-builder.html">Template Builder</a> &mdash; </p>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
         <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/setup.html">Setup</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -188,4 +215,12 @@ def handle_new(name, props):
     <script src="../script.js"></script>
   </body>
   </html>
+
+
+
+
+
+
+
+
 

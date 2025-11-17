@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://chronosengine.online/</loc></url>
   <url><loc>https://chronosengine.online/pages/docs.html</loc></url>
@@ -6,4 +6,6 @@
   <url><loc>https://chronosengine.online/pages/chs-scripting.html</loc></url>
   <url><loc>https://chronosengine.online/pages/conditions-cookbook.html</loc></url>
   <url><loc>https://chronosengine.online/pages/setup.html</loc></url>
+  <url><loc>https://chronos.example/pages/macros.html</loc></url>
 </urlset>
+

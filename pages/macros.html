@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine - Macros Guide</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a class="active" href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/license.html">License</a>
+          <a href="/pages/setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>Macros (BEFORE/AFTER)</h1>
+      <p>Macros let you attach steps to run before or after any command. They work for both CLI and Dashboard actions.</p>
+
+      <h2>Enable</h2>
+      <pre><code>User/Scripts/Macros/macros.yml
+enable_macros: true
+default_timeout_ms: 15000
+before_command: {}
+after_command: {}</code></pre>
+
+      <h2>Step Types</h2>
+      <ul>
+        <li><strong>cli</strong> — one CLI invocation (list or shlex string)</li>
+        <li><strong>chs</strong> — run a <code>.chs</code> script through the console pipeline</li>
+        <li><strong>setvar</strong> — set a variable in the shared store</li>
+        <li><strong>noop</strong> — placeholder (no-op)</li>
+      </ul>
+
+      <h2>Context &amp; Expansion</h2>
+      <ul>
+        <li><code>@cmd</code>, <code>@args0</code>, <code>@args1</code>, ...</li>
+        <li>Each property appears as <code>@&lt;prop&gt;</code> (e.g., <code>@priority</code>)</li>
+        <li>AFTER hook summary: <code>@result_ok</code> (<code>true/false</code>)</li>
+      </ul>
+
+      <h2>Example</h2>
+      <pre><code>enable_macros: true
+default_timeout_ms: 12000
+
+before_command:
+  new:
+    - setvar: { name: weekday, value: "@{date.weekday}" }
+    - cli: ["echo", "Creating @args0 '@args1'"]
+after_command:
+  delete:
+    - cli: ["echo", "Deleted: @args1"]</code></pre>
+
+      <h2>Safety</h2>
+      <ul>
+        <li>Timeout per step</li>
+        <li>Recursion guard (Dashboard calls also pass through hooks, safely)</li>
+        <li>Bypass per call: <code>no_macros:true</code></li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div class="footer-links">
+          <a href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/setup.html">Setup</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>

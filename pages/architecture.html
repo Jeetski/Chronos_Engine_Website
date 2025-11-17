@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine - Architecture</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a class="active" href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/license.html">License</a>
+          <a href="/pages/setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>Architecture</h1>
+      <p>This is a practical overview of how Chronos fits together so you can extend it confidently.</p>
+
+      <h2>Runtime Overview</h2>
+      <ul>
+        <li><strong>CLI Entrypoint</strong>: <code>Modules/Console.py</code> loads commands and scripts, sets UTF'8, and dispatches to modules.</li>
+        <li><strong>Item System</strong>: <code>Modules/ItemManager.py</code> reads/writes YAML items in <code>User/</code> and applies defaults.</li>
+        <li><strong>Conditions</strong>: <code>Modules/Conditions.py</code> provides <code>if</code> logic with parentheses and <code>exists</code>/<code>matches</code>.</li>
+        <li><strong>Scheduler</strong>: <code>Modules/Scheduler.py</code> + <code>Commands/Today.py</code> build and refine the day plan.</li>
+        <li><strong>Listener</strong>: <code>Modules/Listener/Listener.py</code> handles alarms/reminders/timer in the background.</li>
+        <li><strong>Dashboard</strong>: <code>Utilities/Dashboard</code> serves APIs and mounts vanilla'JS widgets.</li>
+      </ul>
+
+      <h2>Data Model</h2>
+      <p>Items are YAML files with <code>name</code>, <code>type</code>, and properties. Many items nest children to form a fractal hierarchy (routines ' subroutines ' microroutines ' items).</p>
+
+      <h2>Settings</h2>
+      <p>Settings live under <code>User/Settings/</code> and prefer lowercase filenames (e.g., <code>points_settings.yml</code>, <code>&lt;item&gt;_defaults.yml</code>). The Settings widget allows direct editing with validation.</p>
+
+      <h2>Dashboard API (selected)</h2>
+      <ul>
+        <li><code>POST /api/cli</code> " run commands</li>
+        <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
+        <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
+        <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
+        <li><code>GET/POST /api/settings</code> " list/read/write settings files</li>
+      </ul>
+
+      <h2>Extending Chronos</h2>
+      <ul>
+        <li><strong>Commands</strong>: add <code>Commands/MyCommand.py</code> with <code>run(args, properties)</code>.</li>
+        <li><strong>Item modules</strong>: add <code>Modules/My_Item/main.py</code> with <code>handle_*</code> or <code>handle_command</code>.</li>
+        <li><strong>Widgets/views</strong>: add <code>Utilities/Dashboard/Widgets/&lt;Name&gt;/index.js</code> and wire in <code>dashboard.html</code>.</li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div class="footer-links">
+          <a href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/setup.html">Setup</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>
+
+
+
+
+
+

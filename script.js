@@ -23,3 +23,25 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
+// Normalize guide links to absolute /pages/... to avoid 404s from root
+(function fixGuideLinks(){
+  try {
+    const isHttp = (h)=> /^https?:\/\//i.test(h);
+    const needsFix = (h)=> h && h.endsWith('.html') && !h.startsWith('/pages/') && !isHttp(h) && !h.startsWith('#');
+    const rewrite = (root)=>{
+      (root.querySelectorAll ? root : document).querySelectorAll('a[href]').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        if (href.startsWith('pages/')) a.setAttribute('href', '/pages/' + href.slice(6));
+        else if (href.startsWith('/Website/pages/')) a.setAttribute('href', href.replace('/Website/pages/','/pages/'));
+        else if (needsFix(href) && href.indexOf('/') === -1) a.setAttribute('href', '/pages/' + href);
+      });
+    };
+    rewrite(document);
+    try {
+      const mo = new MutationObserver((muts)=>{
+        muts.forEach(m=>{ m.addedNodes && m.addedNodes.forEach(n=>{ if (n && n.querySelectorAll) rewrite(n); }); });
+      });
+      mo.observe(document.documentElement, { childList: true, subtree: true });
+    } catch {}
+  } catch {}
+})();

@@ -1,0 +1,86 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronos Engine - Template Builder</title>
+    <link rel="icon" href="../public/favicon.ico" sizes="any" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
+        <nav class="nav" id="siteNav">
+          <a href="../index.html#features">Features</a>
+          <a class="active" href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/license.html">License</a>
+          <a href="/pages/setup.html" class="cta">Get Started</a>
+        </nav>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+      </div>
+    </header>
+
+    <main class="container doc">
+      <h1>Template Builder</h1>
+      <p>Design and edit reusable templates (week, day, routine, subroutine, microroutine) with drag-and-drop.</p>
+
+      <h2>Open</h2>
+      <ol>
+        <li>Run the Dashboard server and open the UI (see <a href="/pages/dashboard.html">Dashboard Guide</a>).</li>
+        <li>Use the top bar: View ' Template Builder.</li>
+      </ol>
+
+      <h2>Library</h2>
+      <ul>
+        <li><strong>Types:</strong> item (aggregates leaf content like task, note, goal, etc.), microroutine, subroutine, routine, day, week.</li>
+        <li><strong>Subtype filter:</strong> appears when <em>item</em> is selected to narrow by leaf type.</li>
+        <li>Clicking adds to the template if allowed; otherwise loads details in the Inspector for review.</li>
+      </ul>
+
+      <h2>Editing</h2>
+      <ul>
+        <li>Select template type (routine/subroutine/microroutine/day/week) and name, then Load.</li>
+        <li>Drag to reorder; drop <em>into</em> to make a child; drop before/after for same-level; drop near the left edge to outdent.</li>
+        <li>Use the Inspector to edit type, name, duration (number or <code>parallel</code>), ideal start/end, and <code>depends_on</code>.</li>
+        <li>Each node shows a duration badge:  for sequential (sum),  for parallel (max with children).</li>
+      </ul>
+
+      <h2>Nesting Rules</h2>
+      <ul>
+        <li>Order of size: <strong>week</strong> &gt; <strong>day</strong> &gt; <strong>routine</strong> &gt; <strong>subroutine</strong> &gt; <strong>microroutine</strong> &gt; <strong>item</strong> (task/note/etc.).</li>
+        <li>You cannot nest a <em>bigger</em> template under a <em>smaller</em> one (e.g., routine under subroutine is blocked).</li>
+        <li>You cannot nest the <em>same kind</em> within itself (routine inside routine, day inside day, week inside week).</li>
+      </ul>
+
+      <h2>Saving</h2>
+      <ul>
+        <li>Click Save to write <code>children:</code> to the template YAML via the Dashboard API.</li>
+        <li>APIs: <code>GET /api/template/list?type=TYPE</code>, <code>GET /api/template?type=TYPE&amp;name=NAME</code>, <code>POST /api/template</code> with YAML body <code>{ type, name, children }</code>.</li>
+      </ul>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div class="footer-links">
+          <a href="/pages/docs.html">Docs</a>
+          <a href="/pages/agents.html">Agents</a>
+          <a href="/pages/commands.html">Commands</a>
+          <a href="/pages/setup.html">Setup</a>
+          <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+    <script src="../script.js"></script>
+  </body>
+  </html>
+
+
+
+
+
+

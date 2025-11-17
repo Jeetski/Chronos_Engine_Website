@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - License</title>
+    <title>Chronos Engine - Common Workflows</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -14,10 +14,10 @@
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
           <a href="../index.html#features">Features</a>
-          <a href="/pages/docs.html">Docs</a>
+          <a class="active" href="/pages/docs.html">Docs</a>
           <a href="/pages/agents.html">Agents</a>
           <a href="/pages/commands.html">Commands</a>
-          <a class="active" href="/pages/license.html">License</a>
+          <a href="/pages/license.html">License</a>
           <a href="/pages/setup.html" class="cta">Get Started</a>
         </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
@@ -25,34 +25,44 @@
     </header>
 
     <main class="container doc">
-      <h1>Licensing</h1>
-      <p><strong>Feast if you build in the open. If you profit while keeping changes closed, you need a Commercial License.</strong></p>
+      <h1>Common Workflows</h1>
+      <p>Practical, repeatable ways to use Chronos " for humans and agents. A few highlights:</p>
 
-      <h2>Core License</h2>
-      <p>Chronos Core is licensed under <strong>AGPL-3.0-or-later</strong>. You can use, modify, sell, or host Chronos under AGPL compliance. If you modify or embed the Core and distribute/host it, you must publish your changes.</p>
-      <p><a href="https://www.gnu.org/licenses/agpl-3.0.txt" target="_blank" rel="noopener">Read the full AGPL v3 license</a>.</p>
+      <h2>Capture & Organize</h2>
+      <pre><code>new task "Buy milk" priority:medium
+append note "Idea: Morning pages" "Try 3 pages after coffee."
+new project "Home Gym"
+new task "Order dumbbells" project:"Home Gym"</code></pre>
 
-      <h2>Commercial License</h2>
-      <p>If you need to keep modifications, embedded use, or in-process plugins proprietary, obtain a Commercial License.</p>
-      <p>Contact: <a href="mailto:licensing@chronosengine.online">licensing@chronosengine.online</a></p>
-      <p>See the plain-language terms: <a href="/pages/commercial-license.html">Commercial License</a></p>
+      <h2>Templates & Routines</h2>
+      <pre><code>new routine "Morning"
+add "Have coffee" to "Morning"
+add "Read 10 min" to "Morning"</code></pre>
 
-      <h2>Marketplace & Trademarks</h2>
-      <ul>
-        <li><a href="/pages/marketplace-terms.html">Chronos Marketplace Terms</a> (paid listings and the Chronos Certified badge)</li>
-        <li><a href="/pages/trademark-policy.html">Trademark Policy</a> (using the Chronos name and branding)</li>
-      </ul>
+      <h2>Plan the Day</h2>
+      <pre><code>status energy:high focus:good
+today reschedule
+trim "Read 10 min" 5
+change "Have coffee" 07:45</code></pre>
+
+      <h2>Alarms & Reminders</h2>
+      <pre><code>new reminder "Stand up" time:15:00 recurrence:[daily] enabled:true</code></pre>
+
+      <h2>Goals & Habits</h2>
+      <pre><code>new goal "Publish v1" priority:high due_date:2026-02-01
+new milestone "Docs complete" goal:"Publish v1" weight:2</code></pre>
+
+      <p>See the full guide in the repository <code>Docs/common_workflows.md</code>.</p>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio) - Early Development</div>
+        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
           <a href="/pages/docs.html">Docs</a>
           <a href="/pages/agents.html">Agents</a>
           <a href="/pages/commands.html">Commands</a>
           <a href="/pages/setup.html">Setup</a>
-          <a href="/pages/license.html">License</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -60,6 +70,7 @@
     <script src="../script.js"></script>
   </body>
   </html>
+
 
 
 
