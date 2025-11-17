@@ -1,4 +1,4 @@
-// Mobile nav toggle
+﻿// Mobile nav toggle
 const navToggle = document.getElementById('navToggle');
 const nav = document.getElementById('siteNav');
 if (navToggle && nav) {
@@ -37,7 +37,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       `<div class="dropdown guides"><button class="menubtn" type="button">Guides</button><div class="menu">
          <a href="/pages/setup.html">Setup</a>
          <a href="/pages/dashboard.html">Dashboard Guide</a>
-         <a href="/pages/template-builder.html">Template Builder</a>
+         <a href="/pages/template-builder.html">`Template Builder</a>
+         <a href="/pages/macros.html">Macros</a>
+
          <a href="/pages/chs-scripting.html">CHS Scripting</a>
          <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
          <a href="/pages/architecture.html">Architecture</a>
