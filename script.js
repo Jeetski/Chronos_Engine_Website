@@ -23,6 +23,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Ensure a consistent navbar on all pages and add Guides dropdown
-\n// Guides dropdown toggle (click to open/close)\n(function(){\n  try{\n    document.querySelectorAll('.dropdown.guides .menubtn').forEach(function(btn){\n      var dd = btn.closest('.dropdown.guides');\n      btn.addEventListener('click', function(e){ e.stopPropagation(); dd.classList.toggle('open'); });\n    });\n    document.addEventListener('click', function(){\n      document.querySelectorAll('.dropdown.guides').forEach(function(dd){ dd.classList.remove('open'); });\n    });\n  }catch{}\n})();\n
+// Guides dropdown toggle (click to open/close)
+(function(){
+  try{
+    document.querySelectorAll('.dropdown.guides .menubtn').forEach(function(btn){
+      var dd = btn.closest('.dropdown.guides');
+      btn.addEventListener('click', function(e){ e.stopPropagation(); dd.classList.toggle('open'); });
+    });
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.dropdown.guides').forEach(function(dd){ dd.classList.remove('open'); });
+    });
+  }catch(e){}
+})();
 
