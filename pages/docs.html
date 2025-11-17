@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,13 +13,27 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-          <a href="../index.html#features">Features</a>
-          <a class="active" href="docs.html">Docs</a>
-          <a href="agents.html">Agents</a>
-          <a href="commands.html">Commands</a>
-          <a href="license.html">License</a>
-          <a href="setup.html" class="cta">Get Started</a>
-        </nav>
+  <a href="/index.html#features">Features</a>
+  <a href="/pages/docs.html">Docs</a>
+  <div class="dropdown guides">
+    <button class="menubtn" type="button">Guides</button>
+    <div class="menu">
+      <a href="/pages/setup.html">Setup</a>
+      <a href="/pages/dashboard.html">Dashboard Guide</a>
+      <a href="/pages/template-builder.html">Template Builder</a>
+      <a href="/pages/macros.html">Macros</a>
+      <a href="/pages/chs-scripting.html">CHS Scripting</a>
+      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
+      <a href="/pages/architecture.html">Architecture</a>
+      <a href="/pages/settings.html">Settings</a>
+      <a href="/pages/workflows.html">Workflows</a>
+    </div>
+  </div>
+  <a href="/pages/agents.html">Agents</a>
+  <a href="/pages/commands.html">Commands</a>
+  <a href="/pages/license.html">License</a>
+  <a href="/pages/setup.html" class="cta">Get Started</a>
+</nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
@@ -29,7 +43,7 @@
       <p><strong>Status:</strong> Active development. <strong>Developer:</strong> David Cody (Hivemind Studio).</p>
 
       <h2>Introduction</h2>
-      <p>Chronos Engine is a YAML‑first life management engine with a scriptable CLI, a background listener (alarms, reminders, timer), and a lightweight dashboard. Build your day from templates, adapt to your status, and automate with simple scripts.</p>
+      <p>Chronos Engine is a YAMLâ€‘first life management engine with a scriptable CLI, a background listener (alarms, reminders, timer), and a lightweight dashboard. Build your day from templates, adapt to your status, and automate with simple scripts.</p>
 
       <h2>Core Concepts</h2>
       <ul>
@@ -50,7 +64,7 @@
       <h2>AI Agents and NLP Interface</h2>
       <p>Chronos supports an AI-assisted workflow where a helper agent translates natural language into Chronos CLI commands.</p>
       <ul>
-        <li><strong>NLP interface:</strong> Speak intentions (e.g., “add a task to my morning routine”), the agent emits precise commands (<code>new task ...</code>, <code>add ... to ...</code>).</li>
+        <li><strong>NLP interface:</strong> Speak intentions (e.g., â€œadd a task to my morning routineâ€), the agent emits precise commands (<code>new task ...</code>, <code>add ... to ...</code>).</li>
         <li><strong>Status-aware suggestions:</strong> When overloaded, the agent can suggest <code>today reschedule</code> or adjust buffers via <code>status</code>.</li>
         <li><strong>Developer agents:</strong> Agents can read modules, propose edits, and automate maintenance. See <code>agents.dev.md</code>.</li>
         <li><strong>Agent guide:</strong> See <code>agents.md</code> for the Chronos Warp Drive AI persona and best practices.</li>
@@ -79,12 +93,12 @@
 
       <h2>Guides</h2>
       <ul>
-        <li><a href="architecture.html">Architecture</a> — how Chronos fits together and how to extend it</li>
-        <li><a href="dashboard.html">Dashboard Guide</a> — views, widgets, and API endpoints</li>
-        <li><a href="settings.html">Settings Guide</a> — file conventions and editing via the Settings widget</li>
-        <li><a href="workflows.html">Common Workflows</a> — practical recipes for users and agents</li>
-        <li><a href="chs-scripting.html">CHS Scripting</a> — scripts, variables, and control flow</li>
-        <li><a href="conditions-cookbook.html">Conditions Cookbook</a> — examples for <code>if</code> logic</li>
+        <li><a href="architecture.html">Architecture</a> â€” how Chronos fits together and how to extend it</li>
+        <li><a href="dashboard.html">Dashboard Guide</a> â€” views, widgets, and API endpoints</li>
+        <li><a href="settings.html">Settings Guide</a> â€” file conventions and editing via the Settings widget</li>
+        <li><a href="workflows.html">Common Workflows</a> â€” practical recipes for users and agents</li>
+        <li><a href="chs-scripting.html">CHS Scripting</a> â€” scripts, variables, and control flow</li>
+        <li><a href="conditions-cookbook.html">Conditions Cookbook</a> â€” examples for <code>if</code> logic</li>
       </ul>
 
       <h2>Themes & Console</h2>
@@ -98,9 +112,9 @@ theme set-colors background:#002b36 text:#93a1a1</code></pre>
       <p>Customize the console's welcome banner via <code>User/profile.yml</code>. Define a <code>welcome</code> (or <code>welcome_message</code>) block with <code>line1</code>/<code>line2</code>/<code>line3</code>. Variables like <code>@nickname</code> are expanded.</p>
       <pre><code>nickname: "Pilot"
 welcome:
-  line1: "⌛ Chronos Engine v1"
-  line2: "🚀 Welcome, @nickname"
-  line3: "🌌 You are the navigator of your reality."</code></pre>
+  line1: "âŒ› Chronos Engine v1"
+  line2: "ðŸš€ Welcome, @nickname"
+  line3: "ðŸŒŒ You are the navigator of your reality."</code></pre>
 
       <h2>Commitments, Achievements, Rewards</h2>
       <p>Commitments encode behavioral rules and fire triggers when conditions are met.</p>
@@ -198,4 +212,5 @@ def handle_new(name, props):
     <script src="../script.js"></script>
   </body>
   </html>
+
 

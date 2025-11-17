@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,13 +13,27 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-          <a href="../index.html#features">Features</a>
-          <a class="active" href="docs.html">Docs</a>
-          <a href="agents.html">Agents</a>
-          <a href="commands.html">Commands</a>
-          <a href="license.html">License</a>
-          <a href="setup.html" class="cta">Get Started</a>
-        </nav>
+  <a href="/index.html#features">Features</a>
+  <a href="/pages/docs.html">Docs</a>
+  <div class="dropdown guides">
+    <button class="menubtn" type="button">Guides</button>
+    <div class="menu">
+      <a href="/pages/setup.html">Setup</a>
+      <a href="/pages/dashboard.html">Dashboard Guide</a>
+      <a href="/pages/template-builder.html">Template Builder</a>
+      <a href="/pages/macros.html">Macros</a>
+      <a href="/pages/chs-scripting.html">CHS Scripting</a>
+      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
+      <a href="/pages/architecture.html">Architecture</a>
+      <a href="/pages/settings.html">Settings</a>
+      <a href="/pages/workflows.html">Workflows</a>
+    </div>
+  </div>
+  <a href="/pages/agents.html">Agents</a>
+  <a href="/pages/commands.html">Commands</a>
+  <a href="/pages/license.html">License</a>
+  <a href="/pages/setup.html" class="cta">Get Started</a>
+</nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
@@ -30,27 +44,27 @@
 
       <h2>Runtime Overview</h2>
       <ul>
-        <li><strong>CLI Entrypoint</strong>: <code>Modules/Console.py</code> loads commands and scripts, sets UTF‑8, and dispatches to modules.</li>
+        <li><strong>CLI Entrypoint</strong>: <code>Modules/Console.py</code> loads commands and scripts, sets UTFâ€‘8, and dispatches to modules.</li>
         <li><strong>Item System</strong>: <code>Modules/ItemManager.py</code> reads/writes YAML items in <code>User/</code> and applies defaults.</li>
         <li><strong>Conditions</strong>: <code>Modules/Conditions.py</code> provides <code>if</code> logic with parentheses and <code>exists</code>/<code>matches</code>.</li>
         <li><strong>Scheduler</strong>: <code>Modules/Scheduler.py</code> + <code>Commands/Today.py</code> build and refine the day plan.</li>
         <li><strong>Listener</strong>: <code>Modules/Listener/Listener.py</code> handles alarms/reminders/timer in the background.</li>
-        <li><strong>Dashboard</strong>: <code>Utilities/Dashboard</code> serves APIs and mounts vanilla‑JS widgets.</li>
+        <li><strong>Dashboard</strong>: <code>Utilities/Dashboard</code> serves APIs and mounts vanillaâ€‘JS widgets.</li>
       </ul>
 
       <h2>Data Model</h2>
-      <p>Items are YAML files with <code>name</code>, <code>type</code>, and properties. Many items nest children to form a fractal hierarchy (routines → subroutines → microroutines → items).</p>
+      <p>Items are YAML files with <code>name</code>, <code>type</code>, and properties. Many items nest children to form a fractal hierarchy (routines â†’ subroutines â†’ microroutines â†’ items).</p>
 
       <h2>Settings</h2>
       <p>Settings live under <code>User/Settings/</code> and prefer lowercase filenames (e.g., <code>points_settings.yml</code>, <code>&lt;item&gt;_defaults.yml</code>). The Settings widget allows direct editing with validation.</p>
 
       <h2>Dashboard API (selected)</h2>
       <ul>
-        <li><code>POST /api/cli</code> — run commands</li>
+        <li><code>POST /api/cli</code> â€” run commands</li>
         <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
         <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
         <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
-        <li><code>GET/POST /api/settings</code> — list/read/write settings files</li>
+        <li><code>GET/POST /api/settings</code> â€” list/read/write settings files</li>
       </ul>
 
       <h2>Extending Chronos</h2>
@@ -76,4 +90,5 @@
     <script src="../script.js"></script>
   </body>
   </html>
+
 
