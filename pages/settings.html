@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,65 +13,77 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a class="active" href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Settings</h1>
-      <p>Chronos settings live in <code>User/Settings/</code>. Prefer lowercase filenames; older TitleCase files are still supported.</p>
+      <p>Chronos settings live under <code>User/Settings</code>. Prefer lowercase filenames; older TitleCase files are still supported.</p>
 
-      <h2>Conventions</h2>
+      <h2>Core Settings Files</h2>
       <ul>
-        <li><code>points_settings.yml</code></li>
-        <li><code>achievement_defaults.yml</code></li>
-        <li><code>&lt;item&gt;_defaults.yml</code> (e.g., <code>task_defaults.yml</code>)</li>
-        <li>Timer: <code>Timer_Settings.yml</code>, profiles in <code>Timer_Profiles.yml</code></li>
+        <li><code>points_settings.yml</code> - points ledger configuration (backward compatible with <code>Points.yml</code>).</li>
+        <li><code>status_settings.yml</code> - status types and weights.</li>
+        <li><code>theme_settings.yml</code> - console themes.</li>
+        <li><code>timer_settings.yml</code> and <code>timer_profiles.yml</code> - focus timer profiles.</li>
       </ul>
 
-      <h2>Edit</h2>
+      <h2>Defaults</h2>
       <ul>
-        <li>Use the Dashboard <strong>Settings</strong> widget to edit files with YAML validation.</li>
-        <li>Or edit on disk; the engine will pick up changes immediately.</li>
+        <li><code>&lt;type&gt;_defaults.yml</code> - default values for item creation.</li>
+        <li>Chronos prefers lowercase: <code>task_defaults.yml</code>, <code>goal_defaults.yml</code>.</li>
+      </ul>
+
+      <h2>Editing Settings</h2>
+      <ul>
+        <li>Use the Dashboard Settings widget for YAML validation.</li>
+        <li>Or edit files directly; changes are picked up immediately.</li>
+        <li>CLI helper: <code>settings &lt;file_shortcut&gt; key value</code>.</li>
       </ul>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
-
+</html>

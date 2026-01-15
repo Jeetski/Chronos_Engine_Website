@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,75 +13,101 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a class="active" href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Dashboard Guide</h1>
-      <p>The Dashboard is a GUI for operating Chronos visually. It provides high-level views (Calendar: year/month/week/day; Today) and interactive widgets (Item Manager, Variables, Terminal, Habit/Goal trackers, Timer, Settings) so you can browse, edit, and run actions without typing commands.</p>
+      <p>The Chronos dashboard is a lightweight local UI that complements the CLI and Listener. It exposes the same APIs used by automation agents for quick edits and visual planning.</p>
 
-      <h2>Run</h2>
-      <ol>
-        <li>Start the server: <code>python Utilities/Dashboard/server.py</code></li>
-        <li>Open <code>Utilities/Dashboard/dashboard.html</code> in your browser</li>
-      </ol>
-
-      <h2>Views & Widgets</h2>
+      <h2>Run the Dashboard</h2>
       <ul>
-        <li><strong>Calendar</strong>: Year/Month/Week/Day; select a block to target edits</li>
-        <li><strong>Today</strong>: Trim âˆ’5/âˆ’10/custom; Change; Cut; Mark; Reschedule</li>
-        <li><strong>Notes, Status, Timer, HabitTracker, GoalTracker, ItemManager, DebugConsole</strong></li>
-        <li><strong>Settings</strong>: edit <code>User/Settings/*.yml</code> with validation</li>
+        <li>Launcher: <code>dashboard_launcher.bat</code> (or <code>.sh</code> on Linux/macOS).</li>
+        <li>From the Console: <code>dashboard</code> or <code>dash</code>.</li>
       </ul>
 
-      <h2>API (selected)</h2>
+      <h2>Views</h2>
       <ul>
-        <li><code>POST /api/cli</code> â€” run commands</li>
-        <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
-        <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
-        <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
-        <li><code>GET /api/timer/status|profiles|settings</code>, <code>POST /api/timer/*</code></li>
-        <li><code>GET/POST /api/settings</code> â€” list/read/write settings files</li>
+        <li><strong>Calendar</strong> - year/month/week/day canvas with a draggable overlay for zoom, hierarchy, and tool selection.</li>
+        <li><strong>Template Builder</strong> - drag and drop editing for week/day/routine/subroutine/microroutine templates, plus goal/project/inventory builders.</li>
+        <li><strong>Cockpit</strong> - a drag and drop canvas with modular panels (Schedule, Matrix, Matrix Visuals, Lists, Commitments, Status Strip, Deadlines, Map of Happiness).</li>
+        <li><strong>Canvas</strong> - freeform boards for planning, notes, and collaboration.</li>
+      </ul>
+
+      <h2>Widgets</h2>
+      <p>Widgets are mounted under <code>Utilities/Dashboard/Widgets</code> and include:</p>
+      <ul>
+        <li>Today, Item Manager, Variables, Terminal</li>
+        <li>Habit Tracker, Goal Tracker, Commitments, Rewards, Achievements, Milestones</li>
+        <li>Notes, Journal, Profile, Review</li>
+        <li>Timer, Settings, Clock, Status, Debug Console</li>
+      </ul>
+
+      <h2>Selected API Endpoints</h2>
+      <ul>
+        <li>Health: <code>GET /health</code></li>
+        <li>Today: <code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
+        <li>CLI Bridge: <code>POST /api/cli</code> with <code>{ command, args, properties }</code></li>
+        <li>Items: <code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item</code>, bulk <code>POST /api/items/delete|setprop|copy|export</code></li>
+        <li>Habits/Goals: <code>GET /api/habits</code>, <code>GET /api/goals</code>, <code>GET /api/goal?name=...</code></li>
+        <li>Commitments/Milestones: <code>GET /api/commitments</code>, <code>GET /api/milestones</code>, <code>POST /api/milestone/update</code></li>
+        <li>Rewards/Points: <code>GET /api/points</code>, <code>GET /api/rewards</code>, <code>POST /api/reward/redeem</code></li>
+        <li>Achievements: <code>GET /api/achievements</code>, <code>POST /api/achievement/update</code></li>
+        <li>Timer: <code>GET /api/timer/status|profiles|settings</code>, <code>POST /api/timer/start|pause|resume|stop</code></li>
+        <li>Variables/Theme/Profile: <code>GET /api/vars</code>, <code>POST /api/vars</code>, <code>POST /api/vars/expand</code>, <code>GET /api/profile</code>, <code>GET /api/theme?name=...</code></li>
+        <li>Settings: <code>GET /api/settings</code>, <code>POST /api/settings?file=Name.yml</code></li>
+      </ul>
+
+      <h2>Tips</h2>
+      <ul>
+        <li>Use the Settings widget to safely edit YAML settings files with validation.</li>
+        <li>Run <code>today reschedule</code> after status changes to rebuild the day plan.</li>
+        <li>For debugging, check the browser network tab to confirm endpoint responses.</li>
       </ul>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
-
+</html>

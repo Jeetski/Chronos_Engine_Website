@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Macros Guide</title>
+    <title>Chronos Engine - Macros</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -13,91 +13,85 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a class="active" href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
-      <h1>Macros (BEFORE/AFTER)</h1>
-      <p>Macros let you attach steps to run before or after any command. They work the same from the CLI and the Dashboard.</p>
+      <h1>Macros (BEFORE / AFTER)</h1>
+      <p>Macros are command hooks that run before or after specific CLI commands. They allow you to enforce rules, automate side effects, or chain scripts.</p>
 
-      <h2>Enable</h2>
-      <pre><code>User/Scripts/Macros/macros.yml
-enable_macros: true
-default_timeout_ms: 15000
-before_command: {}
-after_command: {}</code></pre>
-
-      <h2>Step Types</h2>
+      <h2>Where Macros Live</h2>
       <ul>
-        <li><strong>cli</strong> — one CLI invocation (list or shlex string)</li>
-        <li><strong>chs</strong> — run a <code>.chs</code> script via the console pipeline</li>
-        <li><strong>setvar</strong> — set a variable in the shared store</li>
-        <li><strong>noop</strong> — placeholder</li>
+        <li>Configured in <code>User/Settings/Macros.yml</code> (case-insensitive).</li>
+        <li>Each macro points to a <code>.chs</code> script or inline commands.</li>
       </ul>
 
-      <h2>Context &amp; Expansion</h2>
+      <h2>Macro Types</h2>
       <ul>
-        <li><code>@cmd</code>, <code>@args0</code>, <code>@args1</code>, …</li>
-        <li>Each property as <code>@&lt;prop&gt;</code> (e.g., <code>@priority</code>)</li>
-        <li>AFTER summary: <code>@result_ok</code> (<code>true/false</code>)</li>
+        <li><strong>BEFORE</strong> - run before a command executes (can block or rewrite input).</li>
+        <li><strong>AFTER</strong> - run after a command executes (great for logging or automation).</li>
       </ul>
 
       <h2>Example</h2>
-      <pre><code>enable_macros: true
-default_timeout_ms: 12000
+      <pre><code># User/Settings/Macros.yml
+before:
+  - command: delete
+    script: Scripts/confirm_delete.chs
 
-before_command:
-  new:
-    - setvar: { name: weekday, value: "@{date.weekday}" }
-    - cli: ["echo", "Creating @args0 '@args1'"]
-after_command:
-  delete:
-    - cli: ["echo", "Deleted: @args1"]</code></pre>
+after:
+  - command: complete
+    script: Scripts/reward_on_complete.chs</code></pre>
 
-      <h2>Safety</h2>
+      <h2>Notes</h2>
       <ul>
-        <li>Timeout per step</li>
-        <li>Recursion guard — macro sub-steps don’t re-trigger macros</li>
-        <li>Bypass per call: <code>no_macros:true</code></li>
+        <li>Macros are evaluated in order.</li>
+        <li>Use CHS conditionals to guard behavior.</li>
+        <li>Keep scripts small and focused.</li>
       </ul>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine — Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/pages/docs.html">Docs</a>
-          <a href="/pages/agents.html">Agents</a>
-          <a href="/pages/commands.html">Commands</a>
-          <a href="/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
+</html>

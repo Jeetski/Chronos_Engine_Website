@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,77 +13,83 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a class="active" href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Common Workflows</h1>
-      <p>Practical, repeatable ways to use Chronos â€” for humans and agents. A few highlights:</p>
+      <p>Practical, repeatable ways to use Chronos.</p>
 
-      <h2>Capture & Organize</h2>
+      <h2>Capture and Organize</h2>
       <pre><code>new task "Buy milk" priority:medium
 append note "Idea: Morning pages" "Try 3 pages after coffee."
 new project "Home Gym"
 new task "Order dumbbells" project:"Home Gym"</code></pre>
 
-      <h2>Templates & Routines</h2>
+      <h2>Templates and Routines</h2>
       <pre><code>new routine "Morning"
-add "Have coffee" to "Morning"
-add "Read 10 min" to "Morning"</code></pre>
+new subroutine "Wind Down" routine:"Morning"
+new microroutine "Read 10 min" subroutine:"Wind Down"
+add "Morning" to "Monday"</code></pre>
 
       <h2>Plan the Day</h2>
       <pre><code>status energy:high focus:good
 today reschedule
-trim "Read 10 min" 5
-change "Have coffee" 07:45</code></pre>
+did "Deep Work" start_time:09:00 end_time:10:30 status:completed</code></pre>
 
-      <h2>Alarms & Reminders</h2>
-      <pre><code>new reminder "Stand up" time:15:00 recurrence:[daily] enabled:true</code></pre>
+      <h2>Commitments and Rewards</h2>
+      <pre><code>new commitment "Exercise 3x" frequency:{times:3,period:week}
+commitments check
+redeem reward "Game Break" reason:recovery</code></pre>
 
-      <h2>Goals & Habits</h2>
-      <pre><code>new goal "Publish v1" priority:high due_date:2026-02-01
-new milestone "Docs complete" goal:"Publish v1" weight:2</code></pre>
-
-      <p>See the full guide in the repository <code>Docs/common_workflows.md</code>.</p>
+      <h2>Goals and Milestones</h2>
+      <pre><code>new goal "Ship v1" priority:high due_date:2026-02-01
+new milestone "Docs complete" goal:"Ship v1" weight:2
+track goal "Ship v1"</code></pre>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
-
+</html>

@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Intelligent Life Management</title>
-    <meta name="description" content="Chronos Engine is an intelligent, status-aware life management system with a fractal structure of items, routines, and a powerful 'today' scheduler." />
+    <title>Chronos Engine - YAML First Life Management</title>
+    <meta name="description" content="Chronos Engine is a YAML first life management system with a scriptable CLI, status-aware scheduling, a background listener, and a local dashboard." />
     <link rel="icon" href="public/favicon.ico" sizes="any" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
@@ -17,27 +17,31 @@
           <span class="brand-text">Chronos Engine</span>
         </a>
         <nav class="nav" id="siteNav">
-  <a href="#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="#features">Features</a>
+          <a href="pages/docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="pages/setup.html">Setup</a>
+              <a href="pages/dashboard.html">Dashboard Guide</a>
+              <a href="pages/cockpit.html">Cockpit</a>
+              <a href="pages/canvas.html">Canvas</a>
+              <a href="pages/template-builder.html">Template Builder</a>
+              <a href="pages/macros.html">Macros</a>
+              <a href="pages/chs-scripting.html">CHS Scripting</a>
+              <a href="pages/conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="pages/scheduling.html">Scheduling</a>
+              <a href="pages/settings.html">Settings</a>
+              <a href="pages/workflows.html">Workflows</a>
+              <a href="pages/architecture.html">Architecture</a>
+              <a href="pages/sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="pages/agents.html">Agents</a>
+          <a href="pages/commands.html">Commands</a>
+          <a href="pages/license.html">License</a>
+          <a href="pages/setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
@@ -46,8 +50,8 @@
       <section class="hero">
         <div class="container">
           <h1>Orchestrate Your Day with Intelligence</h1>
-          <p class="tagline">Fractal items. Status-aware scheduling. Simple YAML. Powerful CLI.</p>
-          <p class="tagline"><strong>Early development</strong> &mdash; interfaces and behavior may change. Built by <strong>David Cody (Hivemind Studio)</strong>.</p>
+          <p class="tagline">YAML first planning. Status-aware scheduling. Scriptable CLI. Local dashboard.</p>
+          <p class="tagline"><strong>Early development</strong> - interfaces and behavior may change. Built by <strong>David Cody (Hivemind Studio)</strong>.</p>
           <div class="hero-cta">
             <a class="btn primary" href="pages/setup.html">Launch Sequence</a>
             <a class="btn" href="pages/commands.html">Explore Commands</a>
@@ -58,41 +62,40 @@
       <section id="features" class="features">
         <div class="container grid">
           <div class="card">
-            <h3>Fractal Structure</h3>
-            <p>Compose life into <em>routines + subroutines + microroutines</em>, projects, tasks, and more&mdash;stored as human-readable YAML.</p>
+            <h3>YAML First Data</h3>
+            <p>Everything is an item stored as readable YAML: tasks, routines, goals, habits, commitments, rewards, and more.</p>
           </div>
           <div class="card">
-            <h3>Open Source & Extensible</h3>
-            <p>Build wrappers around the CLI, plug in your own Python commands and item modules, add dashboard widgets and views, or use the YAML data for visualizers and games.</p>
+            <h3>Fractal Scheduling</h3>
+            <p>Compose weeks, days, routines, subroutines, and microroutines into a nested plan that stays flexible.</p>
           </div>
           <div class="card">
-            <h3>AI Agents</h3>
-            <p>Use an AI assistant to translate natural language into Chronos commands, or build dev agents that operate on your items and modules.</p>
-          </div>
-          <div class="card">
-            <h3>Status-Aware</h3>
-            <p>Scheduling adapts to your <em>energy</em>, <em>focus</em>, and <em>emotion</em> to shape an optimal day.</p>
+            <h3>Status Aware</h3>
+            <p>Scheduling adapts to your energy, focus, mood, and stress to pick the best day template.</p>
           </div>
           <div class="card">
             <h3>Today Engine</h3>
-            <p><code>today reschedule</code> resolves conflicts via shifting, trimming, and importance&mdash;then persists your plan.</p>
+            <p><code>today reschedule</code> rebuilds the day, resolves conflicts, and re-queues missed work intelligently.</p>
           </div>
           <div class="card">
-            <h3>Templated Life</h3>
-            <p>Model <em>days, weeks, routines</em> with reusable templates&mdash;compose faster, iterate boldly.</p>
+            <h3>Listener Services</h3>
+            <p>Background alarms, reminders, and timer ticks with optional actions and scripts.</p>
           </div>
           <div class="card">
-            <h3>Friendly CLI</h3>
-            <p>Create, find, edit, and schedule items with concise commands and smart defaults.< Create, find, edit, and schedule items with concise commands, smart defaults, scripts, and macros (BEFORE/AFTER).</p>
+            <h3>CHS Scripting</h3>
+            <p>Run CLI commands with variables, conditions, and macros to automate routines and rules.</p>
           </div>
           <div class="card">
-            <h3>Plain Files</h3>
-            <p>Your data lives in simple YAML files&mdash;portable, auditable, and version-control friendly.</p>
+            <h3>Dashboard + Cockpit</h3>
+            <p>Calendar, Template Builder, Cockpit panels, and a Canvas board for visual planning.</p>
           </div>
           <div class="card">
-            <h3>Dashboard</h3>
-            <p>Operate Chronos visually. Views include Calendar (year/month/week/day) and Today. Widgets include Item Manager, Variables, Terminal, Habit/Goal trackers, Timer, and Settings.</p>
-            <p><a href="/pages/dashboard.html">Dashboard Guide</a></p>
+            <h3>Sequence Mirrors</h3>
+            <p>SQLite mirrors and a trends digest keep analytics fast for dashboards and agents.</p>
+          </div>
+          <div class="card">
+            <h3>Agent Ready</h3>
+            <p>Explicit agent guides and CLI patterns for natural language control and automation.</p>
           </div>
         </div>
       </section>
@@ -100,7 +103,7 @@
       <section class="callout">
         <div class="container callout-inner">
           <h2>Ready, Pilot?</h2>
-          <p>Spin up the console, set your status, and engage the scheduler.</p>
+          <p>Run onboarding, set status, and let the scheduler build your day.</p>
           <div>
             <a class="btn primary" href="pages/setup.html">Get Started</a>
             <a class="btn" href="pages/docs.html">Read the Docs</a>
@@ -111,7 +114,7 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio) - Early Development</div>
         <div class="footer-links">
           <a href="pages/docs.html">Docs</a>
           <a href="pages/agents.html">Agents</a>
@@ -128,8 +131,4 @@
 
     <script src="script.js"></script>
   </body>
-  </html>
-
-
-
-
+</html>

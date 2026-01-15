@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,59 +13,79 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a class="active" href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Conditions Cookbook</h1>
-      <p>Recipes for <code>if</code> expressions in scripts and oneâ€‘liners.</p>
+      <p>Conditions are used in CHS scripts and macros. They support logical operators, parentheses, numeric and string comparisons, regex, and existence checks.</p>
+
+      <h2>Operators</h2>
       <ul>
-        <li>Compare numbers or strings: <code>priority &gt;= 2</code>, <code>status = completed</code></li>
-        <li>Regex match: <code>name matches ^Deep</code></li>
-        <li>Logical operators: <code>and</code>, <code>or</code>, <code>xor</code>, <code>nor</code>, <code>not</code>, <code>!</code></li>
-        <li>Parentheses: <code>(energy = high and focus = good) or emotion = calm</code></li>
-        <li>Exists checks: <code>exists file:User/notes/devlog.yml</code>, <code>exists dir:User/notes</code>, <code>exists env:HOME</code></li>
-        <li>Item lookups: <code>task:Write Readme:priority &gt;= medium</code></li>
+        <li>Equality: <code>=</code>, <code>!=</code>, <code>eq</code>, <code>ne</code></li>
+        <li>Comparisons: <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>gt</code>, <code>lt</code>, <code>ge</code>, <code>le</code></li>
+        <li>Regex: <code>matches</code></li>
+        <li>Logic: <code>and</code>, <code>or</code>, <code>not</code>, parentheses</li>
       </ul>
+
+      <h2>Examples</h2>
+      <pre><code># Status
+if status:energy eq high and status:focus ne low then echo "green light"
+
+# Item property
+if task:"Deep Work":priority &gt; 7 then mark "Deep Work":next
+
+# Regex match
+if note:"Journal":tags matches ^.*daily.*$ then echo "daily note"
+
+# Exists
+if exists note:"Journal" then echo "Journal exists"
+if exists file:User/Settings/Status_Settings.yml then echo "Status settings"
+</code></pre>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
-
+</html>

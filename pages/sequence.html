@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Marketplace Terms</title>
+    <title>Chronos Engine - Sequence Mirrors</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -30,7 +30,7 @@
               <a href="settings.html">Settings</a>
               <a href="workflows.html">Workflows</a>
               <a href="architecture.html">Architecture</a>
-              <a href="sequence.html">Sequence Mirrors</a>
+              <a class="active" href="sequence.html">Sequence Mirrors</a>
             </div>
           </div>
           <a href="agents.html">Agents</a>
@@ -43,37 +43,27 @@
     </header>
 
     <main class="container doc">
-      <h1>Marketplace Terms (Summary)</h1>
-      <p>These terms apply when you sell paid Chronos extensions in the official Marketplace.</p>
+      <h1>Sequence Mirrors</h1>
+      <p>The Sequence system mirrors YAML data into SQLite databases under <code>User/Data/</code> so dashboards and agents can query fast without reparsing files.</p>
 
-      <h2>Eligibility</h2>
+      <h2>Databases</h2>
       <ul>
-        <li>Listings must be safe, lawful, and relevant to Chronos.</li>
-        <li>You must own or have rights to distribute the extension.</li>
+        <li><code>chronos_core.db</code> - canonical mirror of items, relations, completions, and schedules.</li>
+        <li><code>chronos_matrix.db</code> - analytics cache for cockpit Matrix panels.</li>
+        <li><code>chronos_events.db</code> - listener logs and command history.</li>
+        <li><code>chronos_memory.db</code> - activity facts and status snapshots.</li>
+        <li><code>chronos_trends.db</code> + <code>trends.md</code> - completion and variance digest.</li>
       </ul>
 
-      <h2>Revenue Share</h2>
+      <h2>Commands</h2>
       <ul>
-        <li>Standard share: 15 percent of net revenue (after platform fees and taxes).</li>
-        <li>Payouts monthly when balance exceeds 50 USD unless otherwise agreed.</li>
+        <li><code>sequence status</code> - list mirrors from <code>User/Data/databases.yml</code>.</li>
+        <li><code>sequence sync &lt;targets&gt;</code> - rebuild one or more datasets (matrix, core, events, memory, trends).</li>
+        <li><code>sequence trends</code> - rebuild memory/trends and rewrite <code>User/Data/trends.md</code>.</li>
       </ul>
 
-      <h2>Distribution and Certification</h2>
-      <ul>
-        <li>Approved paid listings receive the Chronos Certified badge.</li>
-        <li>You grant a non-exclusive right to distribute and market via the Marketplace.</li>
-        <li>You retain all IP to your extension.</li>
-      </ul>
-
-      <h2>Quality and Support</h2>
-      <ul>
-        <li>Keep listings accurate and up to date.</li>
-        <li>Provide a support email or issue tracker link.</li>
-        <li>Fix critical security or stability issues promptly.</li>
-      </ul>
-
-      <h2>Contact</h2>
-      <p>Questions: <a href="mailto:marketplace@chronosengine.online">marketplace@chronosengine.online</a></p>
+      <h2>Automation</h2>
+      <p>The Listener runs <code>sequence sync memory trends</code> shortly after midnight. State lives in <code>User/Data/sequence_automation.yml</code>.</p>
     </main>
 
     <footer class="site-footer">

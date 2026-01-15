@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,83 +13,85 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a class="active" href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Architecture</h1>
-      <p>This is a practical overview of how Chronos fits together so you can extend it confidently.</p>
+      <p>Chronos is designed as a YAML first engine with a thin CLI layer, modular item types, and a scheduler that composes plans from templates.</p>
 
-      <h2>Runtime Overview</h2>
+      <h2>Core Layers</h2>
       <ul>
-        <li><strong>CLI Entrypoint</strong>: <code>Modules/Console.py</code> loads commands and scripts, sets UTFâ€‘8, and dispatches to modules.</li>
-        <li><strong>Item System</strong>: <code>Modules/ItemManager.py</code> reads/writes YAML items in <code>User/</code> and applies defaults.</li>
-        <li><strong>Conditions</strong>: <code>Modules/Conditions.py</code> provides <code>if</code> logic with parentheses and <code>exists</code>/<code>matches</code>.</li>
-        <li><strong>Scheduler</strong>: <code>Modules/Scheduler.py</code> + <code>Commands/Today.py</code> build and refine the day plan.</li>
-        <li><strong>Listener</strong>: <code>Modules/Listener/Listener.py</code> handles alarms/reminders/timer in the background.</li>
-        <li><strong>Dashboard</strong>: <code>Utilities/Dashboard</code> serves APIs and mounts vanillaâ€‘JS widgets.</li>
+        <li><strong>Console</strong> - <code>Modules/Console.py</code> parses input and dispatches commands.</li>
+        <li><strong>Commands</strong> - <code>Commands/*.py</code> thin wrappers that call ItemManager and modules.</li>
+        <li><strong>Modules</strong> - <code>Modules/&lt;Type&gt;/main.py</code> contains item-specific logic.</li>
+        <li><strong>Item Manager</strong> - <code>Modules/ItemManager.py</code> handles YAML IO and generic verbs.</li>
+        <li><strong>Scheduler</strong> - <code>Modules/Scheduler.py</code> and <code>Modules/Today.py</code> build daily plans.</li>
+        <li><strong>Utilities</strong> - dashboard server, points ledger, parsers, helpers.</li>
       </ul>
 
       <h2>Data Model</h2>
-      <p>Items are YAML files with <code>name</code>, <code>type</code>, and properties. Many items nest children to form a fractal hierarchy (routines â†’ subroutines â†’ microroutines â†’ items).</p>
-
-      <h2>Settings</h2>
-      <p>Settings live under <code>User/Settings/</code> and prefer lowercase filenames (e.g., <code>points_settings.yml</code>, <code>&lt;item&gt;_defaults.yml</code>). The Settings widget allows direct editing with validation.</p>
-
-      <h2>Dashboard API (selected)</h2>
       <ul>
-        <li><code>POST /api/cli</code> â€” run commands</li>
-        <li><code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
-        <li><code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item*</code></li>
-        <li><code>GET /api/goals</code>, <code>GET /api/habits</code></li>
-        <li><code>GET/POST /api/settings</code> â€” list/read/write settings files</li>
+        <li>Items live in <code>User/&lt;TypePlural&gt;/</code> as individual YAML files.</li>
+        <li>Defaults in <code>User/Settings/&lt;type&gt;_defaults.yml</code>.</li>
+        <li>Schedules in <code>User/Schedules/schedule_YYYY-MM-DD.yml</code>.</li>
+        <li>Sequence mirrors in <code>User/Data/</code> for analytics.</li>
       </ul>
 
-      <h2>Extending Chronos</h2>
-      <ul>
-        <li><strong>Commands</strong>: add <code>Commands/MyCommand.py</code> with <code>run(args, properties)</code>.</li>
-        <li><strong>Item modules</strong>: add <code>Modules/My_Item/main.py</code> with <code>handle_*</code> or <code>handle_command</code>.</li>
-        <li><strong>Widgets/views</strong>: add <code>Utilities/Dashboard/Widgets/&lt;Name&gt;/index.js</code> and wire in <code>dashboard.html</code>.</li>
-      </ul>
+      <h2>Scheduling Phases</h2>
+      <ol>
+        <li>Gather items and templates.</li>
+        <li>Score and rank candidates.</li>
+        <li>Place ideal schedule with buffers and dependencies.</li>
+        <li>Resolve conflicts and persist outputs.</li>
+      </ol>
+
+      <h2>Dashboard</h2>
+      <p>The dashboard is a static SPA under <code>Utilities/Dashboard</code>. It serves views (Calendar, Template Builder, Cockpit, Canvas) and widgets via local HTTP APIs.</p>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
-
+</html>

@@ -57,10 +57,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;background:rad
 .doc h1{margin-top:10px}
 .doc h2{margin-top:24px}
 .doc ul{line-height:1.6}
-.cmd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+.cmd-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
 .cmd{background:#000;border:1px dashed var(--muted);border-radius:8px;padding:12px}
 .cmd code{display:block;color:#aaffcc}
 .cmd p{margin:6px 0 0;color:var(--muted)}
+.cmd-filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:10px 0 14px}
+.cmd-filters .input{max-width:320px}
+.cmd-index{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.cmd-index a{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border:1px dashed var(--accent);border-radius:6px;text-decoration:none}
+.cmd-type{font-size:12px;color:var(--muted);margin:4px 0 10px}
+.cmd-letter{margin:16px 0 6px;font-size:18px;font-weight:700;letter-spacing:2px;color:var(--accent)}
 
 @media (max-width: 860px){
   .grid{grid-template-columns:1fr}

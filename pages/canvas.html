@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Marketplace Terms</title>
+    <title>Chronos Engine - Canvas</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -21,7 +21,7 @@
               <a href="setup.html">Setup</a>
               <a href="dashboard.html">Dashboard Guide</a>
               <a href="cockpit.html">Cockpit</a>
-              <a href="canvas.html">Canvas</a>
+              <a class="active" href="canvas.html">Canvas</a>
               <a href="template-builder.html">Template Builder</a>
               <a href="macros.html">Macros</a>
               <a href="chs-scripting.html">CHS Scripting</a>
@@ -43,37 +43,26 @@
     </header>
 
     <main class="container doc">
-      <h1>Marketplace Terms (Summary)</h1>
-      <p>These terms apply when you sell paid Chronos extensions in the official Marketplace.</p>
+      <h1>Canvas</h1>
+      <p>Canvas is a freeform board for planning, brainstorming, and collaboration. Boards are stored as <code>canvas_board</code> items in YAML.</p>
 
-      <h2>Eligibility</h2>
+      <h2>Board Data Model</h2>
       <ul>
-        <li>Listings must be safe, lawful, and relevant to Chronos.</li>
-        <li>You must own or have rights to distribute the extension.</li>
+        <li><strong>nodes</strong> - cards with position, size, title, and content.</li>
+        <li><strong>connections</strong> - links between nodes.</li>
+        <li><strong>ink</strong> - freehand drawing paths.</li>
+        <li><strong>media</strong> - embedded images or media attachments.</li>
+        <li><strong>viewport</strong> - pan and zoom state.</li>
       </ul>
 
-      <h2>Revenue Share</h2>
-      <ul>
-        <li>Standard share: 15 percent of net revenue (after platform fees and taxes).</li>
-        <li>Payouts monthly when balance exceeds 50 USD unless otherwise agreed.</li>
-      </ul>
+      <h2>Library and Items</h2>
+      <p>The Canvas library can pull in Chronos items (tasks, goals, milestones, notes, habits, commitments). Drag items onto the board to create linked nodes.</p>
 
-      <h2>Distribution and Certification</h2>
-      <ul>
-        <li>Approved paid listings receive the Chronos Certified badge.</li>
-        <li>You grant a non-exclusive right to distribute and market via the Marketplace.</li>
-        <li>You retain all IP to your extension.</li>
-      </ul>
+      <h2>Collaboration</h2>
+      <p>Canvas includes a Link flow for sharing a board invite URL. The link system uses a polling sync with last write wins behavior.</p>
 
-      <h2>Quality and Support</h2>
-      <ul>
-        <li>Keep listings accurate and up to date.</li>
-        <li>Provide a support email or issue tracker link.</li>
-        <li>Fix critical security or stability issues promptly.</li>
-      </ul>
-
-      <h2>Contact</h2>
-      <p>Questions: <a href="mailto:marketplace@chronosengine.online">marketplace@chronosengine.online</a></p>
+      <h2>Where It Lives</h2>
+      <p>Canvas boards are stored under <code>User/Canvas_Boards</code> as YAML items. Use the CLI or the dashboard to create, rename, and open boards.</p>
     </main>
 
     <footer class="site-footer">

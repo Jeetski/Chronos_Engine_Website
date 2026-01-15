@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,64 +13,84 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a class="active" href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>CHS Scripting</h1>
-      <p>Run sequences of Chronos commands from <code>.chs</code> files. Highlights:</p>
+      <p>CHS is a simple script language that runs Chronos CLI commands line by line. Use it to automate routines, checks, and flows.</p>
+
+      <h2>Basics</h2>
       <ul>
-        <li>Variables: <code>set var name:World</code>, then use <code>@name</code> or <code>@{name}</code></li>
-        <li>Escaping: write <code>@@</code> for a literal <code>@</code></li>
-        <li>Properties: key:value tokens parsed as command properties</li>
-        <li>Conditions: <code>if ... then</code> with <code>elseif</code>, <code>else</code>, <code>end</code>; supports parentheses</li>
+        <li>One command per line, identical to CLI syntax.</li>
+        <li>Comments use <code>#</code>.</li>
+        <li>Variables expand with <code>@name</code>.</li>
       </ul>
-      <pre><code># morning.chs
-status energy:high focus:good
-today reschedule
-if exists task:"Deep Work" then
-  append note Prep "Outline goals for the block"
-end</code></pre>
-      <p>See more examples in the repository.</p>
+
+      <h2>Conditionals</h2>
+      <pre><code>if status:energy eq high then new task "Deep Work" duration:90
+if exists note:"Journal" then echo "Journal already exists"
+if task:Important:priority >= 8 then mark "Important":next
+</code></pre>
+      <p>See <a href="conditions-cookbook.html">Conditions Cookbook</a> for more patterns.</p>
+
+      <h2>Variables</h2>
+      <pre><code>set var project:"Chronos v1"
+new task "Ship @project" priority:high
+</code></pre>
+
+      <h2>File/Dir/Env Checks</h2>
+      <pre><code>if exists file:README.md then echo "README found"
+if exists dir:User/Tasks then echo "Tasks folder"
+if exists env:PATH then echo "PATH exists"
+</code></pre>
+
+      <h2>Where Scripts Live</h2>
+      <p>Store scripts under <code>Scripts/</code>. The Listener and Macros can execute them automatically.</p>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
-
+</html>

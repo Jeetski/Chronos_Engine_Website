@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Marketplace Terms</title>
+    <title>Chronos Engine - Scheduling</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -26,7 +26,7 @@
               <a href="macros.html">Macros</a>
               <a href="chs-scripting.html">CHS Scripting</a>
               <a href="conditions-cookbook.html">Conditions Cookbook</a>
-              <a href="scheduling.html">Scheduling</a>
+              <a class="active" href="scheduling.html">Scheduling</a>
               <a href="settings.html">Settings</a>
               <a href="workflows.html">Workflows</a>
               <a href="architecture.html">Architecture</a>
@@ -43,37 +43,37 @@
     </header>
 
     <main class="container doc">
-      <h1>Marketplace Terms (Summary)</h1>
-      <p>These terms apply when you sell paid Chronos extensions in the official Marketplace.</p>
+      <h1>Scheduling Overview</h1>
+      <p>Chronos scheduling is status-aware and template driven. It scores day templates against your current status, selects the best fit, and then builds a day plan using buffers, dependencies, and conflict resolution.</p>
 
-      <h2>Eligibility</h2>
+      <h2>Pipeline (High Level)</h2>
+      <ol>
+        <li>Gather items from templates, recurring items, and manual additions.</li>
+        <li>Compute importance using priority, status, metadata, and current energy/focus.</li>
+        <li>Place the ideal schedule with durations, dependencies, and buffers.</li>
+        <li>Resolve conflicts by trimming, moving, buffering, or cutting.</li>
+        <li>Persist to <code>User/Schedules/schedule_YYYY-MM-DD.yml</code>.</li>
+      </ol>
+
+      <h2>Status Aware Templates</h2>
       <ul>
-        <li>Listings must be safe, lawful, and relevant to Chronos.</li>
-        <li>You must own or have rights to distribute the extension.</li>
+        <li>Templates and items can define <code>status_requirements</code> or legacy status keys.</li>
+        <li>Chronos loads <code>User/Settings/Status_Settings.yml</code> to score candidates.</li>
+        <li>Run <code>today reschedule</code> after updating status to rebuild the plan.</li>
       </ul>
 
-      <h2>Revenue Share</h2>
+      <h2>Time Blocks</h2>
       <ul>
-        <li>Standard share: 15 percent of net revenue (after platform fees and taxes).</li>
-        <li>Payouts monthly when balance exceeds 50 USD unless otherwise agreed.</li>
+        <li>Time blocks can be anchored, floating, or dependency driven.</li>
+        <li>Buffers are respected to prevent overbooking.</li>
+        <li>Manual edits are tracked in <code>User/Schedules/manual_modifications_YYYY-MM-DD.yml</code>.</li>
       </ul>
 
-      <h2>Distribution and Certification</h2>
+      <h2>Preview Commands</h2>
       <ul>
-        <li>Approved paid listings receive the Chronos Certified badge.</li>
-        <li>You grant a non-exclusive right to distribute and market via the Marketplace.</li>
-        <li>You retain all IP to your extension.</li>
+        <li><code>tomorrow [days:n]</code> - preview future agendas.</li>
+        <li><code>this &lt;weekday&gt;</code> / <code>next &lt;weekday&gt;</code> - preview specific days.</li>
       </ul>
-
-      <h2>Quality and Support</h2>
-      <ul>
-        <li>Keep listings accurate and up to date.</li>
-        <li>Provide a support email or issue tracker link.</li>
-        <li>Fix critical security or stability issues promptly.</li>
-      </ul>
-
-      <h2>Contact</h2>
-      <p>Questions: <a href="mailto:marketplace@chronosengine.online">marketplace@chronosengine.online</a></p>
     </main>
 
     <footer class="site-footer">

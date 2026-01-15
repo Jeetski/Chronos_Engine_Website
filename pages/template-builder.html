@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,92 +13,90 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a class="active" href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Template Builder</h1>
-      <p>The Template Builder is a visual editor for Chronos templates. It lets you browse your library, load an existing template (routine/subroutine/microroutine/day/week), reorder with drag-and-drop, refine properties, and save back to YAML.</p>
+      <p>The Template Builder is a visual editor for Chronos templates. It lets you browse your library, load a template, edit the tree, and save back to YAML via <code>/api/template</code>.</p>
 
-      <h2>Overview</h2>
+      <h2>Layout</h2>
       <ul>
-        <li><strong>Library (left):</strong> browse items and templates; filter by type and subtype; quick search.</li>
-        <li><strong>Template (center):</strong> load a template and edit its tree via drag-and-drop.</li>
-        <li><strong>Inspector (right):</strong> edit type, name, duration (minutes or <code>parallel</code>), ideal start/end time, and depends_on.</li>
+        <li><strong>Library (left)</strong> - browse items and templates, filter by type, quick search.</li>
+        <li><strong>Template (center)</strong> - drag and drop nodes to reorder or reparent.</li>
+        <li><strong>Inspector (right)</strong> - edit name, duration, ideal start/end, and dependencies.</li>
       </ul>
 
       <h2>Supported Types</h2>
       <ul>
-        <li><strong>Templates:</strong> <code>routine</code>, <code>subroutine</code>, <code>microroutine</code>, <code>day</code>, <code>week</code></li>
-        <li><strong>Items (library aggregate):</strong> task, note, goal, habit, appointment, commitment, dream_diary_entry, idea, inventory_item, journal_entry, list, milestone, person, place, plan, project, review, reward, ritual, tool, alarm, reminder</li>
+        <li><strong>Templates:</strong> week, day, routine, subroutine, microroutine.</li>
+        <li><strong>Items:</strong> task, note, goal, habit, appointment, commitment, milestone, reward, alarm, reminder, inventory items, tools, and more.</li>
       </ul>
 
-      <h2>Editing</h2>
+      <h2>Editing Rules</h2>
       <ul>
-        <li><strong>Load:</strong> choose type + name then click <em>Load</em> to bring the template tree into view.</li>
-        <li><strong>Reorder:</strong> drag items <em>before/after</em> to change order; drop <em>into</em> to make a child; drop near the left edge (outdent hint) to move up a level.</li>
-        <li><strong>Duration:</strong> enter minutes (sequential Σ) or <code>parallel</code> (∥) to group child durations in parallel.</li>
-        <li><strong>Inspector:</strong> set <code>ideal_start_time</code>, <code>ideal_end_time</code>, and <code>depends_on</code> (choose from nodes in the tree).</li>
+        <li>Hierarchy: week &gt; day &gt; routine &gt; subroutine &gt; microroutine &gt; items.</li>
+        <li>Drag within the tree to reorder. Drop into a node to nest, drop near the left edge to outdent.</li>
+        <li>Use duration minutes for sequential work, or <code>parallel</code> to group child durations.</li>
       </ul>
 
-      <h2>Nesting Rules</h2>
+      <h2>Endpoints</h2>
       <ul>
-        <li>Hierarchy: <code>week &gt; day &gt; routine &gt; subroutine &gt; microroutine &gt; item</code>.</li>
-        <li>Do not nest a larger template under a smaller one (e.g., routine into subroutine).</li>
-        <li>No same-kind self-nesting (e.g., routine inside routine).</li>
-      </ul>
-
-      <h2>Save &amp; Load</h2>
-      <ul>
-        <li><strong>List names:</strong> <code>GET /api/template/list?type=TYPE</code></li>
-        <li><strong>Load tree:</strong> <code>GET /api/template?type=TYPE&amp;name=NAME</code> → <code>{ children }</code></li>
-        <li><strong>Save tree:</strong> <code>POST /api/template</code> with YAML: <code>{ type, name, children }</code></li>
+        <li><code>GET /api/template/list?type=TYPE</code></li>
+        <li><code>GET /api/template?type=TYPE&amp;name=NAME</code></li>
+        <li><code>POST /api/template</code> with YAML payload (type, name, children).</li>
       </ul>
 
       <h2>Tips</h2>
       <ul>
-        <li>Use <strong>fx</strong> toggle to expand variables (e.g., <code>@nickname</code>) in labels while editing.</li>
-        <li>Drag from the Library to add nodes; drag within the template to reorder or change depth.</li>
-        <li>Use <strong>Apply</strong> in the inspector to commit edits to the selected node.</li>
+        <li>Use the fx toggle to expand variables like <code>@nickname</code> in labels.</li>
+        <li>Drag from Library to add nodes quickly.</li>
+        <li>Use the inspector Apply button to persist edits to the selected node.</li>
       </ul>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine — Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/pages/docs.html">Docs</a>
-          <a href="/pages/agents.html">Agents</a>
-          <a href="/pages/commands.html">Commands</a>
-          <a href="/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
+</html>

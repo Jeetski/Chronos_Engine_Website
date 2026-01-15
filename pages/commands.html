@@ -13,605 +13,982 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a class="active" href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a class="active" href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
-      <h1>Commands (Alphabetical)</h1>
-      <p>Usage and descriptions pulled from the CLI help.</p>
-      <input id="cmdFilter" class="input" placeholder="Filter commands..." style="max-width:420px; margin:10px 0;"/>
-      <div class="grid" id="cmdGrid">
-        <div class="card" data-name="add">
-          <h3 style="margin-top:0">add</h3>
-          <p>Adds an item to a template, intelligently resolving ambiguity.</p>
-          <pre>Usage: add &lt;item_to_add&gt; to &lt;target_template&gt; [position:&lt;number&gt;]</pre>
-          <details><summary>More</summary><pre>Usage: add &lt;item_to_add&gt; to &lt;target_template&gt; [position:&lt;number&gt;]
-Description: Adds an item to a template, intelligently resolving ambiguity.
-Example: add "My Subroutine" to "My Routine" position:1</pre></details>
-        </div>
-        <div class="card" data-name="append">
-          <h3 style="margin-top:0">append</h3>
-          <p>Appends text to the content of an existing item.</p>
-          <pre>Usage: append &lt;item_type&gt; &lt;item_name&gt; "&lt;text_to_append&gt;" [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: append &lt;item_type&gt; &lt;item_name&gt; "&lt;text_to_append&gt;" [property_key:property_value ...]
-Description: Appends text to the content of an existing item.
-Example: append note MyMeetingNotes "- Discuss Q3 results"</pre></details>
-        </div>
-        <div class="card" data-name="change">
-          <h3 style="margin-top:0">change</h3>
-          <p>Changes the start time of an item in the current day's schedule.</p>
-          <pre>Usage: change &lt;item_name&gt; &lt;new_start_time_HH:MM&gt;</pre>
-          <details><summary>More</summary><pre>Usage: change &lt;item_name&gt; &lt;new_start_time_HH:MM&gt;
-Description: Changes the start time of an item in the current day's schedule.
-Example: change "Morning Routine" 08:30</pre></details>
-        </div>
-        <div class="card" data-name="cls">
-          <h3 style="margin-top:0">cls</h3>
-          <p>Clears the terminal screen.</p>
-          <pre>Usage: cls</pre>
-          <details><summary>More</summary><pre>Usage: cls
-Description: Clears the terminal screen.
-Example: cls</pre></details>
-        </div>
-        <div class="card" data-name="cmd">
-          <h3 style="margin-top:0">cmd</h3>
-          <p>Executes the provided command-line (CMD) command.</p>
-          <pre>Usage: cmd &lt;command&gt;</pre>
-          <details><summary>More</summary><pre>Usage: cmd &lt;command&gt;
-Description: Executes the provided command-line (CMD) command.
-Example: cmd dir
-Example: cmd echo Hello from CMD!</pre></details>
-        </div>
-        <div class="card" data-name="commitments">
-          <h3 style="margin-top:0">commitments</h3>
-          <p>Evaluates all commitments and fires triggers.</p>
-          <pre>Usage: commitments [check]</pre>
-          <details><summary>More</summary><pre>Usage: commitments [check]
-Description: Evaluates all commitments and fires triggers.
-
-Commitment YAML fields (examples):
-
-  name: Exercise Twice Weekly
-  type: commitment
-  frequency: { times: 2, period: week }
-  associated_items:
-    - { type: habit, name: Exercise }
-    - { type: task, name: Morning Run }
-  triggers:
-    on_met:
-      - { type: achievement, name: Exercise streak! }
-      - { type: script, path: Scripts/congrats.chs }
-
-  name: Never Smoke
-  type: commitment
-  never: true
-  forbidden_items:
-    - { type: habit, name: Smoke }
-  triggers:
-    on_violation:
-      - { type: reward, name: Reflection Needed, properties: { category: Health } }</pre></details>
-        </div>
-        <div class="card" data-name="complete">
-          <h3 style="margin-top:0">complete</h3>
-          <p>Marks an item as complete for today and updates tracking (streaks, sessions).</p>
-          <pre>Usage: complete &lt;item_type&gt; &lt;item_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: complete &lt;item_type&gt; &lt;item_name&gt;
-Description: Marks an item as complete for today and updates tracking (streaks, sessions).
+      <h1>Commands (Full Reference)</h1>
+      <p>Every Chronos CLI command with syntax and notes. Filter as you type.</p>
+      <div class="cmd-filters">
+        <input id="cmdFilter" class="input" placeholder="Filter commands..." />
+        <select id="cmdType" class="input">
+<option value="">All Types</option>
+<option value="Advanced Features">Advanced Features</option>
+<option value="Automation &amp; Scripting">Automation &amp; Scripting</option>
+<option value="Core Commands">Core Commands</option>
+<option value="Reminders &amp; Alarms">Reminders &amp; Alarms</option>
+<option value="Rewards &amp; Points">Rewards &amp; Points</option>
+<option value="Scheduling &amp; Tracking">Scheduling &amp; Tracking</option>
+<option value="Utilities">Utilities</option>
+        </select>
+      </div>
+      <div class="cmd-index"><a href="#cmd-a" data-letter="A">A</a> <a href="#cmd-b" data-letter="B">B</a> <a href="#cmd-c" data-letter="C">C</a> <a href="#cmd-d" data-letter="D">D</a> <a href="#cmd-e" data-letter="E">E</a> <a href="#cmd-f" data-letter="F">F</a> <a href="#cmd-g" data-letter="G">G</a> <a href="#cmd-h" data-letter="H">H</a> <a href="#cmd-i" data-letter="I">I</a> <a href="#cmd-l" data-letter="L">L</a> <a href="#cmd-m" data-letter="M">M</a> <a href="#cmd-n" data-letter="N">N</a> <a href="#cmd-p" data-letter="P">P</a> <a href="#cmd-r" data-letter="R">R</a> <a href="#cmd-s" data-letter="S">S</a> <a href="#cmd-t" data-letter="T">T</a> <a href="#cmd-u" data-letter="U">U</a> <a href="#cmd-v" data-letter="V">V</a></div>
+      <div class="cmd-grid" id="cmdGrid">
+<div class="cmd-letter" id="cmd-a">A</div>
+<div class="card" data-name="add" data-type="Core Commands" id="cmd-add">
+  <h3 style="margin-top:0">add</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Adds an item to a template, intelligently resolving ambiguity.</p>
+  <pre>Usage:
+add &lt;item_to_add&gt; to &lt;target_template&gt; [position:&lt;number&gt;]</pre>
+  <details><summary>More</summary>
+    <pre>Adds an item to a template, intelligently resolving ambiguity.
+Usage: add &lt;item_to_add&gt; to &lt;target_template&gt; [position:&lt;number&gt;]</pre>
+  </details>
+</div>
+<div class="card" data-name="aduc" data-type="Utilities" id="cmd-aduc">
+  <h3 style="margin-top:0">aduc</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Launches ADUC in Chronos mode (Pilot Mode).</p>
+  <pre>Usage:
+aduc</pre>
+  <details><summary>More</summary>
+    <pre>Launches ADUC in Chronos mode (Pilot Mode).
+Usage: aduc</pre>
+  </details>
+</div>
+<div class="card" data-name="alarm" data-type="Core Commands" id="cmd-alarm">
+  <h3 style="margin-top:0">alarm</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Creates an alarm from an item&#x27;s deadline or due date.</p>
+  <pre>Usage:
+alarm from &lt;type&gt; &lt;name&gt; [use:deadline|due_date] [date:YYYY-MM-DD] [time:HH:MM] [message:&quot;...&quot;]</pre>
+  <pre>Examples:
+alarm from milestone &quot;Finalize docs&quot; use:due_date time:10:00</pre>
+  <details><summary>More</summary>
+    <pre>Creates an alarm from an item&#x27;s deadline or due date.
+Usage: alarm from &lt;type&gt; &lt;name&gt; [use:deadline|due_date] [date:YYYY-MM-DD] [time:HH:MM] [message:&quot;...&quot;]
+Example: alarm from milestone &quot;Finalize docs&quot; use:due_date time:10:00
+Notes: If no time is provided and the item date has no time, Chronos uses the alarm default time (or 09:00).
+Alias: set alarm from &lt;type&gt; &lt;name&gt; ...</pre>
+  </details>
+</div>
+<div class="card" data-name="alias" data-type="Advanced Features" id="cmd-alias">
+  <h3 style="margin-top:0">alias</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Creates custom command shortcuts.</p>
+  <pre>Usage:
+- alias &lt;name&gt; &lt;command&gt;: Create an alias.
+- alias list: List all aliases.
+- alias remove &lt;name&gt;: Delete an alias.</pre>
+  <details><summary>More</summary>
+    <pre>Creates custom command shortcuts.
+Usage:
+- alias &lt;name&gt; &lt;command&gt;: Create an alias.
+- alias list: List all aliases.
+- alias remove &lt;name&gt;: Delete an alias.</pre>
+  </details>
+</div>
+<div class="card" data-name="append" data-type="Core Commands" id="cmd-append">
+  <h3 style="margin-top:0">append</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Appends text to the content of an existing item.</p>
+  <pre>Usage:
+append &lt;type&gt; &lt;name&gt; &quot;&lt;text_to_append&gt;&quot; [property_key:property_value ...]</pre>
+  <details><summary>More</summary>
+    <pre>Appends text to the content of an existing item.
+Usage: append &lt;type&gt; &lt;name&gt; &quot;&lt;text_to_append&gt;&quot; [property_key:property_value ...]</pre>
+  </details>
+</div>
+<div class="card" data-name="archive" data-type="Utilities" id="cmd-archive">
+  <h3 style="margin-top:0">archive</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Moves an item to User/Archive.</p>
+  <pre>Usage:
+archive &lt;type&gt; &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Moves an item to User/Archive.
+Usage: archive &lt;type&gt; &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-b">B</div>
+<div class="card" data-name="backup" data-type="Utilities" id="cmd-backup">
+  <h3 style="margin-top:0">backup</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Creates a zip backup of the User directory.</p>
+  <pre>Usage:
+backup</pre>
+  <details><summary>More</summary>
+    <pre>Creates a zip backup of the User directory.
+Usage: backup</pre>
+  </details>
+</div>
+<div class="card" data-name="bulk" data-type="Advanced Features" id="cmd-bulk">
+  <h3 style="margin-top:0">bulk</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Executes a command on multiple items matching a filter.</p>
+  <pre>Usage:
+bulk &lt;command&gt; [args...] [limit:&lt;n&gt;] [dry:true|false]</pre>
+  <pre>Examples:
+filter task status:pending; bulk delete force:true
+filter all; bulk set tag:legacy dry:false</pre>
+  <details><summary>More</summary>
+    <pre>Executes a command on multiple items matching a filter.
+Usage: bulk &lt;command&gt; [args...] [limit:&lt;n&gt;] [dry:true|false]
+Example: filter task status:pending; bulk delete force:true
+Example: filter all; bulk set tag:legacy dry:false</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-c">C</div>
+<div class="card" data-name="change" data-type="Scheduling &amp; Tracking" id="cmd-change">
+  <h3 style="margin-top:0">change</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Changes the start time of an item in the current day&#x27;s schedule.</p>
+  <pre>Usage:
+change &lt;item_name&gt; &lt;new_start_time_HH:MM&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Changes the start time of an item in the current day&#x27;s schedule.
+Usage: change &lt;item_name&gt; &lt;new_start_time_HH:MM&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="check" data-type="Scheduling &amp; Tracking" id="cmd-check">
+  <h3 style="margin-top:0">check</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Runs a data integrity check on your User directory.</p>
+  <pre>Usage:
+check</pre>
+  <details><summary>More</summary>
+    <pre>Runs a data integrity check on your User directory.
+Usage: check</pre>
+  </details>
+</div>
+<div class="card" data-name="clean" data-type="Utilities" id="cmd-clean">
+  <h3 style="margin-top:0">clean</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Removes temporary files.</p>
+  <pre>Usage:
+clean</pre>
+  <details><summary>More</summary>
+    <pre>Removes temporary files.
+Usage: clean</pre>
+  </details>
+</div>
+<div class="card" data-name="cls" data-type="Utilities" id="cmd-cls">
+  <h3 style="margin-top:0">cls</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Clears the terminal screen.</p>
+  <pre>Usage:
+cls</pre>
+  <details><summary>More</summary>
+    <pre>Clears the terminal screen.
+Usage: cls</pre>
+  </details>
+</div>
+<div class="card" data-name="cmd" data-type="Utilities" id="cmd-cmd">
+  <h3 style="margin-top:0">cmd</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Executes a Windows CMD command.</p>
+  <pre>Usage:
+cmd &lt;command&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Executes a Windows CMD command.
+Usage: cmd &lt;command&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="commitments" data-type="Advanced Features" id="cmd-commitments">
+  <h3 style="margin-top:0">commitments</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Evaluates all commitments and fires triggers.</p>
+  <pre>Usage:
+commitments [check]</pre>
+  <details><summary>More</summary>
+    <pre>Evaluates all commitments and fires triggers.
+Usage: commitments [check]</pre>
+  </details>
+</div>
+<div class="card" data-name="complete" data-type="Scheduling &amp; Tracking" id="cmd-complete">
+  <h3 style="margin-top:0">complete</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Marks an item as completed.</p>
+  <pre>Usage:
+complete &lt;type&gt; &lt;name&gt; [minutes:&lt;duration&gt;]</pre>
+  <details><summary>More</summary>
+    <pre>Marks an item as completed.
+Usage: complete &lt;type&gt; &lt;name&gt; [minutes:&lt;duration&gt;]</pre>
+  </details>
+</div>
+<div class="card" data-name="copy" data-type="Core Commands" id="cmd-copy">
+  <h3 style="margin-top:0">copy</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Creates a duplicate of an existing item, optionally with a new name and modified properties.</p>
+  <pre>Usage:
+copy &lt;type&gt; &lt;source_name&gt; [new_name] [property_key:property_value ...]</pre>
+  <details><summary>More</summary>
+    <pre>Creates a duplicate of an existing item, optionally with a new name and modified properties.
+Usage: copy &lt;type&gt; &lt;source_name&gt; [new_name] [property_key:property_value ...]</pre>
+  </details>
+</div>
+<div class="card" data-name="count" data-type="Core Commands" id="cmd-count">
+  <h3 style="margin-top:0">count</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Counts items of a specific type, optionally filtered by properties.</p>
+  <pre>Usage:
+count &lt;type&gt; [property_key:property_value ...]</pre>
+  <details><summary>More</summary>
+    <pre>Counts items of a specific type, optionally filtered by properties.
+Usage: count &lt;type&gt; [property_key:property_value ...]</pre>
+  </details>
+</div>
+<div class="card" data-name="create" data-type="Core Commands" id="cmd-create">
+  <h3 style="margin-top:0">create</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Creates a new item (alias-style alternative to new).</p>
+  <pre>Usage:
+create &lt;type&gt; &lt;name&gt; [properties...]</pre>
+  <details><summary>More</summary>
+    <pre>Creates a new item (alias-style alternative to new).
+Usage: create &lt;type&gt; &lt;name&gt; [properties...]</pre>
+  </details>
+</div>
+<div class="card" data-name="cut" data-type="Scheduling &amp; Tracking" id="cmd-cut">
+  <h3 style="margin-top:0">cut</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Removes an item from the current day&#x27;s schedule.</p>
+  <pre>Usage:
+cut &lt;item_name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Removes an item from the current day&#x27;s schedule.
+Usage: cut &lt;item_name&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-d">D</div>
+<div class="card" data-name="dashboard" data-type="Advanced Features" id="cmd-dashboard">
+  <h3 style="margin-top:0">dashboard</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Bundles settings and launches the Chronos Dashboard in your browser.</p>
+  <pre>Usage:
+dashboard [host:IP] [port:N]</pre>
+  <details><summary>More</summary>
+    <pre>Bundles settings and launches the Chronos Dashboard in your browser.
+Usage: dashboard [host:IP] [port:N]</pre>
+  </details>
+</div>
+<div class="card" data-name="delete" data-type="Core Commands" id="cmd-delete">
+  <h3 style="margin-top:0">delete</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Deletes an item permanently (use archive for soft delete).</p>
+  <pre>Usage:
+delete &lt;type&gt; &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Deletes an item permanently (use archive for soft delete).
+Usage: delete &lt;type&gt; &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="did" data-type="Scheduling &amp; Tracking" id="cmd-did">
+  <h3 style="margin-top:0">did</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Logs actuals for a schedule block.</p>
+  <pre>Usage:
+did &quot;Block Name&quot; [start_time:HH:MM] [end_time:HH:MM] [status:completed|skipped|partial] [note:&quot;...&quot;]</pre>
+  <details><summary>More</summary>
+    <pre>Logs actuals for a schedule block.
+Usage: did &quot;Block Name&quot; [start_time:HH:MM] [end_time:HH:MM] [status:completed|skipped|partial] [note:&quot;...&quot;]</pre>
+  </details>
+</div>
+<div class="card" data-name="diff" data-type="Utilities" id="cmd-diff">
+  <h3 style="margin-top:0">diff</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Shows differences between two items or two files.</p>
+  <pre>Usage:
+- diff &lt;type&gt; &lt;name1&gt; &lt;name2&gt;
+- diff file &lt;path1&gt; &lt;path2&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Shows differences between two items or two files.
+Usage:
+- diff &lt;type&gt; &lt;name1&gt; &lt;name2&gt;
+- diff file &lt;path1&gt; &lt;path2&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="dismiss" data-type="Reminders &amp; Alarms" id="cmd-dismiss">
+  <h3 style="margin-top:0">dismiss</h3>
+  <p class="cmd-type">Type: Reminders &amp; Alarms</p>
+  <p>Dismisses a specified alarm for the remainder of the current day.</p>
+  <pre>Usage:
+dismiss &lt;alarm_name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Dismisses a specified alarm for the remainder of the current day.
+Usage: dismiss &lt;alarm_name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="docs" data-type="Utilities" id="cmd-docs">
+  <h3 style="margin-top:0">docs</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Opens Chronos docs in your default viewer.</p>
+  <pre>Usage:
+docs [topic]</pre>
+  <details><summary>More</summary>
+    <pre>Opens Chronos docs in your default viewer.
+Usage: docs [topic]</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-e">E</div>
+<div class="card" data-name="echo" data-type="Utilities" id="cmd-echo">
+  <h3 style="margin-top:0">echo</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Prints text to the console.</p>
+  <pre>Usage:
+echo &lt;text_to_print&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Prints text to the console.
+Usage: echo &lt;text_to_print&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="edit" data-type="Core Commands" id="cmd-edit">
+  <h3 style="margin-top:0">edit</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Opens an item in the default editor (VS Code).</p>
+  <pre>Usage:
+edit &lt;type&gt; &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Opens an item in the default editor (VS Code).
+Usage: edit &lt;type&gt; &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="export" data-type="Utilities" id="cmd-export">
+  <h3 style="margin-top:0">export</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Exports data to YAML or zips the full User directory.</p>
+  <pre>Usage:
+- export all [filename.zip]
+- export &lt;filename&gt; &lt;command&gt; [args...]</pre>
+  <details><summary>More</summary>
+    <pre>Exports data to YAML or zips the full User directory.
+Usage:
+- export all [filename.zip]
+- export &lt;filename&gt; &lt;command&gt; [args...]</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-f">F</div>
+<div class="card" data-name="filter" data-type="Advanced Features" id="cmd-filter">
+  <h3 style="margin-top:0">filter</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Sets the active filter for Chronos items.</p>
+  <pre>Usage:
+filter &lt;item_type&gt; [property:value ...] | filter all | filter off</pre>
+  <pre>Examples:
+- filter task status:pending
+- filter all
+- filter type:all</pre>
+  <details><summary>More</summary>
+    <pre>Sets the active filter for Chronos items.
+Usage: filter &lt;item_type&gt; [property:value ...] | filter all | filter off
 Examples:
-  complete task "Deep Work" minutes:50
-  complete routine "Morning Routine"
-  complete appointment "Dentist" attended:true
-  complete appointment "Dentist" no_show:true  (records a session but does NOT count as completion)</pre></details>
-        </div>
-        <div class="card" data-name="copy">
-          <h3 style="margin-top:0">copy</h3>
-          <p>Creates a duplicate of an existing item, optionally with a new name and modified properties.</p>
-          <pre>Usage: copy &lt;item_type&gt; &lt;source_item_name&gt; [new_item_name] [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: copy &lt;item_type&gt; &lt;source_item_name&gt; [new_item_name] [property_key:property_value ...]
-Description: Creates a duplicate of an existing item, optionally with a new name and modified properties.
-Example: copy note MyMeetingNotes MyMeetingNotes_Copy
-Example: copy task "Old Task" "New Task" status:pending priority:high</pre></details>
-        </div>
-        <div class="card" data-name="count">
-          <h3 style="margin-top:0">count</h3>
-          <p>Counts items of a specific type, optionally filtered by properties.</p>
-          <pre>Usage: count &lt;item_type&gt; [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: count &lt;item_type&gt; [property_key:property_value ...]
-Description: Counts items of a specific type, optionally filtered by properties.
-Example: count note category:work
-Example: count task status:pending priority:high</pre></details>
-        </div>
-        <div class="card" data-name="create">
-          <h3 style="margin-top:0">create</h3>
-          <p>Creates a new item of the specified type with the given name and properties.</p>
-          <pre>Usage: create &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: create &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
-Description: Creates a new item of the specified type with the given name and properties.
-Example: create note MyMeetingNotes category:work priority:high
-
-Note: For 'alarm' and 'reminder' item types, you can add a 'script' property to execute a .chs file when triggered.
-Example: create alarm MyAlarm time:08:00 script:Scripts/my_script.chs
-
-Linking alarms/reminders to items:
-- Add a 'target' object to the YAML (via properties or by editing the file) to execute an action on trigger.
-  target:
-    type: task
-    name: "Deep Work"
-    action: complete   # or: open | set_status
-    status: completed  # required only when action == set_status
-    properties: { minutes: 25 }  # optional extra args for the action</pre></details>
-        </div>
-        <div class="card" data-name="cut">
-          <h3 style="margin-top:0">cut</h3>
-          <p>Removes an item from the current day's schedule.</p>
-          <pre>Usage: cut &lt;item_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: cut &lt;item_name&gt;
-Description: Removes an item from the current day's schedule.
-Example: cut "Morning Routine"</pre></details>
-        </div>
-        <div class="card" data-name="dashboard">
-          <h3 style="margin-top:0">dashboard</h3>
-          <p>Opens the Chronos dashboard UI in your default browser.</p>
-          <pre>Usage: dashboard</pre>
-          <details><summary>More</summary><pre>Usage: dashboard
-Description: Opens the Chronos dashboard UI in your default browser.
-Also pre-bundles User/Settings YAML into generated/settings_bundle.js for the UI to consume.</pre></details>
-        </div>
-        <div class="card" data-name="delete">
-          <h3 style="margin-top:0">delete</h3>
-          <p>Deletes an item of the specified type. Use -f or --force to skip confirmation.</p>
-          <pre>Usage: delete [-f|--force] &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: delete [-f|--force] &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
-Description: Deletes an item of the specified type. Use -f or --force to skip confirmation.
-Example: delete note MyOldNote --force</pre></details>
-        </div>
-        <div class="card" data-name="dismiss">
-          <h3 style="margin-top:0">dismiss</h3>
-          <p>Dismisses a specified alarm for the remainder of the current day.</p>
-          <pre>Usage: dismiss &lt;alarm_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: dismiss &lt;alarm_name&gt;
-Description: Dismisses a specified alarm for the remainder of the current day.
-Example: dismiss "Morning Alarm"</pre></details>
-        </div>
-        <div class="card" data-name="echo">
-          <h3 style="margin-top:0">echo</h3>
-          <p>Prints the provided text to the console.</p>
-          <pre>Usage: echo &lt;text_to_print&gt;</pre>
-          <details><summary>More</summary><pre>Usage: echo &lt;text_to_print&gt;
-Description: Prints the provided text to the console.
-Example: echo Hello, World!</pre></details>
-        </div>
-        <div class="card" data-name="edit">
-          <h3 style="margin-top:0">edit</h3>
-          <p>Opens an item in a text editor for modification.</p>
-          <pre>Usage: edit &lt;item_type&gt; &lt;item_name&gt; [editor:&lt;editor_name&gt;] [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: edit &lt;item_type&gt; &lt;item_name&gt; [editor:&lt;editor_name&gt;] [property_key:property_value ...]
-Description: Opens an item in a text editor for modification.
-Example: edit note MyMeetingNotes editor:nvim</pre></details>
-        </div>
-        <div class="card" data-name="export">
-          <h3 style="margin-top:0">export</h3>
-          <pre>Usage:
-  export all [filename.zip]
-  export &lt;filename&gt; &lt;command&gt; [args...]</pre>
-          <details><summary>More</summary><pre>Usage:
-  export all [filename.zip]
-  export &lt;filename&gt; &lt;command&gt; [args...]
-
-Description:
-  export all: Zips the entire User/ directory into User/Exports/[filename].zip.
-  export filename: Executes a command and saves its table output to YAML in User/Exports/.
-
+- filter task status:pending
+- filter all
+- filter type:all</pre>
+  </details>
+</div>
+<div class="card" data-name="find" data-type="Core Commands" id="cmd-find">
+  <h3 style="margin-top:0">find</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Searches for items of the specified type based on a keyword and optional properties.</p>
+  <pre>Usage:
+find &lt;type&gt; &lt;keyword&gt; [property_key:property_value ...]</pre>
+  <details><summary>More</summary>
+    <pre>Searches for items of the specified type based on a keyword and optional properties.
+Usage: find &lt;type&gt; &lt;keyword&gt; [property_key:property_value ...]</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-g">G</div>
+<div class="card" data-name="get" data-type="Core Commands" id="cmd-get">
+  <h3 style="margin-top:0">get</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Retrieves the value of a specific property from an item.</p>
+  <pre>Usage:
+get &lt;type&gt; &lt;name&gt; &lt;property_key&gt; [variable_name:&lt;var_name&gt;] [property_key:property_value ...]</pre>
+  <details><summary>More</summary>
+    <pre>Retrieves the value of a specific property from an item.
+Usage: get &lt;type&gt; &lt;name&gt; &lt;property_key&gt; [variable_name:&lt;var_name&gt;] [property_key:property_value ...]</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-h">H</div>
+<div class="card" data-name="help" data-type="Core Commands" id="cmd-help">
+  <h3 style="margin-top:0">help</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Displays help information for a command.</p>
+  <pre>Usage:
+help &lt;command&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Displays help information for a command.
+Usage: help &lt;command&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-i">I</div>
+<div class="card" data-name="if" data-type="Automation &amp; Scripting" id="cmd-if">
+  <h3 style="margin-top:0">If</h3>
+  <p class="cmd-type">Type: Automation &amp; Scripting</p>
+  <p>Runs a single-line conditional command.</p>
+  <pre>Usage:
+if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [args...] [else &lt;command&gt; ...]</pre>
+  <details><summary>More</summary>
+    <pre>Runs a single-line conditional command.
+Usage: if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [args...] [else &lt;command&gt; ...]</pre>
+  </details>
+</div>
+<div class="card" data-name="import" data-type="Utilities" id="cmd-import">
+  <h3 style="margin-top:0">import</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Imports items from YAML or restores a full backup zip.</p>
+  <pre>Usage:
+import &lt;file_path&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Imports items from YAML or restores a full backup zip.
+Usage: import &lt;file_path&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="inventory" data-type="Utilities" id="cmd-inventory">
+  <h3 style="margin-top:0">inventory</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Manages inventory items.</p>
+  <pre>Usage:
+inventory list, inventory add &lt;name&gt;, inventory remove &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Manages inventory items.
+Usage: inventory list, inventory add &lt;name&gt;, inventory remove &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-l">L</div>
+<div class="card" data-name="list" data-type="Core Commands" id="cmd-list">
+  <h3 style="margin-top:0">list</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Lists items of a specific type.</p>
+  <pre>Usage:
+list &lt;type&gt; [filter]</pre>
+  <pre>Examples:
+- list tasks
+- list projects status:active</pre>
+  <details><summary>More</summary>
+    <pre>Lists items of a specific type.
+Usage: list &lt;type&gt; [filter]
 Example:
-  export all chronos_backup.zip
-  export my_tasks.yml list tasks priority:high</pre></details>
-        </div>
-        <div class="card" data-name="filter">
-          <h3 style="margin-top:0">filter</h3>
-          <p>Sets or clears the active filter for Chronos items.</p>
-          <pre>Usage: filter &lt;item_type&gt; [property:value ...] | filter all | filter off</pre>
-          <details><summary>More</summary><pre>Usage: filter &lt;item_type&gt; [property:value ...] | filter all | filter off
-Description: Sets or clears the active filter for Chronos items.
-Example: filter note category:work
-Example: filter all
-Example: filter off</pre></details>
-        </div>
-        <div class="card" data-name="find">
-          <h3 style="margin-top:0">find</h3>
-          <p>Searches for items of the specified type based on a keyword and optional properties.</p>
-          <pre>Usage: find &lt;item_type&gt; &lt;keyword&gt; [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: find &lt;item_type&gt; &lt;keyword&gt; [property_key:property_value ...]
-Description: Searches for items of the specified type based on a keyword and optional properties.
-Example: find note meeting category:work</pre></details>
-        </div>
-        <div class="card" data-name="get">
-          <h3 style="margin-top:0">get</h3>
-          <p>Retrieves the value of a specific property from an item.</p>
-          <pre>Usage: get &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt; [variable_name:&lt;var_name&gt;] [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: get &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt; [variable_name:&lt;var_name&gt;] [property_key:property_value ...]
-Description: Retrieves the value of a specific property from an item.
-Example: get note MyMeetingNotes category variable_name:my_category</pre></details>
-        </div>
-        <div class="card" data-name="help">
-          <h3 style="margin-top:0">help</h3>
-          <p>Displays this help message, listing all available commands and their usage.</p>
-          <pre>Usage: help</pre>
-          <details><summary>More</summary><pre>Usage: help
-Description: Displays this help message, listing all available commands and their usage.</pre></details>
-        </div>
-        <div class="card" data-name="if">
-          <h3 style="margin-top:0">if</h3>
-          <pre>Usage: if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [args...] [else &lt;command&gt; ...]
-       if exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]] then &lt;command&gt; [else &lt;command&gt; ...]
-       if exists file:&lt;path&gt; | dir:&lt;path&gt; | env:&lt;NAME&gt; then &lt;command&gt; [else ...]
-Operators: =, !=, &gt;, &lt;, &gt;=, &lt;=, eq, ne, gt, lt, ge, le, matches
-Logic: and, or, not/! , parentheses ( ... )
-Left/Right forms:
-  - status:&lt;key&gt;
-  - &lt;type&gt;:&lt;name&gt;:&lt;property&gt;
-  - literals (after @var expansion)</pre>
-          <details><summary>More</summary><pre>Usage: if &lt;left&gt; &lt;op&gt; &lt;right&gt; then &lt;command&gt; [args...] [else &lt;command&gt; ...]
-       if exists &lt;type&gt;[:&lt;name&gt;[:&lt;property&gt;]] then &lt;command&gt; [else &lt;command&gt; ...]
-       if exists file:&lt;path&gt; | dir:&lt;path&gt; | env:&lt;NAME&gt; then &lt;command&gt; [else ...]
-Operators: =, !=, &gt;, &lt;, &gt;=, &lt;=, eq, ne, gt, lt, ge, le, matches
-Logic: and, or, not/! , parentheses ( ... )
-Left/Right forms:
-  - status:&lt;key&gt;
-  - &lt;type&gt;:&lt;name&gt;:&lt;property&gt;
-  - literals (after @var expansion)
-Examples:
-  if status:energy eq high and exists note:"Journal" then echo "rest"
-  if task:Morning_Run:duration &gt; 20 then trim "Morning Run" 5 else echo ok
-  if note:"IF Note":priority matches ^h.* then echo HIGH
-  if exists note:Journal then echo "journal exists"
-  if exists file:README.md then echo HAVE_README
-  if exists dir:User/Notes then echo NOTES_DIR
-  if exists env:PATH then echo HAS_PATH</pre></details>
-        </div>
-        <div class="card" data-name="import">
-          <h3 style="margin-top:0">import</h3>
-          <pre>Usage:
-  import &lt;file_path&gt;</pre>
-          <details><summary>More</summary><pre>Usage:
-  import &lt;file_path&gt;
-
-Description:
-  - If &lt;file_path&gt; ends with .zip, extracts the backup into the User/ directory.
-    Use property overwrite:true or mode:overwrite to overwrite existing files.
-  - If &lt;file_path&gt; is a YAML list, imports items (skips if already exist).
-
-Example:
-  import User/Exports/my_tasks.yml
-  import User/Exports/chronos_backup.zip overwrite:true</pre></details>
-        </div>
-        <div class="card" data-name="list">
-          <h3 style="margin-top:0">list</h3>
-          <pre>Usage: list &lt;item_type&gt; [sort_by:&lt;property_key&gt;] [reverse_sort:True/False] [property_key:property_value ...]
-       list &lt;item_type&gt; [list_properties...] then &lt;command&gt; [command_args...]</pre>
-          <details><summary>More</summary><pre>Usage: list &lt;item_type&gt; [sort_by:&lt;property_key&gt;] [reverse_sort:True/False] [property_key:property_value ...]
-       list &lt;item_type&gt; [list_properties...] then &lt;command&gt; [command_args...]
-
-Description:
-  Lists items of the specified type, optionally filtered and sorted by a property.
-  Can also pipe the listed items to another command for bulk operations.
-
-Examples:
-  list note sort_by:priority reverse_sort:True
-  list tasks status:pending then set status:in-progress
-  list tasks priority:high then delete</pre></details>
-        </div>
-        <div class="card" data-name="mark">
-          <h3 style="margin-top:0">mark</h3>
-          <p>Marks an item in the daily schedule with a new status.</p>
-          <pre>Usage: mark &lt;item_name&gt;:&lt;status&gt;</pre>
-          <details><summary>More</summary><pre>Usage: mark &lt;item_name&gt;:&lt;status&gt;
-Description: Marks an item in the daily schedule with a new status.
-Example: mark "Morning Routine":completed</pre></details>
-        </div>
-        <div class="card" data-name="mark_norm">
-          <h3 style="margin-top:0">mark_norm</h3>
-          <p>Marks an item in the daily schedule with a new status.</p>
-          <pre>Usage: mark &lt;item_name&gt;:&lt;status&gt;</pre>
-          <details><summary>More</summary><pre>Usage: mark &lt;item_name&gt;:&lt;status&gt;
-Description: Marks an item in the daily schedule with a new status.
-Example: mark "Morning Routine":completed</pre></details>
-        </div>
-        <div class="card" data-name="miss">
-          <h3 style="margin-top:0">miss</h3>
-          <p>Records a missed occurrence (does not count as completion). Helpful for commitments and appointment no-shows.</p>
-          <pre>Usage: miss &lt;item_type&gt; &lt;item_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: miss &lt;item_type&gt; &lt;item_name&gt;
-Description: Records a missed occurrence (does not count as completion). Helpful for commitments and appointment no-shows.
-Examples:
-  miss commitment "Daily Promise"
-  miss appointment "Dentist"            (equivalent to no_show)
-  miss appointment "Dentist" outcome:no_show</pre></details>
-        </div>
-        <div class="card" data-name="move">
-          <h3 style="margin-top:0">move</h3>
-          <p>Moves an item to a new item type, renames it, or both.</p>
-          <pre>Usage: move &lt;source_item_type&gt; &lt;source_item_name&gt; [new_item_name] [type:&lt;target_item_type&gt;] [name:&lt;new_item_name&gt;] [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: move &lt;source_item_type&gt; &lt;source_item_name&gt; [new_item_name] [type:&lt;target_item_type&gt;] [name:&lt;new_item_name&gt;] [property_key:property_value ...]
-Description: Moves an item to a new item type, renames it, or both.
-Example: move note MyOldNote MyNewNote
-Example: move note MyNote type:task
-Example: move note MyNote MyTask type:task</pre></details>
-        </div>
-        <div class="card" data-name="new">
-          <h3 style="margin-top:0">new</h3>
-          <p>Creates a new item of the specified type with the given name and properties.</p>
-          <pre>Usage: new &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: new &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
-Description: Creates a new item of the specified type with the given name and properties.
-Example: new note MyMeetingNotes category:work priority:high
-
-Note: For 'alarm' and 'reminder' item types, you can add a 'script' property to execute a .chs file when triggered.
-Example: new alarm MyAlarm time:08:00 script:Scripts/my_script.chs</pre></details>
-        </div>
-        <div class="card" data-name="pause">
-          <h3 style="margin-top:0">pause</h3>
-          <p>Pauses script execution until a key is pressed. Displays an optional message.</p>
-          <pre>Usage: pause [message]</pre>
-          <details><summary>More</summary><pre>Usage: pause [message]
-Description: Pauses script execution until a key is pressed. Displays an optional message.
-Example: pause
-Example: pause Script paused. Press Enter to proceed.</pre></details>
-        </div>
-        <div class="card" data-name="points">
-          <h3 style="margin-top:0">points</h3>
-          <pre>Usage:
-  points balance
-  points add &lt;n&gt; [reason:&lt;text&gt;]
-  points subtract &lt;n&gt; [reason:&lt;text&gt;]
-  points history [&lt;last_N&gt;]</pre>
-          <details><summary>More</summary><pre>Usage:
-  points balance
-  points add &lt;n&gt; [reason:&lt;text&gt;]
-  points subtract &lt;n&gt; [reason:&lt;text&gt;]
-  points history [&lt;last_N&gt;]</pre></details>
-        </div>
-        <div class="card" data-name="powershell">
-          <h3 style="margin-top:0">powershell</h3>
-          <p>Executes the provided PowerShell code.</p>
-          <pre>Usage: powershell &lt;powershell_code&gt;</pre>
-          <details><summary>More</summary><pre>Usage: powershell &lt;powershell_code&gt;
-Description: Executes the provided PowerShell code.
-Example: powershell Get-Process | Select-Object -First 3
-Example: powershell Write-Host "Hello from PowerShell!"</pre></details>
-        </div>
-        <div class="card" data-name="profile">
-          <h3 style="margin-top:0">profile</h3>
-          <pre>Usage: profile show
-       profile get &lt;nickname|line1|line2|line3&gt;
-       profile set [nickname:&lt;value&gt;] [line1:"..."] [line2:"..."] [line3:"..."]
-       profile set-line &lt;1|2|3&gt; &lt;text...&gt;</pre>
-          <details><summary>More</summary><pre>Usage: profile show
-       profile get &lt;nickname|line1|line2|line3&gt;
-       profile set [nickname:&lt;value&gt;] [line1:"..."] [line2:"..."] [line3:"..."]
-       profile set-line &lt;1|2|3&gt; &lt;text...&gt;
-
-Description:
-  Views or updates profile details stored in User/profile.yml. Supports a welcome block with line1/line2/line3.
-  Variables like @nickname expand in the welcome lines.
-
-Examples:
-  profile show
-  profile set nickname:Alice
-  profile set line2:"🚀 Welcome, @nickname" line3:"🌌 Navigate your reality"
-  profile set-line 2 🚀 Welcome, @nickname</pre></details>
-        </div>
-        <div class="card" data-name="redeem">
-          <h3 style="margin-top:0">redeem</h3>
-          <p>Redeems a reward, deducting points and delivering its target.</p>
-          <pre>Usage: redeem reward &lt;name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: redeem reward &lt;name&gt;
-Description: Redeems a reward, deducting points and delivering its target.
-Examples:
-  redeem reward "Game Break"</pre></details>
-        </div>
-        <div class="card" data-name="remove">
-          <h3 style="margin-top:0">remove</h3>
-          <p>Removes a specified property from an item.</p>
-          <pre>Usage: remove &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt;</pre>
-          <details><summary>More</summary><pre>Usage: remove &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt;
-Description: Removes a specified property from an item.
-Example: remove note MyMeetingNotes category</pre></details>
-        </div>
-        <div class="card" data-name="rename">
-          <h3 style="margin-top:0">rename</h3>
-          <p>Renames an existing item.</p>
-          <pre>Usage: rename &lt;item_type&gt; &lt;old_name&gt; &lt;new_name&gt; [properties]</pre>
-          <details><summary>More</summary><pre>Usage: rename &lt;item_type&gt; &lt;old_name&gt; &lt;new_name&gt; [properties]
-Description: Renames an existing item.
-Example: rename note MyOldNote MyNewNote</pre></details>
-        </div>
-        <div class="card" data-name="review">
-          <h3 style="margin-top:0">review</h3>
-          <pre>Usage:
-  review daily [YYYY-MM-DD]
-  review weekly [YYYY-WW]
-  review monthly [YYYY-MM]
-  review export &lt;daily|weekly|monthly&gt; &lt;period&gt;
-  review open &lt;daily|weekly|monthly&gt; &lt;period&gt;</pre>
-          <details><summary>More</summary><pre>Usage:
-  review daily [YYYY-MM-DD]
-  review weekly [YYYY-WW]
-  review monthly [YYYY-MM]
-  review export &lt;daily|weekly|monthly&gt; &lt;period&gt;
-  review open &lt;daily|weekly|monthly&gt; &lt;period&gt;</pre></details>
-        </div>
-        <div class="card" data-name="set">
-          <h3 style="margin-top:0">set</h3>
-          <p>Sets properties of an item or defines a script variable.</p>
-          <pre>Usage: set &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt;:&lt;value&gt; [...]
-       set var &lt;variable_name&gt;:&lt;value&gt;</pre>
-          <details><summary>More</summary><pre>Usage: set &lt;item_type&gt; &lt;item_name&gt; &lt;property_key&gt;:&lt;value&gt; [...]
-       set var &lt;variable_name&gt;:&lt;value&gt;
-Description: Sets properties of an item or defines a script variable.
-Example: set note MyMeetingNotes priority:high category:work
-Example: set var my_variable:some_value
-
-Special (goals):
-  set goal "&lt;name&gt;" template:true      # mark goal as a template
-  set goal "&lt;name&gt;" apply:true         # instantiate milestones from template</pre></details>
-        </div>
-        <div class="card" data-name="settings">
-          <h3 style="margin-top:0">settings</h3>
-          <p>Modifies a setting in a specified settings file.</p>
-          <pre>Usage: settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;</pre>
-          <details><summary>More</summary><pre>Usage: settings &lt;file_shortcut&gt; &lt;property&gt; &lt;value&gt;
-Description: Modifies a setting in a specified settings file.
-Arguments:
-  &lt;file_shortcut&gt;: A shorthand for the settings file name (e.g., 'buffer' for 'Buffer_Settings.yml').
-  &lt;property&gt;: The name of the property to modify. Use dot notation for nested properties (e.g., 'global_dynamic_buffer.buffer_interval_minutes').
-  &lt;value&gt;: The new value for the property.</pre></details>
-        </div>
-        <div class="card" data-name="skip">
-          <h3 style="margin-top:0">skip</h3>
-          <p>Skips a specified alarm for the remainder of the current day.</p>
-          <pre>Usage: skip &lt;alarm_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: skip &lt;alarm_name&gt;
-Description: Skips a specified alarm for the remainder of the current day.
-Example: skip "Morning Alarm"</pre></details>
-        </div>
-        <div class="card" data-name="snooze">
-          <h3 style="margin-top:0">snooze</h3>
-          <p>Snoozes a specified alarm for its configured snooze duration.</p>
-          <pre>Usage: snooze &lt;alarm_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: snooze &lt;alarm_name&gt;
-Description: Snoozes a specified alarm for its configured snooze duration.
-Example: snooze "Morning Alarm"</pre></details>
-        </div>
-        <div class="card" data-name="status">
-          <h3 style="margin-top:0">status</h3>
-          <pre>Usage: status &lt;indicator&gt;:&lt;value&gt;
-       status (to view current status)</pre>
-          <details><summary>More</summary><pre>Views or sets user status variables.
-
-Usage: status &lt;indicator&gt;:&lt;value&gt;
-       status (to view current status)
-
-Examples:
-  status emotion:happy
-  status energy:low</pre></details>
-        </div>
-        <div class="card" data-name="theme">
-          <h3 style="margin-top:0">theme</h3>
-          <pre>Usage: theme &lt;subcommand&gt;
+- list tasks
+- list projects status:active</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-m">M</div>
+<div class="card" data-name="macro" data-type="Advanced Features" id="cmd-macro">
+  <h3 style="margin-top:0">macro</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Manages automation macros.</p>
+  <pre>Usage:
+macro list</pre>
+  <details><summary>More</summary>
+    <pre>Manages automation macros.
+Usage: macro list</pre>
+  </details>
+</div>
+<div class="card" data-name="mark" data-type="Scheduling &amp; Tracking" id="cmd-mark">
+  <h3 style="margin-top:0">mark</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Marks an item in the daily schedule with a new status.</p>
+  <pre>Usage:
+mark &lt;item_name&gt;:&lt;status&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Marks an item in the daily schedule with a new status.
+Usage: mark &lt;item_name&gt;:&lt;status&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="mark_norm" data-type="Scheduling &amp; Tracking" id="cmd-mark_norm">
+  <h3 style="margin-top:0">mark_norm</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Marks an item in the daily schedule with a new status (normalized variant).</p>
+  <pre>Usage:
+mark &lt;item_name&gt;:&lt;status&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Marks an item in the daily schedule with a new status (normalized variant).
+Usage: mark &lt;item_name&gt;:&lt;status&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="miss" data-type="Scheduling &amp; Tracking" id="cmd-miss">
+  <h3 style="margin-top:0">miss</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Records a missed occurrence (does not count as completion).</p>
+  <pre>Usage:
+miss &lt;type&gt; &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Records a missed occurrence (does not count as completion).
+Usage: miss &lt;type&gt; &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="move" data-type="Core Commands" id="cmd-move">
+  <h3 style="margin-top:0">move</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Moves an item to a new item type, renames it, or both.</p>
+  <pre>Usage:
+move &lt;source_type&gt; &lt;source_name&gt; [new_name] [type:&lt;target_type&gt;] [name:&lt;new_name&gt;] [property_key:property_value ...]</pre>
+  <details><summary>More</summary>
+    <pre>Moves an item to a new item type, renames it, or both.
+Usage: move &lt;source_type&gt; &lt;source_name&gt; [new_name] [type:&lt;target_type&gt;] [name:&lt;new_name&gt;] [property_key:property_value ...]</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-n">N</div>
+<div class="card" data-name="new" data-type="Core Commands" id="cmd-new">
+  <h3 style="margin-top:0">new</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Creates a new item.</p>
+  <pre>Usage:
+new &lt;type&gt; &lt;name&gt; [properties...]</pre>
+  <pre>Examples:
+new task &quot;Finish Report&quot; due:today priority:high</pre>
+  <details><summary>More</summary>
+    <pre>Creates a new item.
+Usage: new &lt;type&gt; &lt;name&gt; [properties...]
+Example: new task &quot;Finish Report&quot; due:today priority:high</pre>
+  </details>
+</div>
+<div class="card" data-name="next" data-type="Scheduling &amp; Tracking" id="cmd-next">
+  <h3 style="margin-top:0">next</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Previews a future schedule beyond tomorrow.</p>
+  <pre>Usage:
+next day|&lt;weekday&gt;|&lt;ordinal&gt; [of] &lt;month&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Previews a future schedule beyond tomorrow.
+Usage: next day|&lt;weekday&gt;|&lt;ordinal&gt; [of] &lt;month&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-p">P</div>
+<div class="card" data-name="pause" data-type="Automation &amp; Scripting" id="cmd-pause">
+  <h3 style="margin-top:0">pause</h3>
+  <p class="cmd-type">Type: Automation &amp; Scripting</p>
+  <p>Pauses script execution until a key is pressed.</p>
+  <pre>Usage:
+pause [message]</pre>
+  <details><summary>More</summary>
+    <pre>Pauses script execution until a key is pressed.
+Usage: pause [message]</pre>
+  </details>
+</div>
+<div class="card" data-name="points" data-type="Rewards &amp; Points" id="cmd-points">
+  <h3 style="margin-top:0">points</h3>
+  <p class="cmd-type">Type: Rewards &amp; Points</p>
+  <p>Manages the points ledger.</p>
+  <pre>Usage:
+- points balance
+- points add &lt;n&gt; [reason:&lt;text&gt;]
+- points subtract &lt;n&gt; [reason:&lt;text&gt;]
+- points history [&lt;last_N&gt;]</pre>
+  <details><summary>More</summary>
+    <pre>Manages the points ledger.
+Usage:
+- points balance
+- points add &lt;n&gt; [reason:&lt;text&gt;]
+- points subtract &lt;n&gt; [reason:&lt;text&gt;]
+- points history [&lt;last_N&gt;]</pre>
+  </details>
+</div>
+<div class="card" data-name="powershell" data-type="Utilities" id="cmd-powershell">
+  <h3 style="margin-top:0">powershell</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Executes PowerShell code.</p>
+  <pre>Usage:
+powershell &lt;powershell_code&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Executes PowerShell code.
+Usage: powershell &lt;powershell_code&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="profile" data-type="Utilities" id="cmd-profile">
+  <h3 style="margin-top:0">profile</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Shows profile details.</p>
+  <pre>Usage:
+profile show</pre>
+  <details><summary>More</summary>
+    <pre>Shows profile details.
+Usage: profile show</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-r">R</div>
+<div class="card" data-name="redeem" data-type="Rewards &amp; Points" id="cmd-redeem">
+  <h3 style="margin-top:0">redeem</h3>
+  <p class="cmd-type">Type: Rewards &amp; Points</p>
+  <p>Redeems a reward and applies its target.</p>
+  <pre>Usage:
+redeem reward &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Redeems a reward and applies its target.
+Usage: redeem reward &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="reminder" data-type="Core Commands" id="cmd-reminder">
+  <h3 style="margin-top:0">reminder</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Creates a reminder from an item&#x27;s deadline or due date.</p>
+  <pre>Usage:
+reminder from &lt;type&gt; &lt;name&gt; [use:deadline|due_date] [date:YYYY-MM-DD] [time:HH:MM] [message:&quot;...&quot;]</pre>
+  <pre>Examples:
+reminder from task &quot;Ship v1&quot; use:deadline time:09:00</pre>
+  <details><summary>More</summary>
+    <pre>Creates a reminder from an item&#x27;s deadline or due date.
+Usage: reminder from &lt;type&gt; &lt;name&gt; [use:deadline|due_date] [date:YYYY-MM-DD] [time:HH:MM] [message:&quot;...&quot;]
+Example: reminder from task &quot;Ship v1&quot; use:deadline time:09:00
+Notes: If no time is provided and the item date has no time, Chronos uses the reminder default time (or 09:00).
+Alias: set reminder from &lt;type&gt; &lt;name&gt; ...</pre>
+  </details>
+</div>
+<div class="card" data-name="remove" data-type="Core Commands" id="cmd-remove">
+  <h3 style="margin-top:0">remove</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Removes a specified property from an item.</p>
+  <pre>Usage:
+remove &lt;type&gt; &lt;name&gt; &lt;property_key&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Removes a specified property from an item.
+Usage: remove &lt;type&gt; &lt;name&gt; &lt;property_key&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="rename" data-type="Core Commands" id="cmd-rename">
+  <h3 style="margin-top:0">rename</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Renames an existing item.</p>
+  <pre>Usage:
+rename &lt;type&gt; &lt;old_name&gt; &lt;new_name&gt; [properties]</pre>
+  <details><summary>More</summary>
+    <pre>Renames an existing item.
+Usage: rename &lt;type&gt; &lt;old_name&gt; &lt;new_name&gt; [properties]</pre>
+  </details>
+</div>
+<div class="card" data-name="restore" data-type="Utilities" id="cmd-restore">
+  <h3 style="margin-top:0">restore</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Restores the User directory from a backup zip.</p>
+  <pre>Usage:
+restore &lt;filename|latest&gt; [force:true]</pre>
+  <details><summary>More</summary>
+    <pre>Restores the User directory from a backup zip.
+Usage: restore &lt;filename|latest&gt; [force:true]</pre>
+  </details>
+</div>
+<div class="card" data-name="review" data-type="Advanced Features" id="cmd-review">
+  <h3 style="margin-top:0">review</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Generates periodic reviews (Daily, Weekly, Monthly).</p>
+  <pre>Usage:
+- review daily [YYYY-MM-DD]
+- review weekly [YYYY-WW]
+- review monthly [YYYY-MM]
+- review export ...: Exports the review to Markdown.</pre>
+  <details><summary>More</summary>
+    <pre>Generates periodic reviews (Daily, Weekly, Monthly).
+Usage:
+- review daily [YYYY-MM-DD]
+- review weekly [YYYY-WW]
+- review monthly [YYYY-MM]
+- review export ...: Exports the review to Markdown.</pre>
+  </details>
+</div>
+<div class="card" data-name="run" data-type="Automation &amp; Scripting" id="cmd-run">
+  <h3 style="margin-top:0">run</h3>
+  <p class="cmd-type">Type: Automation &amp; Scripting</p>
+  <p>Executes a Chronos script (.chs).</p>
+  <pre>Usage:
+run &lt;script_file&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Executes a Chronos script (.chs).
+Usage: run &lt;script_file&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-s">S</div>
+<div class="card" data-name="search" data-type="Utilities" id="cmd-search">
+  <h3 style="margin-top:0">search</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Searches for text content across all items.</p>
+  <pre>Usage:
+search &lt;query&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Searches for text content across all items.
+Usage: search &lt;query&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="sequence" data-type="Advanced Features" id="cmd-sequence">
+  <h3 style="margin-top:0">sequence</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Manages the data mirroring and trends system.</p>
+  <pre>Usage:
+- sequence status: Show registry of SQLite mirrors.
+- sequence sync: Run the builders to update mirrors.
+- sequence trends: Generate the trends report.</pre>
+  <details><summary>More</summary>
+    <pre>Manages the data mirroring and trends system.
+Usage:
+- sequence status: Show registry of SQLite mirrors.
+- sequence sync: Run the builders to update mirrors.
+- sequence trends: Generate the trends report.</pre>
+  </details>
+</div>
+<div class="card" data-name="set" data-type="Core Commands" id="cmd-set">
+  <h3 style="margin-top:0">set</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Sets properties of an item or defines a script variable.</p>
+  <pre>Usage:
+set &lt;type&gt; &lt;name&gt; &lt;property_key&gt;:&lt;value&gt; [...]</pre>
+  <details><summary>More</summary>
+    <pre>Sets properties of an item or defines a script variable.
+Usage: set &lt;type&gt; &lt;name&gt; &lt;property_key&gt;:&lt;value&gt; [...]</pre>
+  </details>
+</div>
+<div class="card" data-name="settings" data-type="Utilities" id="cmd-settings">
+  <h3 style="margin-top:0">settings</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Quick access to open settings files.</p>
+  <pre>Usage:
+settings &lt;name&gt; (e.g., settings theme)</pre>
+  <details><summary>More</summary>
+    <pre>Quick access to open settings files.
+Usage: settings &lt;name&gt; (e.g., settings theme)</pre>
+  </details>
+</div>
+<div class="card" data-name="skip" data-type="Reminders &amp; Alarms" id="cmd-skip">
+  <h3 style="margin-top:0">skip</h3>
+  <p class="cmd-type">Type: Reminders &amp; Alarms</p>
+  <p>Skips a specified alarm for the remainder of the current day.</p>
+  <pre>Usage:
+skip &lt;alarm_name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Skips a specified alarm for the remainder of the current day.
+Usage: skip &lt;alarm_name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="snooze" data-type="Reminders &amp; Alarms" id="cmd-snooze">
+  <h3 style="margin-top:0">snooze</h3>
+  <p class="cmd-type">Type: Reminders &amp; Alarms</p>
+  <p>Snoozes a specified alarm for its configured snooze duration.</p>
+  <pre>Usage:
+snooze &lt;alarm_name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Snoozes a specified alarm for its configured snooze duration.
+Usage: snooze &lt;alarm_name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="start" data-type="Scheduling &amp; Tracking" id="cmd-start">
+  <h3 style="margin-top:0">start</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Rebuilds today&#x27;s schedule and starts a timer sequence of the remaining blocks.</p>
+  <pre>Usage:
+- start day
+- start today</pre>
+  <details><summary>More</summary>
+    <pre>Rebuilds today&#x27;s schedule and starts a timer sequence of the remaining blocks.
+Usage:
+- start day
+- start today</pre>
+  </details>
+</div>
+<div class="card" data-name="status" data-type="Scheduling &amp; Tracking" id="cmd-status">
+  <h3 style="margin-top:0">status</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Views or sets user status variables.</p>
+  <pre>Usage:
+- status
+- status &lt;indicator&gt;:&lt;value&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Views or sets user status variables.
+Usage:
+- status
+- status &lt;indicator&gt;:&lt;value&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-t">T</div>
+<div class="card" data-name="theme" data-type="Utilities" id="cmd-theme">
+  <h3 style="margin-top:0">theme</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Lists, shows, or sets console themes and colors.</p>
+  <pre>Usage:
+theme &lt;subcommand&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Lists, shows, or sets console themes and colors.
+Usage: theme &lt;subcommand&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="this" data-type="Scheduling &amp; Tracking" id="cmd-this">
+  <h3 style="margin-top:0">this</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Previews the nearest occurrence of a weekday in the current week.</p>
+  <pre>Usage:
+this &lt;weekday&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Previews the nearest occurrence of a weekday in the current week.
+Usage: this &lt;weekday&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="timer" data-type="Scheduling &amp; Tracking" id="cmd-timer">
+  <h3 style="margin-top:0">timer</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Manages the countdown timer.</p>
+  <pre>Usage:
+- timer start &lt;profile&gt; [type:&lt;item_type&gt; name:&lt;item_name&gt;] [cycles:N] [auto_advance:true|false]
+- timer pause | resume | stop | status
+- timer confirm yes|no
+- timer profiles list | view &lt;name&gt; | save &lt;name&gt; [k:v ...] | delete &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Manages the countdown timer.
+Usage:
+- timer start &lt;profile&gt; [type:&lt;item_type&gt; name:&lt;item_name&gt;] [cycles:N] [auto_advance:true|false]
+- timer pause | resume | stop | status
+- timer confirm yes|no
+- timer profiles list | view &lt;name&gt; | save &lt;name&gt; [k:v ...] | delete &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="today" data-type="Scheduling &amp; Tracking" id="cmd-today">
+  <h3 style="margin-top:0">today</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>The central command for daily management.</p>
+  <details><summary>More</summary>
+    <pre>The central command for daily management.
 Subcommands:
-  list                 List available themes
-  current              Show current theme/background/text
-  set &lt;name&gt;           Set theme by name (from theme_settings.yml)
-  set-colors [background:&lt;name|#hex&gt;] [text:&lt;name|#hex&gt;]
-                       Set explicit console colors (overrides theme)
-Notes:
-- Themes come from User/Settings/theme_settings.yml (themes: { name: { background, text } }).
-- Current selection is stored in User/profile.yml under 'theme' or 'console: { theme }'.
-- Explicit 'background'/'text' in profile override the theme.</pre>
-          <details><summary>More</summary><pre>Usage: theme &lt;subcommand&gt;
-Subcommands:
-  list                 List available themes
-  current              Show current theme/background/text
-  set &lt;name&gt;           Set theme by name (from theme_settings.yml)
-  set-colors [background:&lt;name|#hex&gt;] [text:&lt;name|#hex&gt;]
-                       Set explicit console colors (overrides theme)
-Notes:
-- Themes come from User/Settings/theme_settings.yml (themes: { name: { background, text } }).
-- Current selection is stored in User/profile.yml under 'theme' or 'console: { theme }'.
-- Explicit 'background'/'text' in profile override the theme.</pre></details>
-        </div>
-        <div class="card" data-name="timer">
-          <h3 style="margin-top:0">timer</h3>
-          <pre>Usage:
-  timer start &lt;profile&gt; [type:&lt;item_type&gt; name:&lt;item_name&gt;] [cycles:N] [auto_advance:true|false]
-  timer pause | resume | stop | status
-  timer profiles list | view &lt;name&gt; | save &lt;name&gt; [k:v ...] | delete &lt;name&gt;</pre>
-          <details><summary>More</summary><pre>Usage:
-  timer start &lt;profile&gt; [type:&lt;item_type&gt; name:&lt;item_name&gt;] [cycles:N] [auto_advance:true|false]
-  timer pause | resume | stop | status
-  timer profiles list | view &lt;name&gt; | save &lt;name&gt; [k:v ...] | delete &lt;name&gt;</pre></details>
-        </div>
-        <div class="card" data-name="today">
-          <h3 style="margin-top:0">today</h3>
-          <p>No help message available.</p>
-          <details><summary>More</summary><pre>Description: No help message available.</pre></details>
-        </div>
-        <div class="card" data-name="track">
-          <h3 style="margin-top:0">track</h3>
-          <p>Displays tracking data for a specific item (streaks, sessions, minutes, history).</p>
-          <pre>Usage: track &lt;item_type&gt; &lt;item_name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: track &lt;item_type&gt; &lt;item_name&gt;
-Description: Displays tracking data for a specific item (streaks, sessions, minutes, history).
-Examples:
-  track task "Deep Work"
-  track routine "Morning Routine"</pre></details>
-        </div>
-        <div class="card" data-name="trim">
-          <h3 style="margin-top:0">trim</h3>
-          <p>Reduces the duration of an item in the current day's schedule.</p>
-          <pre>Usage: trim &lt;item_name&gt; &lt;amount_in_minutes&gt;</pre>
-          <details><summary>More</summary><pre>Usage: trim &lt;item_name&gt; &lt;amount_in_minutes&gt;
-Description: Reduces the duration of an item in the current day's schedule.
-Example: trim "Morning Routine" 10</pre></details>
-        </div>
-        <div class="card" data-name="unset">
-          <h3 style="margin-top:0">unset</h3>
-          <p>Removes a script variable from the current session.</p>
-          <pre>Usage: unset var &lt;name&gt;</pre>
-          <details><summary>More</summary><pre>Usage: unset var &lt;name&gt;
-Description: Removes a script variable from the current session.
-Example: unset var project</pre></details>
-        </div>
-        <div class="card" data-name="vars">
-          <h3 style="margin-top:0">vars</h3>
-          <p>Lists current script variables or a single variable by name.</p>
-          <pre>Usage: vars [name:&lt;varname&gt;]</pre>
-          <details><summary>More</summary><pre>Usage: vars [name:&lt;varname&gt;]
-Description: Lists current script variables or a single variable by name.
-Example: vars
-Example: vars name:project</pre></details>
-        </div>
-        <div class="card" data-name="view">
-          <h3 style="margin-top:0">view</h3>
-          <p>Displays the content and properties of a specific item.</p>
-          <pre>Usage: view &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]</pre>
-          <details><summary>More</summary><pre>Usage: view &lt;item_type&gt; &lt;item_name&gt; [property_key:property_value ...]
-Description: Displays the content and properties of a specific item.
-Example: view note MyMeetingNotes</pre></details>
-        </div>
+- today: Shows today&#x27;s schedule (in-progress and upcoming).
+- today reschedule: Rebuilds the schedule with conflict resolution.
+- today routines|subroutines|microroutines: Collapses display to that level.</pre>
+  </details>
+</div>
+<div class="card" data-name="tomorrow" data-type="Scheduling &amp; Tracking" id="cmd-tomorrow">
+  <h3 style="margin-top:0">tomorrow</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Previews the schedule for tomorrow (or a specified offset).</p>
+  <pre>Usage:
+tomorrow [days:&lt;n&gt;]</pre>
+  <details><summary>More</summary>
+    <pre>Previews the schedule for tomorrow (or a specified offset).
+Usage: tomorrow [days:&lt;n&gt;]</pre>
+  </details>
+</div>
+<div class="card" data-name="track" data-type="Scheduling &amp; Tracking" id="cmd-track">
+  <h3 style="margin-top:0">track</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Logs time spent on an activity.</p>
+  <pre>Usage:
+track &lt;task_name&gt; &lt;duration&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Logs time spent on an activity.
+Usage: track &lt;task_name&gt; &lt;duration&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="tree" data-type="Advanced Features" id="cmd-tree">
+  <h3 style="margin-top:0">tree</h3>
+  <p class="cmd-type">Type: Advanced Features</p>
+  <p>Visualizes item hierarchy or directory structure.</p>
+  <pre>Usage:
+- tree &lt;type&gt; &lt;name&gt;
+- tree dir &lt;path&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Visualizes item hierarchy or directory structure.
+Usage:
+- tree &lt;type&gt; &lt;name&gt;
+- tree dir &lt;path&gt;</pre>
+  </details>
+</div>
+<div class="card" data-name="trim" data-type="Scheduling &amp; Tracking" id="cmd-trim">
+  <h3 style="margin-top:0">trim</h3>
+  <p class="cmd-type">Type: Scheduling &amp; Tracking</p>
+  <p>Reduces the duration of an item in the current day&#x27;s schedule.</p>
+  <pre>Usage:
+trim &lt;item_name&gt; &lt;amount_in_minutes&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Reduces the duration of an item in the current day&#x27;s schedule.
+Usage: trim &lt;item_name&gt; &lt;amount_in_minutes&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-u">U</div>
+<div class="card" data-name="undo" data-type="Utilities" id="cmd-undo">
+  <h3 style="margin-top:0">undo</h3>
+  <p class="cmd-type">Type: Utilities</p>
+  <p>Restores the most recently archived item or schedule.</p>
+  <pre>Usage:
+- undo delete [type]
+- undo reschedule</pre>
+  <details><summary>More</summary>
+    <pre>Restores the most recently archived item or schedule.
+Usage:
+- undo delete [type]
+- undo reschedule</pre>
+  </details>
+</div>
+<div class="card" data-name="unset" data-type="Automation &amp; Scripting" id="cmd-unset">
+  <h3 style="margin-top:0">unset</h3>
+  <p class="cmd-type">Type: Automation &amp; Scripting</p>
+  <p>Removes a script variable from the current session.</p>
+  <pre>Usage:
+unset var &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Removes a script variable from the current session.
+Usage: unset var &lt;name&gt;</pre>
+  </details>
+</div>
+<div class="cmd-letter" id="cmd-v">V</div>
+<div class="card" data-name="vars" data-type="Automation &amp; Scripting" id="cmd-vars">
+  <h3 style="margin-top:0">vars</h3>
+  <p class="cmd-type">Type: Automation &amp; Scripting</p>
+  <p>Lists current script variables or a single variable by name.</p>
+  <pre>Usage:
+vars [name:&lt;varname&gt;]</pre>
+  <details><summary>More</summary>
+    <pre>Lists current script variables or a single variable by name.
+Usage: vars [name:&lt;varname&gt;]</pre>
+  </details>
+</div>
+<div class="card" data-name="view" data-type="Core Commands" id="cmd-view">
+  <h3 style="margin-top:0">view</h3>
+  <p class="cmd-type">Type: Core Commands</p>
+  <p>Displays the contents of an item in the terminal.</p>
+  <pre>Usage:
+view &lt;type&gt; &lt;name&gt;</pre>
+  <details><summary>More</summary>
+    <pre>Displays the contents of an item in the terminal.
+Usage: view &lt;type&gt; &lt;name&gt;</pre>
+  </details>
+</div>
       </div>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio)</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio)</div>
         <div class="footer-links">
-          <a href="/pages/docs.html">Docs</a>
-          <a href="/pages/agents.html">Agents</a>
-          <a href="/pages/commands.html">Commands</a>
-          <a href="/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
@@ -620,15 +997,22 @@ Example: view note MyMeetingNotes</pre></details>
     <script>
       (function(){
         var input = document.getElementById('cmdFilter');
+        var typeSelect = document.getElementById('cmdType');
         var grid = document.getElementById('cmdGrid');
-        if (!input || !grid) return;
-        input.addEventListener('input', function(){
+        if (!input || !grid || !typeSelect) return;
+        function applyFilter(){
           var q = (input.value || '').toLowerCase();
+          var type = (typeSelect.value || '').toLowerCase();
           grid.querySelectorAll('.card').forEach(function(c){
             var name = (c.getAttribute('data-name')||'') + ' ' + (c.textContent||'');
-            c.style.display = name.toLowerCase().indexOf(q) >= 0 ? '' : 'none';
+            var cardType = (c.getAttribute('data-type')||'').toLowerCase();
+            var matchText = name.toLowerCase().indexOf(q) >= 0;
+            var matchType = !type || cardType === type;
+            c.style.display = (matchText && matchType) ? '' : 'none';
           });
-        });
+        }
+        input.addEventListener('input', applyFilter);
+        typeSelect.addEventListener('change', applyFilter);
       })();
     </script>
   </body>

@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,56 +13,79 @@
       <div class="container header-inner">
         <a class="brand" href="../index.html"><img class="brand-mark" src="../public/Logo_No_Background.png" alt="Chronos Engine" /><span class="brand-text">Chronos Engine</span></a>
         <nav class="nav" id="siteNav">
-  <a href="/index.html#features">Features</a>
-  <a href="/pages/docs.html">Docs</a>
-  <div class="dropdown guides">
-    <button class="menubtn" type="button">Guides</button>
-    <div class="menu">
-      <a href="/pages/setup.html">Setup</a>
-      <a href="/pages/dashboard.html">Dashboard Guide</a>
-      <a href="/pages/template-builder.html">Template Builder</a>
-      <a href="/pages/macros.html">Macros</a>
-      <a href="/pages/chs-scripting.html">CHS Scripting</a>
-      <a href="/pages/conditions-cookbook.html">Conditions Cookbook</a>
-      <a href="/pages/architecture.html">Architecture</a>
-      <a href="/pages/settings.html">Settings</a>
-      <a href="/pages/workflows.html">Workflows</a>
-    </div>
-  </div>
-  <a href="/pages/agents.html">Agents</a>
-  <a href="/pages/commands.html">Commands</a>
-  <a href="/pages/license.html">License</a>
-  <a href="/pages/setup.html" class="cta">Get Started</a>
-</nav>
+          <a href="../index.html#features">Features</a>
+          <a href="docs.html">Docs</a>
+          <div class="dropdown guides">
+            <button class="menubtn" type="button">Guides</button>
+            <div class="menu">
+              <a class="active" href="setup.html">Setup</a>
+              <a href="dashboard.html">Dashboard Guide</a>
+              <a href="cockpit.html">Cockpit</a>
+              <a href="canvas.html">Canvas</a>
+              <a href="template-builder.html">Template Builder</a>
+              <a href="macros.html">Macros</a>
+              <a href="chs-scripting.html">CHS Scripting</a>
+              <a href="conditions-cookbook.html">Conditions Cookbook</a>
+              <a href="scheduling.html">Scheduling</a>
+              <a href="settings.html">Settings</a>
+              <a href="workflows.html">Workflows</a>
+              <a href="architecture.html">Architecture</a>
+              <a href="sequence.html">Sequence Mirrors</a>
+            </div>
+          </div>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="license.html">License</a>
+          <a href="setup.html" class="cta">Get Started</a>
+        </nav>
         <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
       </div>
     </header>
 
     <main class="container doc">
       <h1>Setup</h1>
-      <p><strong>Status:</strong> Early development &mdash; expect rapid changes. <strong>Developer:</strong> David Cody (Hivemind Studio).</p>
+      <p><strong>Status:</strong> Early development - expect rapid changes. <strong>Developer:</strong> David Cody (Hivemind Studio).</p>
 
-      <p style="margin:12px 0 20px">
-        <a class="btn primary" href="https://drive.google.com/file/d/1x00gCEFjDZD51yHdryAqQSyqvOrNA75s/view?usp=sharing" target="_blank" rel="noopener">
-          Download Chronos Engine (.zip)
-        </a>
-      </p>
+      <h2>Get the Repository</h2>
+      <p>Clone the Chronos Engine repo:</p>
+      <pre><code>git clone https://github.com/Jeetski/Chronos_Engine.git</code></pre>
 
       <h2>Requirements</h2>
       <ul>
-        <li>Windows (for <code>.bat</code> launcher and PowerShell helpers).</li>
-        <li>Git (optional, for cloning and updates).</li>
+        <li>Windows 10/11 (primary development platform).</li>
+        <li>Python 3.10+ (installer can fetch via <code>winget</code>).</li>
+        <li>Git (required to clone the repo).</li>
       </ul>
+      <p>Linux/macOS support is experimental via the <code>.sh</code> launchers.</p>
 
       <h2>Install Dependencies</h2>
-      <p>Run <code>install_dependencies.bat</code>. If Python is not installed, the script will attempt to install the latest Python via <code>winget</code>, then install required packages.</p>
+      <ol>
+        <li>Run <code>install_dependencies.bat</code> from the repo root.</li>
+        <li>The script creates <code>.venv</code> and installs requirements.</li>
+      </ol>
+
+      <h2>Guided Onboarding</h2>
+      <ul>
+        <li>Run <code>onboarding_wizard.bat</code> from the CLI, or</li>
+        <li>Open the dashboard and launch <strong>Chronos Onboarding Wizard</strong> from the Wizards menu.</li>
+      </ul>
 
       <h2>Launch the Console</h2>
-      <ol>
-        <li>Open a terminal in the project root.</li>
-        <li>Run <code>Console_Launcher.bat</code> to open the interactive console.</li>
-        <li>Or run commands directly: <code>Console_Launcher.bat &lt;command&gt; [args...]</code></li>
-      </ol>
+      <ul>
+        <li>Run <code>console_launcher.bat</code> (or <code>python Modules/Console.py</code>).</li>
+        <li>Type <code>help</code> to see available commands.</li>
+      </ul>
+
+      <h2>Start the Listener</h2>
+      <ul>
+        <li>Run <code>listener_launcher.bat</code> to enable alarms, reminders, and timer ticks.</li>
+      </ul>
+
+      <h2>Launch the Dashboard</h2>
+      <ul>
+        <li>Run <code>dashboard_launcher.bat</code>, or</li>
+        <li>Use the CLI command <code>dashboard</code> (alias <code>dash</code>).</li>
+      </ul>
 
       <h2>Your First Day</h2>
       <ol>
@@ -70,40 +93,24 @@
         <li>Generate schedule: <code>today reschedule</code></li>
         <li>View schedule: <code>today</code></li>
       </ol>
-
-      <h2>Common Workflows</h2>
-      <h3>Create a Project</h3>
-      <pre><code>new project "My New Project"
-new task "Task 1 for my new project" project:"My New Project"
-list task project:"My New Project"</code></pre>
-
-      <h3>Create a Routine</h3>
-      <pre><code>new routine "My Evening Routine"
-new subroutine "Wind Down" routine:"My Evening Routine"
-new microroutine "Read a book" subroutine:"Wind Down"
-add "My Evening Routine" to "Monday"</code></pre>
-
-      <h2>Next Steps</h2>
-      <ul>
-        <li>Browse <a href="/Website/pages/commands.html">Commands</a></li>
-        <li>Read the <a href="/Website/pages/docs.html">Docs</a></li>
-      </ul>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>&copy; <span id="year"></span> Chronos Engine &mdash; Built by David Cody (Hivemind Studio) &mdash; Early Development</div>
+        <div>&copy; <span id="year"></span> Chronos Engine - Built by David Cody (Hivemind Studio) - Early Development</div>
         <div class="footer-links">
-          <a href="/Website/pages/docs.html">Docs</a>
-          <a href="/Website/pages/agents.html">Agents</a>
-          <a href="/Website/pages/commands.html">Commands</a>
-          <a href="/Website/pages/setup.html">Setup</a>
+          <a href="docs.html">Docs</a>
+          <a href="agents.html">Agents</a>
+          <a href="commands.html">Commands</a>
+          <a href="setup.html">Setup</a>
+          <a href="license.html">License</a>
+          <a href="commercial-license.html">Commercial</a>
+          <a href="marketplace-terms.html">Marketplace</a>
+          <a href="trademark-policy.html">Trademarks</a>
           <a href="https://github.com/Jeetski/Chronos_Engine" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </footer>
     <script src="../script.js"></script>
   </body>
-  </html>
-
-
+</html>

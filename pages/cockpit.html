@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Marketplace Terms</title>
+    <title>Chronos Engine - Cockpit</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -20,7 +20,7 @@
             <div class="menu">
               <a href="setup.html">Setup</a>
               <a href="dashboard.html">Dashboard Guide</a>
-              <a href="cockpit.html">Cockpit</a>
+              <a class="active" href="cockpit.html">Cockpit</a>
               <a href="canvas.html">Canvas</a>
               <a href="template-builder.html">Template Builder</a>
               <a href="macros.html">Macros</a>
@@ -43,37 +43,34 @@
     </header>
 
     <main class="container doc">
-      <h1>Marketplace Terms (Summary)</h1>
-      <p>These terms apply when you sell paid Chronos extensions in the official Marketplace.</p>
+      <h1>Cockpit</h1>
+      <p>The Cockpit view is a drag and drop canvas for modular panels. It is designed as a personal flight deck where you can dock the data you care about most.</p>
 
-      <h2>Eligibility</h2>
+      <h2>Core Behaviors</h2>
       <ul>
-        <li>Listings must be safe, lawful, and relevant to Chronos.</li>
-        <li>You must own or have rights to distribute the extension.</li>
+        <li>Pan by dragging empty space, scroll to move, or use the floating controls.</li>
+        <li>Zoom with Ctrl + scroll or the zoom buttons.</li>
+        <li>Snap grid can be toggled from the toolbar.</li>
+        <li>Layout is stored in <code>localStorage</code> under <code>chronos_cockpit_panels_v1</code>.</li>
       </ul>
 
-      <h2>Revenue Share</h2>
+      <h2>Panels</h2>
       <ul>
-        <li>Standard share: 15 percent of net revenue (after platform fees and taxes).</li>
-        <li>Payouts monthly when balance exceeds 50 USD unless otherwise agreed.</li>
+        <li><strong>Schedule</strong> - live agenda tree for Today.</li>
+        <li><strong>Matrix</strong> - pivot style grid across items and properties.</li>
+        <li><strong>Matrix Visuals</strong> - chart view of Matrix data.</li>
+        <li><strong>Status Strip</strong> - current status indicators in a horizontal strip.</li>
+        <li><strong>Commitments</strong> - snapshot of commitment status and triggers.</li>
+        <li><strong>Lists</strong> - quick list slices of Chronos data.</li>
+        <li><strong>Deadlines</strong> - upcoming due dates and schedule pressure.</li>
+        <li><strong>Map of Happiness</strong> - mood and energy visualization.</li>
       </ul>
 
-      <h2>Distribution and Certification</h2>
-      <ul>
-        <li>Approved paid listings receive the Chronos Certified badge.</li>
-        <li>You grant a non-exclusive right to distribute and market via the Marketplace.</li>
-        <li>You retain all IP to your extension.</li>
-      </ul>
+      <h2>How Panels Register</h2>
+      <p>Panels live under <code>Utilities/Dashboard/Panels/&lt;Name&gt;</code> and register via <code>register(manager)</code>. The Cockpit manager exposes a <code>window.__cockpitPanelRegister</code> hook to add panels without touching HTML.</p>
 
-      <h2>Quality and Support</h2>
-      <ul>
-        <li>Keep listings accurate and up to date.</li>
-        <li>Provide a support email or issue tracker link.</li>
-        <li>Fix critical security or stability issues promptly.</li>
-      </ul>
-
-      <h2>Contact</h2>
-      <p>Questions: <a href="mailto:marketplace@chronosengine.online">marketplace@chronosengine.online</a></p>
+      <h2>Theme Support</h2>
+      <p>Cockpit panels inherit shared theme variables from the dashboard so palettes stay consistent across views.</p>
     </main>
 
     <footer class="site-footer">
