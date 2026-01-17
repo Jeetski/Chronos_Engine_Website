@@ -54,7 +54,7 @@
 
       <h2>Views</h2>
       <ul>
-        <li><strong>Calendar</strong> - year/month/week/day canvas with a draggable overlay for zoom, hierarchy, and tool selection.</li>
+        <li><strong>Calendar</strong> - year/month/week/day canvas with a Day List tree in Day view. Selecting a date previews that day (today is actionable).</li>
         <li><strong>Template Builder</strong> - drag and drop editing for week/day/routine/subroutine/microroutine templates, plus goal/project/inventory builders.</li>
         <li><strong>Cockpit</strong> - a drag and drop canvas with modular panels (Schedule, Matrix, Matrix Visuals, Lists, Commitments, Status Strip, Deadlines, Map of Happiness).</li>
         <li><strong>Canvas</strong> - freeform boards for planning, notes, and collaboration.</li>
@@ -63,7 +63,7 @@
       <h2>Widgets</h2>
       <p>Widgets are mounted under <code>Utilities/Dashboard/Widgets</code> and include:</p>
       <ul>
-        <li>Today, Item Manager, Variables, Terminal</li>
+        <li>Scheduler (Today widget), Item Manager, Variables, Terminal</li>
         <li>Habit Tracker, Goal Tracker, Commitments, Rewards, Achievements, Milestones</li>
         <li>Notes, Journal, Profile, Review</li>
         <li>Timer, Settings, Clock, Status, Debug Console</li>
@@ -72,7 +72,7 @@
       <h2>Selected API Endpoints</h2>
       <ul>
         <li>Health: <code>GET /health</code></li>
-        <li>Today: <code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
+        <li>Today API: <code>GET /api/today</code>, <code>POST /api/today/reschedule</code></li>
         <li>CLI Bridge: <code>POST /api/cli</code> with <code>{ command, args, properties }</code></li>
         <li>Items: <code>GET /api/items</code>, <code>GET /api/item</code>, <code>POST /api/item</code>, bulk <code>POST /api/items/delete|setprop|copy|export</code></li>
         <li>Habits/Goals: <code>GET /api/habits</code>, <code>GET /api/goals</code>, <code>GET /api/goal?name=...</code></li>
