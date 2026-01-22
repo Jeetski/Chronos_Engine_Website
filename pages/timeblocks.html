@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronos Engine - Agents</title>
+    <title>Chronos Engine - Time Blocks</title>
     <link rel="icon" href="../public/favicon.ico" sizes="any" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../styles.css" />
@@ -33,7 +33,7 @@
               <a href="sequence.html">Sequence Mirrors</a>
             </div>
           </div>
-          <a class="active" href="agents.html">Agents</a>
+          <a href="agents.html">Agents</a>
           <a href="commands.html">Commands</a>
           <a href="license.html">License</a>
           <a href="setup.html" class="cta">Get Started</a>
@@ -43,49 +43,46 @@
     </header>
 
     <main class="container doc">
-      <h1>Agent Guide</h1>
-      <p>Chronos includes explicit guidance for AI agents that operate the CLI. The agent role is "Nia" (or your persona) piloting Chronos on behalf of the user.</p>
+      <h1>Time Blocks</h1>
+      <p>Time blocks are flexible schedule containers used in day templates.</p>
 
-      <h2>Prime Directives</h2>
+      <h2>Types</h2>
+      <h3>Buffer Block</h3>
+      <pre><code class="language-yaml">type: timeblock
+subtype: buffer
+duration: 30
+absorbable: true</code></pre>
+      <p>Provides overflow space when items overrun.</p>
+
+      <h3>Category Block</h3>
+      <pre><code class="language-yaml">type: timeblock
+subtype: category
+category: health
+duration: 60</code></pre>
+      <p>Prioritizes items matching the category, accepts others if empty.</p>
+
+      <h3>Free Block</h3>
+      <pre><code class="language-yaml">type: timeblock
+subtype: free
+duration: 60</code></pre>
+      <p>Filled with due-date items or displayed as "Free Time X min".</p>
+
+      <h2>Anchor Items</h2>
+      <p>Items with <code>reschedule: never</code> cannot be trimmed, cut, or moved.</p>
+      <pre><code class="language-yaml">name: Work
+reschedule: never
+start_time: "09:00"
+duration: 480</code></pre>
+
+      <h2>Default Free Time Block</h2>
       <ul>
-        <li>Maintain the active persona while adopting the Chronos pilot role.</li>
-        <li>Always load pilot context: <code>User/Profile/pilot_brief.md</code>, <code>User/Profile/preferences.md</code>, preferences settings, personality traits, and <code>User/Data/trends.md</code>.</li>
-        <li>Explain every action and be proactive with scheduling guidance.</li>
-        <li>Fail gracefully and offer recovery steps.</li>
-        <li>Respect Canvas: read and update canvas boards when referenced.</li>
+        <li>Location: <code>User/Timeblocks/freetime.yml</code></li>
+        <li>1 hour duration, no category.</li>
+        <li>Can be used as buffer or for missed items.</li>
       </ul>
 
-      <h2>Universal Item Verbs</h2>
-      <p>All item types share the same core verbs:</p>
-      <pre><code>new|create, append, view|info|track, set, remove, delete, copy, rename, move, list, find, count, filter, get, edit
-</code></pre>
-
-      <h2>Day Shaping</h2>
-      <pre><code>today
-status energy:low focus:medium
-today reschedule
-trim "Block" 10
-change "Block" 15:00
-mark "Block":completed
-</code></pre>
-
-      <h2>Rewards, Achievements, Commitments</h2>
-      <ul>
-        <li><code>commitments check</code> evaluates rules and triggers scripts or rewards.</li>
-        <li><code>redeem reward "Name"</code> deducts points and executes targets.</li>
-        <li>Achievements and milestones use the same verbs as other items.</li>
-      </ul>
-
-      <h2>Agent Developer Notes</h2>
-      <ul>
-        <li>Commands are thin modules under <code>Commands/</code>.</li>
-        <li>Item modules live under <code>Modules/&lt;Type&gt;/main.py</code>.</li>
-        <li>Prefer ItemManager helpers for new verbs.</li>
-        <li>Sequence mirrors power analytics for dashboards and agents.</li>
-      </ul>
-
-      <h2>Agent Dev Guide</h2>
-      <p>For deeper extension guidance, see the <a href="agents-dev.html">Agent Dev Guide</a>.</p>
+      <h2>Priority-Weighted Buffer</h2>
+      <p>More important items get more buffer time when items overrun.</p>
     </main>
 
     <footer class="site-footer">

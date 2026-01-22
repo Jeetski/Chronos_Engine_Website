@@ -69,10 +69,23 @@
         <li>Manual edits are tracked in <code>User/Schedules/manual_modifications_YYYY-MM-DD.yml</code>.</li>
       </ul>
 
+      <h2>Conflict Resolution</h2>
+      <ul>
+        <li>Conflicts are overlap based (ideal end-time conflicts are recorded during initial build).</li>
+        <li>Loop order: shift lower-importance blocks, trim to minimums, then cut if enabled.</li>
+        <li>Anchors (<code>reschedule: false|never</code>) are protected from shifts and cuts.</li>
+      </ul>
+
       <h2>Preview Commands</h2>
       <ul>
         <li><code>tomorrow [days:n]</code> - preview future agendas.</li>
         <li><code>this &lt;weekday&gt;</code> / <code>next &lt;weekday&gt;</code> - preview specific days.</li>
+      </ul>
+
+      <h2>More Detail</h2>
+      <ul>
+        <li><a href="scheduling-deep-dive.html">Scheduling Deep Dive</a> - code-aligned walkthrough.</li>
+        <li><a href="timeblocks.html">Time Blocks</a> - types, anchors, and buffers.</li>
       </ul>
     </main>
 

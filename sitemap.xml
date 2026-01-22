@@ -2,20 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://chronosengine.online/</loc></url>
   <url><loc>https://chronosengine.online/pages/docs.html</loc></url>
+  <url><loc>https://chronosengine.online/pages/release-notes.html</loc></url>
   <url><loc>https://chronosengine.online/pages/setup.html</loc></url>
   <url><loc>https://chronosengine.online/pages/dashboard.html</loc></url>
   <url><loc>https://chronosengine.online/pages/cockpit.html</loc></url>
+  <url><loc>https://chronosengine.online/pages/cockpit-matrix-panel.html</loc></url>
   <url><loc>https://chronosengine.online/pages/canvas.html</loc></url>
   <url><loc>https://chronosengine.online/pages/template-builder.html</loc></url>
   <url><loc>https://chronosengine.online/pages/macros.html</loc></url>
   <url><loc>https://chronosengine.online/pages/chs-scripting.html</loc></url>
   <url><loc>https://chronosengine.online/pages/conditions-cookbook.html</loc></url>
+  <url><loc>https://chronosengine.online/pages/autosuggest.html</loc></url>
   <url><loc>https://chronosengine.online/pages/scheduling.html</loc></url>
+  <url><loc>https://chronosengine.online/pages/scheduling-deep-dive.html</loc></url>
+  <url><loc>https://chronosengine.online/pages/timeblocks.html</loc></url>
   <url><loc>https://chronosengine.online/pages/settings.html</loc></url>
   <url><loc>https://chronosengine.online/pages/workflows.html</loc></url>
   <url><loc>https://chronosengine.online/pages/architecture.html</loc></url>
   <url><loc>https://chronosengine.online/pages/sequence.html</loc></url>
   <url><loc>https://chronosengine.online/pages/agents.html</loc></url>
+  <url><loc>https://chronosengine.online/pages/agents-dev.html</loc></url>
   <url><loc>https://chronosengine.online/pages/commands.html</loc></url>
   <url><loc>https://chronosengine.online/pages/license.html</loc></url>
   <url><loc>https://chronosengine.online/pages/commercial-license.html</loc></url>

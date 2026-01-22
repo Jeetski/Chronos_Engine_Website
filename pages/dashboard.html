@@ -63,10 +63,19 @@
       <h2>Widgets</h2>
       <p>Widgets are mounted under <code>Utilities/Dashboard/Widgets</code> and include:</p>
       <ul>
-        <li>Scheduler (Today widget), Item Manager, Variables, Terminal</li>
+        <li>Scheduler (Today widget), Item Manager, Variables, Terminal (autosuggest + shell execution)</li>
         <li>Habit Tracker, Goal Tracker, Commitments, Rewards, Achievements, Milestones</li>
-        <li>Notes, Journal, Profile, Review</li>
-        <li>Timer, Settings, Clock, Status, Debug Console</li>
+        <li>Inventory Manager, Notes, Journal, Profile, Review, Link</li>
+        <li>Resolution Tracker, Sticky Notes, Cockpit Minimap, Trends</li>
+        <li>Timer, Settings, Clock (Manage alarms/reminders), Status, Debug Console</li>
+        <li>MP3 Player (streams from <code>User/Media</code>)</li>
+      </ul>
+
+      <h2>Wizards</h2>
+      <ul>
+        <li><strong>Chronos Onboarding Wizard</strong> - set nickname, categories, statuses, and clone sample templates.</li>
+        <li><strong>New Year's Resolutions Wizard</strong> - clarify resolutions and link them to Chronos items.</li>
+        <li><strong>Self Authoring Suite</strong> - reflection flow that can generate goals, habits, and tasks.</li>
       </ul>
 
       <h2>Selected API Endpoints</h2>
@@ -82,6 +91,7 @@
         <li>Timer: <code>GET /api/timer/status|profiles|settings</code>, <code>POST /api/timer/start|pause|resume|stop</code></li>
         <li>Variables/Theme/Profile: <code>GET /api/vars</code>, <code>POST /api/vars</code>, <code>POST /api/vars/expand</code>, <code>GET /api/profile</code>, <code>GET /api/theme?name=...</code></li>
         <li>Settings: <code>GET /api/settings</code>, <code>POST /api/settings?file=Name.yml</code></li>
+        <li>Logs: <code>GET /api/logs</code> (Debug Console)</li>
       </ul>
 
       <h2>Tips</h2>
